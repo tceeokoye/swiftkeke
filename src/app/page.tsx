@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import Marquee from "@/components/Marquee";
 import About from "@/components/About";
 import Benefits from "@/components/Benefits";
+import HowItWorks from "@/components/HowItWorks";
 import MapCoverage from "@/components/MapCoverage";
 import RegistrationForm from "@/components/RegistrationForm";
 import FAQ from "@/components/FAQ";
@@ -17,6 +18,7 @@ export default function Home() {
       <Marquee />
       <About />
       <Benefits />
+      <HowItWorks />
       <MapCoverage />
       <RegistrationForm />
       <FAQ />

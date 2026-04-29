@@ -1,21 +1,21 @@
-"use client";
+﻿"use client";
 
 const items = [
-  "⚡ Quick Registration",
+  "🚗 Quick Booking",
   "🛡️ Verified Drivers",
-  "💰 Great Earnings",
-  "📍 Flexible Routes",
-  "🎧 Driver Support 24/7",
-  "⭐ Join 1,200+ Drivers",
+  "💳 Transparent Fares",
+  "📍 Live GPS Tracking",
+  "🎧 Support 24/7",
+  "⭐ 4.9 Star Rating",
   "📱 Easy App",
-  "🚀 Start Earning Today",
+  "🚀 Book in 30 Seconds",
 ];
 
 export default function Marquee() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-r from-purple-900/30 via-purple-800/20 to-purple-900/30 border-y border-purple-800/20 py-4">
+    <div className="relative overflow-hidden bg-[#D21F3C] py-3.5">
       <div
         className="flex gap-8 whitespace-nowrap"
         style={{ animation: "marquee 30s linear infinite" }}
@@ -23,10 +23,10 @@ export default function Marquee() {
         {doubled.map((item, i) => (
           <span
             key={i}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-purple-300 shrink-0"
+            className="inline-flex items-center gap-2 text-sm font-bold text-white shrink-0"
           >
             {item}
-            <span className="text-purple-700">•</span>
+            <span className="text-white/40">•</span>
           </span>
         ))}
       </div>

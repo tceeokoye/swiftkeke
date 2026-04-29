@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { MapPin, Clock } from "lucide-react";
 
@@ -15,18 +15,18 @@ const cities = [
 
 export default function Cities() {
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-700/40 text-purple-300 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
             Coverage
           </div>
-          <h2 className="text-4xl font-black text-white mb-3">
+          <h2 className="text-4xl font-black text-[#1A1A1A] mb-3">
             Now Available In{" "}
             <span className="gradient-text">Your City</span>
           </h2>
-          <p className="text-gray-400">
-            SwiftKeke is expanding fast. We&apos;re already live in major cities and coming to more soon.
+          <p className="text-[#555555]">
+            Book Ride is expanding fast. We&apos;re already live in major cities and coming to more soon.
           </p>
         </div>
 
@@ -36,25 +36,25 @@ export default function Cities() {
               key={name}
               className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-200 ${
                 active
-                  ? "bg-purple-700/10 border-purple-600/30 hover:bg-purple-700/20"
-                  : "bg-white/[0.02] border-white/[0.05] opacity-60"
+                  ? "bg-[#D21F3C]/5 border-[#D21F3C]/25 hover:bg-[#D21F3C]/10"
+                  : "bg-[#F7F7F7] border-gray-100 opacity-60"
               }`}
             >
               {active ? (
-                <MapPin className="w-4 h-4 text-purple-400 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#D21F3C] shrink-0" />
               ) : (
-                <Clock className="w-4 h-4 text-gray-600 shrink-0" />
+                <Clock className="w-4 h-4 text-[#888888] shrink-0" />
               )}
               <div>
-                <span className={`text-sm font-semibold ${active ? "text-white" : "text-gray-500"}`}>
+                <span className={`text-sm font-semibold ${active ? "text-[#1A1A1A]" : "text-[#888888]"}`}>
                   {name}
                 </span>
                 {!active && (
-                  <div className="text-[10px] text-gray-700 mt-0.5">Coming Soon</div>
+                  <div className="text-[10px] text-[#888888] mt-0.5">Coming Soon</div>
                 )}
               </div>
               {active && (
-                <div className="ml-auto w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <div className="ml-auto w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               )}
             </div>
           ))}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -13,10 +13,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "SwiftKeke – Drive With Us | Rider Onboarding",
+  title: "Book Ride – Go Anywhere | Safe Rides Across Nigeria",
   description:
-    "Join SwiftKeke as a driver. Register today and start earning. Safe, verified, and rewarding rides across Nigeria.",
-  keywords: "keke driver, cab driver, ride-hailing, Nigeria, register, swiftkeke, onboarding",
+    "Book Ride is Nigeria's most trusted ride-hailing platform. Book safe, affordable rides instantly or register as a driver and start earning today.",
+  keywords: "book ride, ride booking, cab driver, keke, ride-hailing, Nigeria, Lagos, Abuja, Port Harcourt",
 };
 
 export default function RootLayout({

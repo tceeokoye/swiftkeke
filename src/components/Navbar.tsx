@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Zap, Menu, X } from "lucide-react";
+import { MapPin, Menu, X } from "lucide-react";
+import BookRideLogo from "./BookRideLogo";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "Requirements", href: "#about" },
   { label: "Benefits", href: "#benefits" },
+  { label: "How it Works", href: "#how-it-works" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -22,21 +23,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-5xl ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0a0f]/90 backdrop-blur-2xl border border-purple-900/30 shadow-2xl shadow-purple-900/10 rounded-2xl"
-          : "bg-white/[0.03] backdrop-blur-xl border border-white/[0.06] rounded-2xl"
+          ? "bg-white shadow-md border-b border-gray-100"
+          : "bg-white border-b border-gray-100"
       }`}
     >
-      <div className="px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 lg:h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-600 to-violet-700 flex items-center justify-center shadow-lg shadow-purple-700/40 group-hover:shadow-purple-600/60 transition-all duration-300 group-hover:scale-110">
-              <Zap className="w-4 h-4 text-white" fill="white" />
+          <a href="#home" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
+              <BookRideLogo size={36} />
             </div>
-            <span className="text-lg font-black tracking-tight text-white">
-              Swift<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-violet-400">Keke</span>
+            <span className="text-xl font-black tracking-tight text-[#1A1A1A]">
+              Book<span className="text-[#D21F3C]">Ride</span>
             </span>
           </a>
 
@@ -46,7 +47,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-200 font-medium"
+                className="px-4 py-2 text-sm text-[#555555] hover:text-[#D21F3C] hover:bg-[#D21F3C]/8 rounded-lg transition-all duration-200 font-semibold"
               >
                 {link.label}
               </a>
@@ -57,22 +58,22 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="#register"
-              className="px-5 py-2 text-sm font-semibold text-purple-300 border border-purple-700/50 rounded-xl hover:bg-purple-700/10 transition-all duration-200"
+              className="px-5 py-2 text-sm font-semibold text-[#D21F3C] border-2 border-[#D21F3C] rounded-xl hover:bg-[#D21F3C]/8 transition-all duration-200"
             >
-              Book a Ride
+              Sign In
             </a>
             <a
               href="#register"
-              className="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-violet-600 rounded-xl hover:from-purple-500 hover:to-violet-500 transition-all duration-200 shadow-lg shadow-purple-700/30 hover:shadow-purple-600/50 hover:-translate-y-0.5"
+              className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              Register Now
+              Apply to Drive
             </a>
           </div>
 
           {/* Hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition"
+            className="lg:hidden p-2 rounded-lg text-[#1A1A1A] hover:bg-gray-100 transition"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -82,17 +83,17 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden transition-all duration-300 overflow-hidden bg-white ${
           menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="border-t border-purple-900/20 px-4 py-3 flex flex-col gap-1">
+        <div className="border-t border-gray-100 px-4 py-3 flex flex-col gap-1">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition font-medium"
+              className="px-4 py-3 text-sm text-[#555555] hover:text-[#D21F3C] hover:bg-[#D21F3C]/8 rounded-lg transition font-semibold"
             >
               {link.label}
             </a>
@@ -101,16 +102,16 @@ export default function Navbar() {
             <a
               href="#register"
               onClick={() => setMenuOpen(false)}
-              className="py-2.5 text-center text-sm font-semibold text-purple-300 border border-purple-700/50 rounded-xl"
+              className="py-2.5 text-center text-sm font-semibold text-[#D21F3C] border-2 border-[#D21F3C] rounded-xl"
             >
-              Book a Ride
+              Sign In
             </a>
             <a
               href="#register"
               onClick={() => setMenuOpen(false)}
-              className="py-2.5 text-center text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-violet-600 rounded-xl"
+              className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl"
             >
-              Register Now
+              Book a Ride
             </a>
           </div>
         </div>
