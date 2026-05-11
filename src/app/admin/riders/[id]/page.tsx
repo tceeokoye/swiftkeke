@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   ArrowLeft, 
@@ -18,66 +18,350 @@ import {
   Clock,
   History
 } from "lucide-react";
+import ConfirmModal from "@/components/admin/ConfirmModal";
+import { ToastContainer } from "@/components/admin/Toast";
 
-// Mock data generator for details
-const getRiderDetails = (id: string) => ({
-  id,
-  name: id === "101" ? "Chinedu Okafor" : "Amaka Eze",
-  status: id === "101" ? "Pending" : "Approved",
-  email: id === "101" ? "chinedu@example.com" : "amaka.e@example.com",
-  phone: id === "101" ? "+234 801 111 2222" : "+234 802 222 3333",
-  address: "15 Adeola Crescent, Ikeja, Lagos",
-  joinDate: "May 11, 2026",
+// Mock data generator for details - synced with riders list
+type Rider = {
+  id: string;
+  name: string;
+  status: string;
+  email: string;
+  phone: string;
+  address: string;
+  joinDate: string;
   vehicle: {
-    model: "TVS King Deluxe",
-    plate: "ABC-123-XY",
-    color: "Yellow",
-    year: "2024"
-  },
+    model: string;
+    plate: string;
+    color: string;
+    year: string;
+  };
   ranking: {
-    rating: 4.85,
-    acceptanceRate: 98,
-    cancellationRate: 2,
-    totalRides: 452
-  },
+    rating: number;
+    acceptanceRate: number;
+    cancellationRate: number;
+    totalRides: number;
+  };
   wallet: {
-    balance: "₦42,500.00",
-    pending: "₦8,200.00",
-    totalEarned: "₦840,000.00"
-  },
-  documents: [
-    { name: "Driver's License", status: "Verified", date: "2026-05-10" },
-    { name: "NIN Identification", status: "Verified", date: "2026-05-10" },
-    { name: "Proof of Address", status: "Pending", date: "2026-05-11" },
-    { name: "Vehicle Registration", status: "Verified", date: "2026-05-10" },
-  ],
-  transactions: [
-    { id: "TX-1", type: "Ride Earnings", amount: "+₦1,200.00", date: "Today, 10:45 AM", status: "Completed" },
-    { id: "TX-2", type: "Ride Earnings", amount: "+₦850.00", date: "Today, 09:12 AM", status: "Completed" },
-    { id: "TX-3", type: "Withdrawal", amount: "-₦20,000.00", date: "Yesterday", status: "Completed" },
-    { id: "TX-4", type: "Ride Earnings", amount: "+₦2,100.00", date: "Yesterday", status: "Completed" },
-  ]
-});
+    balance: string;
+    pending: string;
+    totalEarned: string;
+  };
+  documents: Array<{ name: string; status: string; date: string }>;
+  transactions: Array<{ id: string; type: string; amount: string; date: string; status: string }>;
+};
+
+const getRiderDetails = (id: string): Rider => {
+  const ridersData: Record<string, any> = {
+    "101": {
+      id: "101",
+      name: "Chinedu Okafor",
+      status: "Pending",
+      email: "chinedu@example.com",
+      phone: "+234 801 111 2222",
+      address: "15 Adeola Crescent, Ikeja, Lagos",
+      joinDate: "May 11, 2026",
+      vehicle: {
+        model: "TVS King Deluxe",
+        plate: "ABC-123-XY",
+        color: "Yellow",
+        year: "2024"
+      },
+      ranking: {
+        rating: 0,
+        acceptanceRate: 0,
+        cancellationRate: 0,
+        totalRides: 0
+      },
+      wallet: {
+        balance: "₦0.00",
+        pending: "₦0.00",
+        totalEarned: "₦0.00"
+      },
+      documents: [
+        { name: "Driver's License", status: "Verified", date: "2026-05-10" },
+        { name: "NIN Identification", status: "Verified", date: "2026-05-10" },
+        { name: "Proof of Address", status: "Pending", date: "2026-05-11" },
+        { name: "Vehicle Registration", status: "Verified", date: "2026-05-10" },
+      ],
+      transactions: []
+    },
+    "102": {
+      id: "102",
+      name: "Amaka Eze",
+      status: "Approved",
+      email: "amaka.e@example.com",
+      phone: "+234 802 222 3333",
+      address: "25 Victoria Island, Lagos",
+      joinDate: "April 15, 2026",
+      vehicle: {
+        model: "Honda Activa",
+        plate: "DEF-456-ZW",
+        color: "Blue",
+        year: "2023"
+      },
+      ranking: {
+        rating: 4.9,
+        acceptanceRate: 98,
+        cancellationRate: 2,
+        totalRides: 142
+      },
+      wallet: {
+        balance: "₦42,500.00",
+        pending: "₦8,200.00",
+        totalEarned: "₦840,000.00"
+      },
+      documents: [
+        { name: "Driver's License", status: "Verified", date: "2026-04-14" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-14" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-14" },
+        { name: "Vehicle Registration", status: "Verified", date: "2026-04-14" },
+      ],
+      transactions: [
+        { id: "TX-1", type: "Ride Earnings", amount: "+₦1,200.00", date: "Today, 10:45 AM", status: "Completed" },
+        { id: "TX-2", type: "Ride Earnings", amount: "+₦850.00", date: "Today, 09:12 AM", status: "Completed" },
+        { id: "TX-3", type: "Withdrawal", amount: "-₦20,000.00", date: "Yesterday", status: "Completed" },
+        { id: "TX-4", type: "Ride Earnings", amount: "+₦2,100.00", date: "Yesterday", status: "Completed" },
+      ]
+    },
+    "103": {
+      id: "103",
+      name: "Tunde Balogun",
+      status: "Reviewing",
+      email: "tunde.b@example.com",
+      phone: "+234 803 333 4444",
+      address: "10 Dugbe, Ibadan",
+      joinDate: "May 10, 2026",
+      vehicle: {
+        model: "Yamaha Fascino",
+        plate: "GHI-789-UV",
+        color: "Red",
+        year: "2024"
+      },
+      ranking: {
+        rating: 0,
+        acceptanceRate: 0,
+        cancellationRate: 0,
+        totalRides: 0
+      },
+      wallet: {
+        balance: "₦0.00",
+        pending: "₦0.00",
+        totalEarned: "₦0.00"
+      },
+      documents: [
+        { name: "Driver's License", status: "Verified", date: "2026-05-09" },
+        { name: "NIN Identification", status: "Pending", date: "2026-05-10" },
+        { name: "Proof of Address", status: "Verified", date: "2026-05-09" },
+        { name: "Vehicle Registration", status: "Pending", date: "2026-05-10" },
+      ],
+      transactions: []
+    },
+    "104": {
+      id: "104",
+      name: "Ibrahim Musa",
+      status: "Approved",
+      email: "ibrahim@example.com",
+      phone: "+234 804 444 5555",
+      address: "5 Wuse II, Abuja",
+      joinDate: "April 20, 2026",
+      vehicle: {
+        model: "Suzuki Access",
+        plate: "JKL-012-ST",
+        color: "Black",
+        year: "2023"
+      },
+      ranking: {
+        rating: 4.7,
+        acceptanceRate: 95,
+        cancellationRate: 5,
+        totalRides: 89
+      },
+      wallet: {
+        balance: "₦28,300.00",
+        pending: "₦5,400.00",
+        totalEarned: "₦520,000.00"
+      },
+      documents: [
+        { name: "Driver's License", status: "Verified", date: "2026-04-19" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-19" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-19" },
+        { name: "Vehicle Registration", status: "Verified", date: "2026-04-19" },
+      ],
+      transactions: [
+        { id: "TX-5", type: "Ride Earnings", amount: "+₦950.00", date: "Today, 11:30 AM", status: "Completed" },
+        { id: "TX-6", type: "Ride Earnings", amount: "+₦1,100.00", date: "Today, 08:45 AM", status: "Completed" },
+      ]
+    },
+    "105": {
+      id: "105",
+      name: "Rita Peters",
+      status: "Rejected",
+      email: "rita.p@example.com",
+      phone: "+234 805 555 6666",
+      address: "8 Lekki Phase 1, Lagos",
+      joinDate: "May 1, 2026",
+      vehicle: {
+        model: "Hero Splendor",
+        plate: "MNO-345-PQ",
+        color: "Green",
+        year: "2022"
+      },
+      ranking: {
+        rating: 0,
+        acceptanceRate: 0,
+        cancellationRate: 0,
+        totalRides: 0
+      },
+      wallet: {
+        balance: "₦0.00",
+        pending: "₦0.00",
+        totalEarned: "₦0.00"
+      },
+      documents: [
+        { name: "Driver's License", status: "Expired", date: "2026-04-30" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-30" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-30" },
+        { name: "Vehicle Registration", status: "Expired", date: "2026-04-30" },
+      ],
+      transactions: []
+    }
+  };
+
+  // Load from localStorage if available
+  const stored = typeof window !== 'undefined' ? localStorage.getItem(`rider_${id}`) : null;
+  if (stored) {
+    return { ...ridersData[id], ...JSON.parse(stored) };
+  }
+
+  return ridersData[id] || ridersData["102"]; // fallback to Amaka
+};
 
 export default function RiderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const rider = getRiderDetails(id);
+  const [rider, setRider] = useState<Rider>(getRiderDetails(id));
   const [activeTab, setActiveTab] = useState("overview");
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    action: () => void;
+    variant: "danger" | "warning" | "success";
+  } | null>(null);
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string; type: "success" | "error" | "warning" }>>([]);
+
+  // Save to localStorage whenever rider changes
+  useEffect(() => {
+    localStorage.setItem(`rider_${id}`, JSON.stringify({
+      status: rider.status,
+      ranking: rider.ranking,
+      wallet: rider.wallet,
+      transactions: rider.transactions
+    }));
+  }, [rider, id]);
+
+  const addToast = (message: string, type: "success" | "error" | "warning") => {
+    const toastId = Date.now().toString();
+    setToasts(prev => [...prev, { id: toastId, message, type }]);
+  };
+
+  const removeToast = (id: string) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
+  };
+
+  const handleApprove = () => {
+    setConfirmModal({
+      isOpen: true,
+      title: "Approve Rider",
+      message: `Are you sure you want to approve ${rider.name}? This will grant them access to the platform.`,
+      action: () => {
+        setRider((prev: Rider) => ({ ...prev, status: "Approved" }));
+        addToast("Rider approved successfully", "success");
+        setConfirmModal(null);
+      },
+      variant: "success"
+    });
+  };
+
+  const handleReject = () => {
+    setConfirmModal({
+      isOpen: true,
+      title: "Reject Rider",
+      message: `Are you sure you want to reject ${rider.name}? This action cannot be undone.`,
+      action: () => {
+        setRider((prev: Rider) => ({ ...prev, status: "Rejected" }));
+        addToast("Rider rejected", "error");
+        setConfirmModal(null);
+      },
+      variant: "danger"
+    });
+  };
+
+  const handleSuspend = () => {
+    setConfirmModal({
+      isOpen: true,
+      title: "Suspend Rider",
+      message: `Are you sure you want to suspend ${rider.name}? They will lose access temporarily.`,
+      action: () => {
+        setRider((prev: Rider) => ({ ...prev, status: "Suspended" }));
+        addToast("Rider suspended", "warning");
+        setConfirmModal(null);
+      },
+      variant: "warning"
+    });
+  };
+
+  const getStatusStyle = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "approved": return "bg-green-50 text-green-600 border-green-100";
+      case "pending": return "bg-yellow-50 text-yellow-600 border-yellow-100";
+      case "reviewing": return "bg-blue-50 text-blue-600 border-blue-100";
+      case "rejected": return "bg-red-50 text-red-600 border-red-100";
+      case "suspended": return "bg-orange-50 text-orange-600 border-orange-100";
+      default: return "bg-gray-50 text-gray-600 border-gray-100";
+    }
+  };
+
+  const getStatusIcon = (status: string) => {
+    switch (status.toLowerCase()) {
+      case "approved": return <CheckCircle className="w-3 h-3" />;
+      case "pending": return <Clock className="w-3 h-3" />;
+      case "reviewing": return <Clock className="w-3 h-3" />;
+      case "rejected": return <XCircle className="w-3 h-3" />;
+      case "suspended": return <Clock className="w-3 h-3" />;
+      default: return null;
+    }
+  };
 
   return (
     <div className="space-y-8 pb-20">
       {/* Breadcrumb & Navigation */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
         <Link href="/admin/riders" className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#D21F3C] transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Riders
         </Link>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           {rider.status.toLowerCase() !== "approved" && (
-            <button className="px-5 py-2.5 bg-red-50 text-red-600 font-bold text-xs rounded-xl hover:bg-red-100 transition-all border border-red-100">Reject</button>
+            <button 
+              onClick={handleReject}
+              className="flex-1 sm:flex-none px-5 py-2.5 bg-red-50 text-red-600 font-bold text-xs rounded-xl hover:bg-red-100 transition-all border border-red-100"
+            >
+              Reject
+            </button>
           )}
-          <button className="px-5 py-2.5 bg-orange-50 text-orange-600 font-bold text-xs rounded-xl hover:bg-orange-100 transition-all border border-orange-100">Suspend</button>
+          <button 
+            onClick={handleSuspend}
+            className="flex-1 sm:flex-none px-5 py-2.5 bg-orange-50 text-orange-600 font-bold text-xs rounded-xl hover:bg-orange-100 transition-all border border-orange-100"
+          >
+            Suspend
+          </button>
           {rider.status.toLowerCase() !== "approved" && (
-            <button className="px-6 py-2.5 bg-[#D21F3C] text-white font-bold text-xs rounded-xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20">Approve</button>
+            <button 
+              onClick={handleApprove}
+              className="flex-1 sm:flex-none px-6 py-2.5 bg-[#D21F3C] text-white font-bold text-xs rounded-xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20"
+            >
+              Approve
+            </button>
           )}
         </div>
       </div>
@@ -98,7 +382,10 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
             <div className="pb-2">
               <div className="flex items-center gap-3 mb-1">
                 <h1 className="text-3xl font-black text-[#1A1A1A]">{rider.name}</h1>
-                <span className="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-black rounded-lg border border-green-100 uppercase tracking-widest">{rider.status}</span>
+                <span className={`px-3 py-1 ${getStatusStyle(rider.status)} text-[10px] font-black rounded-lg border uppercase tracking-widest flex items-center gap-1.5`}>
+                  {getStatusIcon(rider.status)}
+                  {rider.status}
+                </span>
               </div>
               <div className="flex flex-wrap gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
                 <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.email}</span>
@@ -111,12 +398,12 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
       </div>
 
       {/* Tabs */}
-      <div className="flex bg-white p-1.5 rounded-[2rem] shadow-sm border border-gray-50 w-full sm:w-max">
+      <div className="flex bg-white p-1.5 rounded-[2rem] shadow-sm border border-gray-50 w-full lg:w-max overflow-x-auto no-scrollbar">
         {["Overview", "Finance & Wallet", "Documents", "Ride History"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab.toLowerCase())}
-            className={`px-8 py-3 rounded-[1.5rem] text-xs font-black transition-all ${activeTab === tab.toLowerCase() ? "bg-[#1A1A1A] text-white shadow-lg" : "text-gray-400 hover:text-[#1A1A1A]"}`}
+            className={`px-8 py-3 rounded-[1.5rem] text-xs font-black transition-all whitespace-nowrap ${activeTab === tab.toLowerCase() ? "bg-[#1A1A1A] text-white shadow-lg" : "text-gray-400 hover:text-[#1A1A1A]"}`}
           >
             {tab}
           </button>
@@ -187,7 +474,12 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
                   <p className="text-xs font-bold text-white/50 uppercase tracking-widest mb-2">Available Wallet Balance</p>
                   <h2 className="text-4xl font-black mb-6">{rider.wallet.balance}</h2>
                   <div className="flex gap-4">
-                    <button className="px-6 py-2.5 bg-white/10 text-white font-bold text-xs rounded-xl hover:bg-white/20 transition-all">View History</button>
+                    <button 
+                      onClick={() => setActiveTab("finance & wallet")}
+                      className="px-6 py-2.5 bg-white/10 text-white font-bold text-xs rounded-xl hover:bg-white/20 transition-all"
+                    >
+                      View History
+                    </button>
                   </div>
                 </div>
 
@@ -242,17 +534,54 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
           )}
 
           {(activeTab === "documents" || activeTab === "ride history") && (
-            <div className="bg-white p-20 rounded-[2.5rem] shadow-sm border border-gray-50 flex flex-col items-center text-center">
-               <div className="w-20 h-20 bg-[#F7F7F7] rounded-3xl flex items-center justify-center mb-6 text-gray-300">
+            activeTab === "documents" ? (
+              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-50">
+                <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Verification Documents</h3>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {rider.documents.map((doc) => (
+                    <div key={doc.name} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all" onClick={() => alert(`Previewing ${doc.name}`)}>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+                          <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-[#1A1A1A]">{doc.name}</p>
+                          <p className={`text-[10px] font-black uppercase tracking-wider ${doc.status === "Verified" ? "text-green-500" : "text-yellow-500"}`}>{doc.status}</p>
+                        </div>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-300 group-hover:text-[#1A1A1A] transition-colors" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white p-20 rounded-[2.5rem] shadow-sm border border-gray-50 flex flex-col items-center text-center">
+                <div className="w-20 h-20 bg-[#F7F7F7] rounded-3xl flex items-center justify-center mb-6 text-gray-300">
                   <History className="w-10 h-10" />
-               </div>
-               <h3 className="text-xl font-black text-[#1A1A1A] mb-2">Detailed {activeTab}</h3>
-               <p className="text-gray-400 max-w-xs text-sm font-medium">This section will contain detailed chronological logs and high-resolution document previews.</p>
-            </div>
+                </div>
+                <h3 className="text-xl font-black text-[#1A1A1A] mb-2">Ride History</h3>
+                <p className="text-gray-400 max-w-xs text-sm font-medium">Mock ride history will be displayed here with date, pickup, dropoff, fare, and rating.</p>
+              </div>
+            )
           )}
         </div>
 
       </div>
+
+      {/* Confirm Modal */}
+      {confirmModal && (
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          title={confirmModal.title}
+          message={confirmModal.message}
+          onConfirm={confirmModal.action}
+          onCancel={() => setConfirmModal(null)}
+          variant={confirmModal.variant}
+        />
+      )}
+
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </div>
   );
 }

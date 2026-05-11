@@ -12,6 +12,9 @@ import {
   Download,
   Clock
 } from "lucide-react";
+import { useState } from "react";
+import ConfirmModal from "@/components/admin/ConfirmModal";
+import { ToastContainer } from "@/components/admin/Toast";
 
 const financeStats = [
   { label: "Total Revenue", value: "₦12.8M", change: "+15.2%", positive: true, icon: DollarSign },
@@ -27,6 +30,24 @@ const recentPayouts = [
 ];
 
 export default function FinancePage() {
+  const [payouts, setPayouts] = useState(recentPayouts);
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    action: () => void;
+    variant: "danger" | "warning" | "success";
+  } | null>(null);
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string; type: "success" | "error" | "warning" }>>([]);
+
+  const addToast = (message: string, type: "success" | "error" | "warning") => {
+    const toastId = Date.now().toString();
+    setToasts((prev: any[]) => [...prev, { id: toastId, message, type }]);
+  };
+
+  const removeToast = (id: string) => {
+    setToasts((prev: any[]) => prev.filter(toast => toast.id !== id));
+  };
   return (
     <div className="space-y-10">
       {/* Header */}
@@ -35,11 +56,39 @@ export default function FinancePage() {
           <h1 className="text-3xl font-black text-[#1A1A1A]">Finance & Analysis</h1>
           <p className="text-gray-500 font-medium">Track revenue, manage payouts and monitor platform growth.</p>
         </div>
-        <div className="flex gap-3">
-           <button className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-100 text-[#1A1A1A] font-bold rounded-2xl hover:bg-[#F7F7F7] transition-all shadow-sm">
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+           <button 
+             onClick={() => {
+               const startDate = prompt("Enter start date (YYYY-MM-DD):", "2026-05-01");
+               const endDate = prompt("Enter end date (YYYY-MM-DD):", "2026-05-11");
+               if (startDate && endDate) {
+                 addToast(`Custom range set: ${startDate} to ${endDate}`, "success");
+               }
+             }}
+             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-100 text-[#1A1A1A] font-bold rounded-2xl hover:bg-[#F7F7F7] transition-all shadow-sm"
+           >
              <Calendar className="w-4 h-4" /> Custom Range
            </button>
-           <button className="flex items-center gap-2 px-6 py-3 bg-[#D21F3C] text-white font-bold rounded-2xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20">
+           <button 
+             onClick={() => {
+               // Generate mock CSV
+               const csvContent = "data:text/csv;charset=utf-8," + 
+                 "Date,Revenue,Profit,Payouts\n" +
+                 "2026-05-01,₦150,000,₦45,000,₦25,000\n" +
+                 "2026-05-02,₦180,000,₦52,000,₦30,000\n" +
+                 "2026-05-03,₦120,000,₦38,000,₦20,000\n";
+               
+               const encodedUri = encodeURI(csvContent);
+               const link = document.createElement("a");
+               link.setAttribute("href", encodedUri);
+               link.setAttribute("download", "finance_report.csv");
+               document.body.appendChild(link);
+               link.click();
+               document.body.removeChild(link);
+               addToast("Report downloaded successfully", "success");
+             }}
+             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-[#D21F3C] text-white font-bold rounded-2xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20"
+           >
              <Download className="w-4 h-4" /> Download Report
            </button>
         </div>
@@ -94,7 +143,7 @@ export default function FinancePage() {
          <div className="bg-[#1A1A1A] p-8 rounded-[2.5rem] shadow-xl text-white">
             <h3 className="text-lg font-black mb-6">Upcoming Payouts</h3>
             <div className="space-y-6 mb-8">
-               {recentPayouts.map((p) => (
+               {payouts.map((p) => (
                  <div key={p.id} className="flex items-center justify-between">
                     <div>
                        <p className="text-sm font-bold">{p.rider}</p>
@@ -107,11 +156,41 @@ export default function FinancePage() {
                  </div>
                ))}
             </div>
-            <button className="w-full py-4 bg-[#D21F3C] text-white font-bold rounded-2xl shadow-lg shadow-[#D21F3C]/20 hover:bg-[#a8172d] transition-all flex items-center justify-center gap-2">
+            <button 
+              onClick={() => {
+                setConfirmModal({
+                  isOpen: true,
+                  title: "Process All Payouts",
+                  message: `Are you sure you want to process all pending payouts? This will mark ${payouts.filter(p => p.status !== "Processed").length} payouts as processed.`,
+                  action: () => {
+                    setPayouts((prev: any[]) => prev.map(p => ({ ...p, status: "Processed" })));
+                    addToast("All payouts processed successfully", "success");
+                    setConfirmModal(null);
+                  },
+                  variant: "success"
+                });
+              }}
+              className="w-full py-4 bg-[#D21F3C] text-white font-bold rounded-2xl shadow-lg shadow-[#D21F3C]/20 hover:bg-[#a8172d] transition-all flex items-center justify-center gap-2"
+            >
                <CreditCard className="w-5 h-5" /> Process All Payouts
             </button>
          </div>
       </div>
+
+      {/* Confirm Modal */}
+      {confirmModal && (
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          title={confirmModal.title}
+          message={confirmModal.message}
+          onConfirm={confirmModal.action}
+          onCancel={() => setConfirmModal(null)}
+          variant={confirmModal.variant}
+        />
+      )}
+
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </div>
   );
 }

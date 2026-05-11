@@ -24,6 +24,7 @@ const riders = [
 
 export default function RidersPage() {
   const [filter, setFilter] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const getStatusStyle = (status: string) => {
     switch (status) {
@@ -72,13 +73,13 @@ export default function RidersPage() {
       </div>
 
       {/* Filters & Tabs */}
-      <div className="bg-white p-4 rounded-[2rem] shadow-sm border border-gray-50 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex bg-[#F7F7F7] p-1.5 rounded-2xl w-full md:w-auto">
+      <div className="bg-white p-4 rounded-[2rem] shadow-sm border border-gray-50 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div className="flex bg-[#F7F7F7] p-1.5 rounded-2xl w-full lg:w-auto overflow-x-auto no-scrollbar">
           {["All", "Pending", "Approved", "Rejected"].map((tab) => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}
-              className={`flex-1 md:flex-none px-6 py-2 rounded-xl text-xs font-bold transition-all ${filter === tab ? "bg-white text-[#D21F3C] shadow-sm" : "text-gray-400 hover:text-[#1A1A1A]"}`}
+              className={`flex-1 lg:flex-none px-6 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${filter === tab ? "bg-white text-[#D21F3C] shadow-sm" : "text-gray-400 hover:text-[#1A1A1A]"}`}
             >
               {tab}
             </button>
@@ -89,6 +90,8 @@ export default function RidersPage() {
           <input 
             type="text" 
             placeholder="Search riders..." 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#D21F3C]/10 outline-none transition-all"
           />
         </div>
@@ -108,10 +111,17 @@ export default function RidersPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {riders.filter(r => filter === "All" || r.status === filter).map((rider) => (
-                <tr key={rider.id} className="hover:bg-[#F7F7F7]/30 transition-colors group">
+              {riders
+                .filter(r => filter === "All" || r.status === filter)
+                .filter(r => 
+                  searchTerm === "" || 
+                  r.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  r.email.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((rider) => (
+                <tr key={rider.id} className="hover:bg-[#F7F7F7]/30 transition-colors group cursor-pointer">
                   <td className="px-8 py-5">
-                    <div className="flex items-center gap-4">
+                    <Link href={`/admin/riders/${rider.id}`} className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-[#D21F3C]/5 rounded-xl flex items-center justify-center font-bold text-[#D21F3C]">
                         {rider.name.charAt(0)}
                       </div>
@@ -119,31 +129,37 @@ export default function RidersPage() {
                         <p className="text-sm font-bold text-[#1A1A1A]">{rider.name}</p>
                         <p className="text-[10px] text-gray-400 font-medium tracking-tight">Joined {rider.joinDate}</p>
                       </div>
-                    </div>
+                    </Link>
                   </td>
                   <td className="px-8 py-5">
-                    {rider.status === "Approved" ? (
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-1 text-[#FDC300]">
-                          <Star className="w-3 h-3 fill-current" />
-                          <span className="text-xs font-black text-[#1A1A1A]">{rider.rating}</span>
+                    <Link href={`/admin/riders/${rider.id}`} className="block">
+                      {rider.status === "Approved" ? (
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1 text-[#FDC300]">
+                            <Star className="w-3 h-3 fill-current" />
+                            <span className="text-xs font-black text-[#1A1A1A]">{rider.rating}</span>
+                          </div>
+                          <p className="text-[10px] text-gray-400 font-bold">{rider.rides} Rides completed</p>
                         </div>
-                        <p className="text-[10px] text-gray-400 font-bold">{rider.rides} Rides completed</p>
+                      ) : (
+                        <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">New Applicant</span>
+                      )}
+                    </Link>
+                  </td>
+                  <td className="px-8 py-5">
+                    <Link href={`/admin/riders/${rider.id}`} className="block">
+                      <div className="flex items-center gap-2 text-xs font-semibold text-gray-600">
+                        <MapPin className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.city}
                       </div>
-                    ) : (
-                      <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest italic">New Applicant</span>
-                    )}
+                    </Link>
                   </td>
                   <td className="px-8 py-5">
-                    <div className="flex items-center gap-2 text-xs font-semibold text-gray-600">
-                      <MapPin className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.city}
-                    </div>
-                  </td>
-                  <td className="px-8 py-5">
-                    <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[10px] font-black uppercase tracking-wider ${getStatusStyle(rider.status)}`}>
-                      {getStatusIcon(rider.status)}
-                      {rider.status}
-                    </div>
+                    <Link href={`/admin/riders/${rider.id}`} className="block">
+                      <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-[10px] font-black uppercase tracking-wider ${getStatusStyle(rider.status)}`}>
+                        {getStatusIcon(rider.status)}
+                        {rider.status}
+                      </div>
+                    </Link>
                   </td>
                   <td className="px-8 py-5 text-center">
                     <Link 

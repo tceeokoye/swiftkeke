@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { Search, Filter, Download, MoreHorizontal, Mail, Phone, Calendar } from "lucide-react";
+import ConfirmModal from "@/components/admin/ConfirmModal";
+import { ToastContainer } from "@/components/admin/Toast";
 
 const waitlist = [
   { id: "1", name: "Sarah Johnson", email: "sarah.j@example.com", phone: "+234 801 234 5678", date: "2026-05-10", city: "Enugu" },
@@ -14,6 +16,25 @@ const waitlist = [
 
 export default function WaitlistPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterCity, setFilterCity] = useState("All");
+  const [waitlistData, setWaitlistData] = useState(waitlist);
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    message: string;
+    action: () => void;
+    variant: "danger" | "warning" | "success";
+  } | null>(null);
+  const [toasts, setToasts] = useState<Array<{ id: string; message: string; type: "success" | "error" | "warning" }>>([]);
+
+  const addToast = (message: string, type: "success" | "error" | "warning") => {
+    const toastId = Date.now().toString();
+    setToasts((prev: any[]) => [...prev, { id: toastId, message, type }]);
+  };
+
+  const removeToast = (id: string) => {
+    setToasts((prev: any[]) => prev.filter(toast => toast.id !== id));
+  };
 
   return (
     <div className="space-y-8">
@@ -23,7 +44,31 @@ export default function WaitlistPage() {
           <h1 className="text-3xl font-black text-[#1A1A1A]">Passenger Waitlist</h1>
           <p className="text-gray-500 font-medium">Manage and export users waiting for launch.</p>
         </div>
-        <button className="flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-bold rounded-2xl hover:bg-[#D21F3C] transition-all shadow-lg shadow-black/10">
+        <button 
+          onClick={() => {
+            const csvContent = "data:text/csv;charset=utf-8," + 
+              "Name,Email,Phone,City,Date Joined\n" +
+              waitlistData
+                .filter(user => 
+                  searchTerm === "" || 
+                  user.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  user.city.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .filter(user => filterCity === "All" || user.city === filterCity)
+                .map(user => `${user.name},${user.email},${user.phone},${user.city},${user.date}`)
+                .join("\n");
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "waitlist.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-bold rounded-2xl hover:bg-[#D21F3C] transition-all shadow-lg shadow-black/10"
+        >
           <Download className="w-4 h-4" /> Export CSV
         </button>
       </div>
@@ -40,8 +85,20 @@ export default function WaitlistPage() {
             className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#D21F3C]/10 outline-none transition-all"
           />
         </div>
-        <button className="flex items-center gap-2 px-5 py-3 bg-[#F7F7F7] text-gray-500 font-bold text-sm rounded-xl hover:bg-gray-100 transition-all">
-          <Filter className="w-4 h-4" /> Filter
+        <button className="flex items-center gap-2 px-5 py-3 bg-[#F7F7F7] text-gray-500 font-bold text-sm rounded-xl hover:bg-gray-100 transition-all relative">
+          <Filter className="w-4 h-4" /> Filter: {filterCity}
+          <select 
+            value={filterCity}
+            onChange={(e) => setFilterCity(e.target.value)}
+            className="absolute inset-0 opacity-0 cursor-pointer"
+          >
+            <option value="All">All Cities</option>
+            <option value="Enugu">Enugu</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Abuja">Abuja</option>
+            <option value="Port Harcourt">Port Harcourt</option>
+            <option value="Kano">Kano</option>
+          </select>
         </button>
       </div>
 
@@ -59,7 +116,15 @@ export default function WaitlistPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-50">
-              {waitlist.map((user) => (
+              {waitlistData
+                .filter(user => 
+                  searchTerm === "" || 
+                  user.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                  user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  user.city.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .filter(user => filterCity === "All" || user.city === filterCity)
+                .map((user) => (
                 <tr key={user.id} className="hover:bg-[#F7F7F7]/30 transition-colors group">
                   <td className="px-8 py-5">
                     <div className="flex items-center gap-4">
@@ -90,7 +155,22 @@ export default function WaitlistPage() {
                     </p>
                   </td>
                   <td className="px-8 py-5 text-center">
-                    <button className="px-4 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors border border-red-100">
+                    <button 
+                      onClick={() => {
+                        setConfirmModal({
+                          isOpen: true,
+                          title: "Suspend User",
+                          message: `Are you sure you want to suspend ${user.name}? They will be removed from the waitlist.`,
+                          action: () => {
+                            setWaitlistData((prev: any[]) => prev.filter(u => u.id !== user.id));
+                            addToast("User suspended from waitlist", "warning");
+                            setConfirmModal(null);
+                          },
+                          variant: "warning"
+                        });
+                      }}
+                      className="px-4 py-1.5 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors border border-red-100"
+                    >
                       Suspend
                     </button>
                   </td>
@@ -109,6 +189,21 @@ export default function WaitlistPage() {
           </div>
         </div>
       </div>
+
+      {/* Confirm Modal */}
+      {confirmModal && (
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          title={confirmModal.title}
+          message={confirmModal.message}
+          onConfirm={confirmModal.action}
+          onCancel={() => setConfirmModal(null)}
+          variant={confirmModal.variant}
+        />
+      )}
+
+      {/* Toast Notifications */}
+      <ToastContainer toasts={toasts} onRemove={removeToast} />
     </div>
   );
 }

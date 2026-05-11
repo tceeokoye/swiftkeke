@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { 
   Users, 
   Car, 
@@ -91,26 +92,30 @@ export default function AdminDashboard() {
           <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Pending Riders</h3>
           <div className="space-y-6">
             {recentApplications.map((app) => (
-              <div key={app.id} className="flex items-center justify-between group">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-[#D21F3C]/5 rounded-xl flex items-center justify-center font-bold text-[#D21F3C]">
-                    {app.name.charAt(0)}
+              <Link key={app.id} href={`/admin/riders/${app.id}`} className="block">
+                <div className="flex items-center justify-between group cursor-pointer">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-[#D21F3C]/5 rounded-xl flex items-center justify-center font-bold text-[#D21F3C]">
+                      {app.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-[#1A1A1A] group-hover:text-[#D21F3C] transition-colors">{app.name}</p>
+                      <p className="text-[10px] text-gray-400 flex items-center gap-1 font-medium">
+                        <MapPin className="w-3 h-3" /> {app.city} • {app.time}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-bold text-[#1A1A1A] group-hover:text-[#D21F3C] transition-colors">{app.name}</p>
-                    <p className="text-[10px] text-gray-400 flex items-center gap-1 font-medium">
-                      <MapPin className="w-3 h-3" /> {app.city} • {app.time}
-                    </p>
+                  <div className="px-3 py-1 bg-yellow-50 text-yellow-600 text-[10px] font-bold rounded-lg border border-yellow-100">
+                    {app.status}
                   </div>
                 </div>
-                <div className="px-3 py-1 bg-yellow-50 text-yellow-600 text-[10px] font-bold rounded-lg border border-yellow-100">
-                  {app.status}
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
           <button className="w-full mt-8 py-3 rounded-xl bg-[#F7F7F7] text-gray-500 text-sm font-bold hover:bg-[#D21F3C]/5 hover:text-[#D21F3C] transition-all">
-            View All Applications
+            <Link href="/admin/riders?filter=Pending" className="block w-full h-full flex items-center justify-center">
+              View All Applications
+            </Link>
           </button>
         </div>
       </div>
