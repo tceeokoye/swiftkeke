@@ -75,7 +75,7 @@ export default function HowItWorks() {
             
             <div className="mt-12">
               <a href="#register" className="inline-flex items-center justify-center px-8 py-4 bg-[#D21F3C] text-white font-bold rounded-xl shadow-lg shadow-[#D21F3C]/30 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all">
-                Start Your Application
+                Join Now
               </a>
             </div>
           </div>

@@ -12,6 +12,7 @@ const RIDER_STEPS = [
   { label: "Role", icon: UserPlus },
   { label: "Personal", icon: User },
   { label: "Contact", icon: Phone },
+  { label: "Vehicle", icon: Car },
   { label: "Address", icon: MapPin },
   { label: "Documents", icon: FileText },
   { label: "Selfie", icon: Camera },
@@ -32,9 +33,11 @@ type FormData = {
   email: string;
   otp: string;
   firstName: string; lastName: string; middleName: string;
-  phone: string; password: "";
+  phone: string; password: ""; confirmPassword: "";
+  vehicleMake: string; vehicleModel: string; vehicleYear: string; vehicleColor: string; vehiclePlate: string; vehicleCategory: string;
   address: string; city: string; state: string; proofOfAddress: File | null;
   idType: string; idFile: File | null; driversLicense: File | null;
+  frontPhoto: File | null; backPhoto: File | null; sidePhoto: File | null;
   selfie: File | null;
 };
 
@@ -43,9 +46,11 @@ const initialForm: FormData = {
   email: "",
   otp: "",
   firstName: "", lastName: "", middleName: "",
-  phone: "", password: "",
+  phone: "", password: "", confirmPassword: "",
+  vehicleMake: "", vehicleModel: "", vehicleYear: "", vehicleColor: "", vehiclePlate: "", vehicleCategory: "Tricycle",
   address: "", city: "", state: "", proofOfAddress: null,
   idType: "nin", idFile: null, driversLicense: null,
+  frontPhoto: null, backPhoto: null, sidePhoto: null,
   selfie: null,
 };
 
@@ -54,31 +59,56 @@ function FileUploadBox({ label, hint, file, onFile, accept, icon: Icon }: {
   onFile: (f: File) => void; accept: string; icon: React.ElementType;
 }) {
   const ref = useRef<HTMLInputElement>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!file) {
+      setPreview(null);
+      return;
+    }
+    if (file.type.startsWith("image/")) {
+      const objectUrl = URL.createObjectURL(file);
+      setPreview(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
+    } else {
+      setPreview(null);
+    }
+  }, [file]);
+
   return (
     <div
       onClick={() => ref.current?.click()}
-      className={`relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 ${
+      className={`relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 overflow-hidden ${
         file
           ? "border-green-500/50 bg-green-500/5"
           : "border-gray-200 bg-[#F7F7F7] hover:border-[#D21F3C]/40 hover:bg-[#D21F3C]/5"
       }`}
     >
       <input ref={ref} type="file" accept={accept} className="hidden" onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
-      {file ? (
+      {preview ? (
         <>
-          <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mb-3">
-            <Check className="w-6 h-6 text-green-400" />
+          <div className="absolute inset-0 w-full h-full opacity-10 bg-cover bg-center" style={{ backgroundImage: `url(${preview})` }} />
+          <div className="relative z-10 w-16 h-16 rounded-xl border-2 border-green-500 overflow-hidden shadow-md mb-3 bg-white flex items-center justify-center">
+             <img src={preview} alt="preview" className="w-full h-full object-cover" />
           </div>
-          <span className="text-sm font-semibold text-green-400">{file.name}</span>
-          <span className="text-xs text-gray-600 mt-1">Click to change</span>
+          <span className="relative z-10 text-sm font-semibold text-green-700 bg-white/60 px-2 py-0.5 rounded">{file?.name}</span>
+          <span className="relative z-10 text-xs text-gray-700 font-medium mt-1">Click to change</span>
+        </>
+      ) : file ? (
+        <>
+          <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mb-3 relative z-10">
+            <Check className="w-6 h-6 text-green-500" />
+          </div>
+          <span className="text-sm font-semibold text-green-600 relative z-10">{file?.name}</span>
+          <span className="text-xs text-gray-600 mt-1 relative z-10">Click to change</span>
         </>
       ) : (
         <>
           <div className="w-12 h-12 bg-[#D21F3C]/15 border border-[#D21F3C]/30 rounded-full flex items-center justify-center mb-3">
             <Icon className="w-6 h-6 text-[#D21F3C]" />
           </div>
-          <span className="text-sm font-semibold text-[#1A1A1A]">{label}</span>
-          <span className="text-xs text-gray-600 mt-1">{hint}</span>
+          <span className="text-sm font-semibold text-[#1A1A1A] text-center">{label}</span>
+          <span className="text-xs text-gray-600 mt-1 text-center">{hint}</span>
         </>
       )}
     </div>
@@ -120,15 +150,25 @@ export default function RegistrationForm() {
       } else if (step === 4) {
         if (!form.phone.trim() || form.phone.length < 10) e.push("Valid phone number is required");
         if (!form.password.trim() || form.password.length < 6) e.push("Password must be at least 6 characters");
+        if (form.password !== form.confirmPassword) e.push("Passwords do not match");
       } else if (step === 5) {
+        if (!form.vehicleMake.trim()) e.push("Vehicle make is required");
+        if (!form.vehicleModel.trim()) e.push("Vehicle model is required");
+        if (!form.vehicleYear.trim()) e.push("Vehicle year is required");
+        if (!form.vehicleColor.trim()) e.push("Vehicle color is required");
+        if (!form.vehiclePlate.trim()) e.push("Plate number is required");
+        if (!form.frontPhoto) e.push("Front photo of vehicle is required");
+        if (!form.backPhoto) e.push("Back photo of vehicle is required");
+        if (!form.sidePhoto) e.push("Side photo of vehicle is required");
+      } else if (step === 6) {
         if (!form.address.trim()) e.push("Address is required");
         if (!form.city.trim()) e.push("City is required");
         if (!form.state.trim()) e.push("State is required");
         if (!form.proofOfAddress) e.push("Proof of address is required");
-      } else if (step === 6) {
+      } else if (step === 7) {
         if (!form.idFile) e.push("Means of identification is required");
         if (!form.driversLicense) e.push("Driver's license is required");
-      } else if (step === 7) {
+      } else if (step === 8) {
         if (!form.selfie) e.push("Selfie photo is required");
       }
     } else if (form.accountType === "passenger") {
@@ -166,7 +206,7 @@ export default function RegistrationForm() {
       return;
     }
 
-    const maxStep = form.accountType === "rider" ? 8 : (form.accountType === "passenger" ? 4 : 2);
+    const maxStep = form.accountType === "rider" ? 9 : (form.accountType === "passenger" ? 4 : 2);
     setStep((s) => Math.min(s + 1, maxStep));
   };
 
@@ -423,17 +463,73 @@ export default function RegistrationForm() {
                       <input className={`${inputClass} pl-10`} type="tel" placeholder="+234 800 000 0000" value={form.phone} onChange={(e) => set("phone", e.target.value)} />
                     </div>
                   </div>
-                  <div>
-                    <label className={labelClass}>Create Password *</label>
-                    <div className="relative">
-                      <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
-                      <input className={`${inputClass} pl-10`} type="password" placeholder="Create a password" value={form.password} onChange={(e) => set("password", e.target.value)} />
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className={labelClass}>Create Password *</label>
+                      <div className="relative">
+                        <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+                        <input className={`${inputClass} pl-10`} type="password" placeholder="Create a password" value={form.password || ""} onChange={(e) => set("password", e.target.value)} />
+                      </div>
+                    </div>
+                    <div>
+                      <label className={labelClass}>Confirm Password *</label>
+                      <div className="relative">
+                        <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+                        <input className={`${inputClass} pl-10`} type="password" placeholder="Confirm password" value={form.confirmPassword || ""} onChange={(e) => set("confirmPassword", e.target.value)} />
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
 
               {step === 5 && (
+                <div className="space-y-5 animate-fadeInUp">
+                  <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
+                    <Car className="w-5 h-5 text-[#D21F3C]" /> Vehicle Information
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className={labelClass}>Vehicle Category *</label>
+                      <select className={inputClass} value={form.vehicleCategory} onChange={(e) => set("vehicleCategory", e.target.value)}>
+                        <option value="Tricycle">Tricycle (Keke)</option>
+                        <option value="Motorcycle">Motorcycle (Okada)</option>
+                        <option value="Car">Car</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className={labelClass}>Vehicle Make *</label>
+                      <input className={inputClass} placeholder="e.g. TVS" value={form.vehicleMake || ""} onChange={(e) => set("vehicleMake", e.target.value)} />
+                    </div>
+                    <div>
+                      <label className={labelClass}>Vehicle Model *</label>
+                      <input className={inputClass} placeholder="e.g. King Deluxe" value={form.vehicleModel || ""} onChange={(e) => set("vehicleModel", e.target.value)} />
+                    </div>
+                    <div>
+                      <label className={labelClass}>Year *</label>
+                      <input className={inputClass} placeholder="e.g. 2024" value={form.vehicleYear || ""} onChange={(e) => set("vehicleYear", e.target.value)} />
+                    </div>
+                    <div>
+                      <label className={labelClass}>Color *</label>
+                      <input className={inputClass} placeholder="e.g. Yellow" value={form.vehicleColor || ""} onChange={(e) => set("vehicleColor", e.target.value)} />
+                    </div>
+                    <div>
+                      <label className={labelClass}>Plate Number *</label>
+                      <input className={inputClass} placeholder="e.g. ABC-123-XY" value={form.vehiclePlate || ""} onChange={(e) => set("vehiclePlate", e.target.value)} />
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-gray-100 mt-2">
+                    <h4 className="text-sm font-bold text-[#1A1A1A] mb-4">Vehicle Photos</h4>
+                    <div className="grid sm:grid-cols-3 gap-4">
+                      <FileUploadBox label="Front Photo" hint="Include headlights" file={form.frontPhoto} onFile={(f) => set("frontPhoto", f)} accept=".jpg,.jpeg,.png" icon={Car} />
+                      <FileUploadBox label="Back Photo" hint="Include plate number" file={form.backPhoto} onFile={(f) => set("backPhoto", f)} accept=".jpg,.jpeg,.png" icon={Car} />
+                      <FileUploadBox label="Side Photo" hint="Full side profile" file={form.sidePhoto} onFile={(f) => set("sidePhoto", f)} accept=".jpg,.jpeg,.png" icon={Car} />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {step === 6 && (
                 <div className="space-y-5 animate-fadeInUp">
                   <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
                     <MapPin className="w-5 h-5 text-[#D21F3C]" /> Address & Proof
@@ -456,7 +552,7 @@ export default function RegistrationForm() {
                 </div>
               )}
 
-              {step === 6 && (
+              {step === 7 && (
                 <div className="space-y-5 animate-fadeInUp">
                   <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
                     <FileText className="w-5 h-5 text-[#D21F3C]" /> Identification
@@ -474,7 +570,7 @@ export default function RegistrationForm() {
                 </div>
               )}
 
-              {step === 7 && (
+              {step === 8 && (
                 <div className="space-y-5 animate-fadeInUp">
                   <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
                     <Camera className="w-5 h-5 text-[#D21F3C]" /> Selfie Verification
@@ -483,23 +579,69 @@ export default function RegistrationForm() {
                 </div>
               )}
 
-              {step === 8 && (
+              {step === 9 && (
                 <div className="space-y-5 animate-fadeInUp">
                   <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
                     <Check className="w-5 h-5 text-[#D21F3C]" /> Review Application
                   </h3>
-                  <div className="space-y-2">
-                    {[
-                      { l: "Full Name", v: `${form.firstName} ${form.lastName}` },
-                      { l: "Email", v: form.email },
-                      { l: "Phone", v: form.phone },
-                      { l: "Address", v: `${form.address}, ${form.city}` },
-                    ].map(({ l, v }) => (
-                      <div key={l} className="flex justify-between py-2 border-b border-gray-100">
-                        <span className="text-xs text-gray-500">{l}</span>
-                        <span className="text-sm font-semibold">{v}</span>
+                  <div className="space-y-6">
+                    <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm space-y-2">
+                      <h4 className="text-sm font-bold text-[#1A1A1A] border-b border-gray-100 pb-2 mb-3">Personal & Contact</h4>
+                      {[
+                        { l: "Full Name", v: `${form.firstName} ${form.lastName}` },
+                        { l: "Email", v: form.email },
+                        { l: "Phone", v: form.phone },
+                        { l: "Address", v: `${form.address}, ${form.city}, ${form.state}` },
+                      ].map(({ l, v }) => (
+                        <div key={l} className="flex justify-between py-1 items-center border-b border-gray-50 last:border-0">
+                          <span className="text-xs text-gray-500">{l}</span>
+                          <span className="text-sm font-bold text-[#1A1A1A] text-right">{v.trim() === ',' || v.trim() === '' || v.trim() === '-' ? <span className="text-red-400 italic font-normal text-xs">Missing Data</span> : v}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm space-y-2">
+                      <h4 className="text-sm font-bold text-[#1A1A1A] border-b border-gray-100 pb-2 mb-3">Vehicle Details</h4>
+                      {[
+                        { l: "Category", v: form.vehicleCategory },
+                        { l: "Make & Model", v: `${form.vehicleMake} ${form.vehicleModel}` },
+                        { l: "Year & Color", v: `${form.vehicleYear} - ${form.vehicleColor}` },
+                        { l: "Plate Number", v: form.vehiclePlate },
+                      ].map(({ l, v }) => (
+                        <div key={l} className="flex justify-between py-1 items-center border-b border-gray-50 last:border-0">
+                          <span className="text-xs text-gray-500">{l}</span>
+                          <span className="text-sm font-bold text-[#1A1A1A] text-right">{v.trim() === '-' || v.trim() === '' ? <span className="text-red-400 italic font-normal text-xs">Missing Data</span> : v}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+                      <h4 className="text-sm font-bold text-[#1A1A1A] border-b border-gray-100 pb-2 mb-4">Documents & Photos</h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        {[
+                          { label: "ID Document", file: form.idFile },
+                          { label: "License", file: form.driversLicense },
+                          { label: "Proof of Address", file: form.proofOfAddress },
+                          { label: "Vehicle Front", file: form.frontPhoto },
+                          { label: "Vehicle Back", file: form.backPhoto },
+                          { label: "Vehicle Side", file: form.sidePhoto },
+                          { label: "Selfie", file: form.selfie },
+                        ].map(({ label, file }) => (
+                          <div key={label} className="flex flex-col gap-1 items-center bg-[#F7F7F7] p-2 rounded-xl">
+                            {file?.type.startsWith("image/") ? (
+                               <div className="w-full aspect-square rounded-lg overflow-hidden bg-white border border-gray-200">
+                                 <img src={URL.createObjectURL(file)} alt={label} className="w-full h-full object-cover" />
+                               </div>
+                            ) : file ? (
+                               <div className="w-full aspect-square rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
+                                 <FileText className="w-8 h-8 text-gray-400" />
+                               </div>
+                            ) : null}
+                            <span className="text-[10px] font-bold text-gray-600 text-center mt-1">{label}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -542,17 +684,17 @@ export default function RegistrationForm() {
                   </h3>
                   <p className="text-sm text-gray-500 mb-4">Please confirm your details before joining the waitlist.</p>
                   <div className="bg-[#F7F7F7] p-5 rounded-2xl space-y-3">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                       <span className="text-xs text-gray-500">Name</span>
-                      <span className="text-sm font-bold">{form.firstName} {form.lastName}</span>
+                      <span className="text-sm font-bold text-[#1A1A1A]">{form.firstName || form.lastName ? `${form.firstName} ${form.lastName}` : <span className="text-red-400 italic font-normal text-xs">Missing Data</span>}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center border-b border-gray-100 pb-2">
                       <span className="text-xs text-gray-500">Email</span>
-                      <span className="text-sm font-bold">{form.email}</span>
+                      <span className="text-sm font-bold text-[#1A1A1A]">{form.email || <span className="text-red-400 italic font-normal text-xs">Missing Data</span>}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <span className="text-xs text-gray-500">Phone</span>
-                      <span className="text-sm font-bold">{form.phone}</span>
+                      <span className="text-sm font-bold text-[#1A1A1A]">{form.phone || <span className="text-red-400 italic font-normal text-xs">Missing Data</span>}</span>
                     </div>
                   </div>
                 </div>
@@ -568,7 +710,7 @@ export default function RegistrationForm() {
               </button>
             ) : <div />}
 
-            {((form.accountType === "rider" && step < 8) || (form.accountType === "passenger" && step < 4) || step < 2) ? (
+            {((form.accountType === "rider" && step < 9) || (form.accountType === "passenger" && step < 4) || step < 2) ? (
               <button 
                 onClick={next} 
                 disabled={isVerifying}

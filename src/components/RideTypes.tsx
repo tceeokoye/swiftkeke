@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { Zap, Car, Gem, Users } from "lucide-react";
 
@@ -94,7 +94,7 @@ export default function RideTypes() {
               </div>
 
               <a
-                href="#book"
+                href="#register"
                 className={`block text-center py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
                   ctaStyle === "filled"
                     ? "bg-[#D21F3C] text-white hover:bg-[#a8172d] shadow-md hover:shadow-lg"

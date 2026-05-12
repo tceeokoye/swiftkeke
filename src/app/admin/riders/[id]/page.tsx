@@ -31,6 +31,8 @@ type Rider = {
   address: string;
   joinDate: string;
   vehicle: {
+    category: string;
+    make: string;
     model: string;
     plate: string;
     color: string;
@@ -47,7 +49,7 @@ type Rider = {
     pending: string;
     totalEarned: string;
   };
-  documents: Array<{ name: string; status: string; date: string }>;
+  documents: Array<{ name: string; status: string; date: string; url?: string }>;
   transactions: Array<{ id: string; type: string; amount: string; date: string; status: string }>;
 };
 
@@ -62,7 +64,9 @@ const getRiderDetails = (id: string): Rider => {
       address: "15 Adeola Crescent, Ikeja, Lagos",
       joinDate: "May 11, 2026",
       vehicle: {
-        model: "TVS King Deluxe",
+        category: "Tricycle",
+        make: "TVS",
+        model: "King Deluxe",
         plate: "ABC-123-XY",
         color: "Yellow",
         year: "2024"
@@ -79,10 +83,13 @@ const getRiderDetails = (id: string): Rider => {
         totalEarned: "₦0.00"
       },
       documents: [
-        { name: "Driver's License", status: "Verified", date: "2026-05-10" },
-        { name: "NIN Identification", status: "Verified", date: "2026-05-10" },
-        { name: "Proof of Address", status: "Pending", date: "2026-05-11" },
-        { name: "Vehicle Registration", status: "Verified", date: "2026-05-10" },
+        { name: "Driver's License", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "NIN Identification", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Proof of Address", status: "Pending", date: "2026-05-11", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Vehicle Front", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1598402447935-081015694a55?q=80&w=800&auto=format&fit=crop" },
+        { name: "Vehicle Back", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1598402447935-081015694a55?q=80&w=800&auto=format&fit=crop" },
+        { name: "Vehicle Side", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1598402447935-081015694a55?q=80&w=800&auto=format&fit=crop" },
+        { name: "Selfie", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: []
     },
@@ -95,7 +102,9 @@ const getRiderDetails = (id: string): Rider => {
       address: "25 Victoria Island, Lagos",
       joinDate: "April 15, 2026",
       vehicle: {
-        model: "Honda Activa",
+        category: "Motorcycle",
+        make: "Honda",
+        model: "Activa",
         plate: "DEF-456-ZW",
         color: "Blue",
         year: "2023"
@@ -112,10 +121,10 @@ const getRiderDetails = (id: string): Rider => {
         totalEarned: "₦840,000.00"
       },
       documents: [
-        { name: "Driver's License", status: "Verified", date: "2026-04-14" },
-        { name: "NIN Identification", status: "Verified", date: "2026-04-14" },
-        { name: "Proof of Address", status: "Verified", date: "2026-04-14" },
-        { name: "Vehicle Registration", status: "Verified", date: "2026-04-14" },
+        { name: "Driver's License", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Vehicle Front", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1598402447935-081015694a55?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: [
         { id: "TX-1", type: "Ride Earnings", amount: "+₦1,200.00", date: "Today, 10:45 AM", status: "Completed" },
@@ -133,7 +142,9 @@ const getRiderDetails = (id: string): Rider => {
       address: "10 Dugbe, Ibadan",
       joinDate: "May 10, 2026",
       vehicle: {
-        model: "Yamaha Fascino",
+        category: "Motorcycle",
+        make: "Yamaha",
+        model: "Fascino",
         plate: "GHI-789-UV",
         color: "Red",
         year: "2024"
@@ -150,10 +161,9 @@ const getRiderDetails = (id: string): Rider => {
         totalEarned: "₦0.00"
       },
       documents: [
-        { name: "Driver's License", status: "Verified", date: "2026-05-09" },
-        { name: "NIN Identification", status: "Pending", date: "2026-05-10" },
-        { name: "Proof of Address", status: "Verified", date: "2026-05-09" },
-        { name: "Vehicle Registration", status: "Pending", date: "2026-05-10" },
+        { name: "Driver's License", status: "Verified", date: "2026-05-09", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "NIN Identification", status: "Pending", date: "2026-05-10", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Proof of Address", status: "Verified", date: "2026-05-09", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: []
     },
@@ -166,7 +176,9 @@ const getRiderDetails = (id: string): Rider => {
       address: "5 Wuse II, Abuja",
       joinDate: "April 20, 2026",
       vehicle: {
-        model: "Suzuki Access",
+        category: "Motorcycle",
+        make: "Suzuki",
+        model: "Access",
         plate: "JKL-012-ST",
         color: "Black",
         year: "2023"
@@ -183,10 +195,9 @@ const getRiderDetails = (id: string): Rider => {
         totalEarned: "₦520,000.00"
       },
       documents: [
-        { name: "Driver's License", status: "Verified", date: "2026-04-19" },
-        { name: "NIN Identification", status: "Verified", date: "2026-04-19" },
-        { name: "Proof of Address", status: "Verified", date: "2026-04-19" },
-        { name: "Vehicle Registration", status: "Verified", date: "2026-04-19" },
+        { name: "Driver's License", status: "Verified", date: "2026-04-19", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-19", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-19", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: [
         { id: "TX-5", type: "Ride Earnings", amount: "+₦950.00", date: "Today, 11:30 AM", status: "Completed" },
@@ -202,7 +213,9 @@ const getRiderDetails = (id: string): Rider => {
       address: "8 Lekki Phase 1, Lagos",
       joinDate: "May 1, 2026",
       vehicle: {
-        model: "Hero Splendor",
+        category: "Motorcycle",
+        make: "Hero",
+        model: "Splendor",
         plate: "MNO-345-PQ",
         color: "Green",
         year: "2022"
@@ -219,10 +232,9 @@ const getRiderDetails = (id: string): Rider => {
         totalEarned: "₦0.00"
       },
       documents: [
-        { name: "Driver's License", status: "Expired", date: "2026-04-30" },
-        { name: "NIN Identification", status: "Verified", date: "2026-04-30" },
-        { name: "Proof of Address", status: "Verified", date: "2026-04-30" },
-        { name: "Vehicle Registration", status: "Expired", date: "2026-04-30" },
+        { name: "Driver's License", status: "Expired", date: "2026-04-30", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "NIN Identification", status: "Verified", date: "2026-04-30", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
+        { name: "Proof of Address", status: "Verified", date: "2026-04-30", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: []
     }
@@ -241,6 +253,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
   const { id } = use(params);
   const [rider, setRider] = useState<Rider>(getRiderDetails(id));
   const [activeTab, setActiveTab] = useState("overview");
+  const [previewDocument, setPreviewDocument] = useState<{name: string, url: string} | null>(null);
   const [confirmModal, setConfirmModal] = useState<{
     isOpen: boolean;
     title: string;
@@ -450,6 +463,8 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
             </h3>
             <div className="space-y-4">
               {[
+                { label: "Category", value: rider.vehicle.category },
+                { label: "Make", value: rider.vehicle.make },
                 { label: "Model", value: rider.vehicle.model },
                 { label: "Plate Number", value: rider.vehicle.plate },
                 { label: "Color", value: rider.vehicle.color },
@@ -488,7 +503,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
                    <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Verification Documents</h3>
                    <div className="grid sm:grid-cols-2 gap-4">
                       {rider.documents.map((doc) => (
-                        <div key={doc.name} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all">
+                        <div key={doc.name} onClick={() => doc.url && setPreviewDocument({name: doc.name, url: doc.url})} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
                               <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
@@ -535,23 +550,43 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
 
           {(activeTab === "documents" || activeTab === "ride history") && (
             activeTab === "documents" ? (
-              <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-50">
-                <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Verification Documents</h3>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {rider.documents.map((doc) => (
-                    <div key={doc.name} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all" onClick={() => alert(`Previewing ${doc.name}`)}>
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                          <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold text-[#1A1A1A]">{doc.name}</p>
-                          <p className={`text-[10px] font-black uppercase tracking-wider ${doc.status === "Verified" ? "text-green-500" : "text-yellow-500"}`}>{doc.status}</p>
-                        </div>
+              <div className="space-y-8">
+                <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-50">
+                  <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Biodata Overview</h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {[
+                      { l: "Full Name", v: rider.name },
+                      { l: "Email Address", v: rider.email },
+                      { l: "Phone Number", v: rider.phone },
+                      { l: "Residential Address", v: rider.address },
+                      { l: "Join Date", v: rider.joinDate },
+                    ].map(({ l, v }) => (
+                      <div key={l} className="bg-[#F7F7F7] p-4 rounded-2xl">
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{l}</p>
+                        <span className="text-sm font-bold text-[#1A1A1A]">{v}</span>
                       </div>
-                      <ExternalLink className="w-4 h-4 text-gray-300 group-hover:text-[#1A1A1A] transition-colors" />
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-50">
+                  <h3 className="text-lg font-black text-[#1A1A1A] mb-6">Verification Documents & Photos</h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {rider.documents.map((doc) => (
+                      <div key={doc.name} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all" onClick={() => doc.url && setPreviewDocument({name: doc.name, url: doc.url})}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
+                            <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-[#1A1A1A]">{doc.name}</p>
+                            <p className={`text-[10px] font-black uppercase tracking-wider ${doc.status === "Verified" ? "text-green-500" : "text-yellow-500"}`}>{doc.status}</p>
+                          </div>
+                        </div>
+                        <ExternalLink className="w-4 h-4 text-gray-300 group-hover:text-[#1A1A1A] transition-colors" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -582,6 +617,30 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
 
       {/* Toast Notifications */}
       <ToastContainer toasts={toasts} onRemove={removeToast} />
+
+      {/* Document Preview Modal */}
+      {previewDocument && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setPreviewDocument(null)} />
+          <div className="bg-white rounded-3xl overflow-hidden shadow-2xl relative w-full max-w-4xl max-h-[90vh] flex flex-col animate-scaleIn">
+            <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-white z-10">
+              <h3 className="text-lg font-bold text-[#1A1A1A] flex items-center gap-2">
+                <FileText className="w-5 h-5 text-[#D21F3C]" />
+                {previewDocument.name}
+              </h3>
+              <button 
+                onClick={() => setPreviewDocument(null)}
+                className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-gray-400 hover:text-[#1A1A1A]"
+              >
+                <XCircle className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="p-6 overflow-auto flex-1 bg-[#F7F7F7] flex items-center justify-center">
+              <img src={previewDocument.url} alt={previewDocument.name} className="max-w-full rounded-xl shadow-md border border-gray-200" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -97,7 +97,7 @@ export default function HeroSection() {
                 id="seePricesBtn"
                 className="flex items-center justify-center w-full py-4 bg-[#1A1A1A] text-white font-bold rounded-xl text-base hover:bg-[#D21F3C] transition-colors duration-300"
               >
-                See prices
+                Join Now
               </a>
             </div>
           </div>

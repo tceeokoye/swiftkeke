@@ -5,10 +5,10 @@ import { MapPin, Menu, X } from "lucide-react";
 import BookRideLogo from "./BookRideLogo";
 
 const navLinks = [
-  { label: "Requirements", href: "#about" },
-  { label: "Benefits", href: "#benefits" },
-  { label: "How it Works", href: "#how-it-works" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Requirements", href: "/#about" },
+  { label: "Benefits", href: "/#benefits" },
+  { label: "How it Works", href: "/#how-it-works" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 group">
+          <a href="/#home" className="flex items-center gap-2.5 group">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
               <BookRideLogo size={36} />
             </div>
@@ -57,16 +57,10 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="#register"
-              className="px-5 py-2 text-sm font-semibold text-[#D21F3C] border-2 border-[#D21F3C] rounded-xl hover:bg-[#D21F3C]/8 transition-all duration-200"
-            >
-              Sign In
-            </a>
-            <a
-              href="#register"
+              href="/#register"
               className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
             >
-              Apply to Drive
+              Join Now
             </a>
           </div>
 
@@ -100,18 +94,11 @@ export default function Navbar() {
           ))}
           <div className="mt-2 flex flex-col gap-2">
             <a
-              href="#register"
-              onClick={() => setMenuOpen(false)}
-              className="py-2.5 text-center text-sm font-semibold text-[#D21F3C] border-2 border-[#D21F3C] rounded-xl"
-            >
-              Sign In
-            </a>
-            <a
-              href="#register"
+              href="/#register"
               onClick={() => setMenuOpen(false)}
               className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl"
             >
-              Book a Ride
+              Join Now
             </a>
           </div>
         </div>

@@ -4,10 +4,29 @@ import { Heart } from "lucide-react";
 import BookRideLogo from "./BookRideLogo";
 
 const footerLinks = {
-  Riders: ["Book a Ride", "Ride Types", "Pricing", "Rider Support"],
-  Drivers: ["Register", "Requirements", "Earnings", "Driver Support"],
-  Company: ["About Us", "Careers", "Blog", "Press"],
-  Legal: ["Terms of Service", "Privacy Policy", "Cookie Policy"],
+  Riders: [
+    { label: "Book a Ride", href: "/#register" },
+    { label: "Ride Types", href: "/#benefits" },
+    { label: "Pricing", href: "/#faq" },
+    { label: "Rider Support", href: "/support" }
+  ],
+  Drivers: [
+    { label: "Register", href: "/#register" },
+    { label: "Requirements", href: "/#how-it-works" },
+    { label: "Earnings", href: "/#benefits" },
+    { label: "Driver Support", href: "/support" }
+  ],
+  Company: [
+    { label: "About Us", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Blog", href: "/blog" },
+    { label: "Press", href: "/press" }
+  ],
+  Legal: [
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Cookie Policy", href: "/cookies" }
+  ],
 };
 
 export default function Footer() {
@@ -40,8 +59,8 @@ export default function Footer() {
               <h5 className="text-sm font-black text-white mb-4">{category}</h5>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-sm text-gray-500 hover:text-[#D21F3C] transition-colors">{link}</a>
+                  <li key={link.label}>
+                    <a href={link.href} className="text-sm text-gray-500 hover:text-[#D21F3C] transition-colors">{link.label}</a>
                   </li>
                 ))}
               </ul>
