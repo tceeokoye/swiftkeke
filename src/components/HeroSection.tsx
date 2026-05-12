@@ -95,7 +95,7 @@ export default function HeroSection() {
               <a
                 href="#register"
                 id="seePricesBtn"
-                className="flex items-center justify-center w-full py-4 bg-[#1A1A1A] text-white font-bold rounded-xl text-base hover:bg-[#D21F3C] transition-colors duration-300"
+                className="flex items-center justify-center w-full py-4 bg-[#1A1A1A] text-white font-bold rounded-xl text-base hover:bg-[#D21F3C] transition-colors duration-300 cursor-pointer"
               >
                 Join Now
               </a>

@@ -58,7 +58,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="/#register"
-              className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+              className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
             >
               Join Now
             </a>
@@ -96,7 +96,7 @@ export default function Navbar() {
             <a
               href="/#register"
               onClick={() => setMenuOpen(false)}
-              className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl"
+              className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl cursor-pointer"
             >
               Join Now
             </a>

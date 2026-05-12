@@ -381,7 +381,7 @@ export default function RegistrationForm() {
               <div className="grid sm:grid-cols-2 gap-6">
                 <button 
                   onClick={() => set("accountType", "rider")}
-                  className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 ${form.accountType === "rider" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
+                  className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer ${form.accountType === "rider" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
                 >
                   <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white mb-4">
                     <Image 
@@ -403,7 +403,7 @@ export default function RegistrationForm() {
 
                 <button 
                   onClick={() => set("accountType", "passenger")}
-                  className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 ${form.accountType === "passenger" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
+                  className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer ${form.accountType === "passenger" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
                 >
                   <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white mb-4">
                     <Image 
@@ -705,23 +705,23 @@ export default function RegistrationForm() {
           {/* Navigation */}
           <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
             {step > 0 ? (
-              <button onClick={prev} className="flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[#555555] hover:text-[#1A1A1A] bg-gray-100 border border-gray-200 rounded-xl transition-all">
+              <button onClick={prev} className="flex items-center gap-2 px-5 py-3 text-sm font-semibold text-[#555555] hover:text-[#1A1A1A] bg-gray-100 border border-gray-200 rounded-xl transition-all cursor-pointer">
                 <ChevronLeft className="w-4 h-4" /> Back
               </button>
             ) : <div />}
 
-            {((form.accountType === "rider" && step < 9) || (form.accountType === "passenger" && step < 4) || step < 2) ? (
+            {((form.accountType === "rider" && step < 9) || (form.accountType === "passenger" && step < 4) || step <= 2) ? (
               <button 
                 onClick={next} 
-                disabled={isVerifying}
-                className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-[#D21F3C] rounded-xl shadow-lg shadow-[#D21F3C]/25 hover:bg-[#a8172d] transition-all disabled:opacity-60"
+                disabled={isVerifying || (step === 2 && !form.accountType)}
+                className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-[#D21F3C] rounded-xl shadow-lg shadow-[#D21F3C]/25 hover:bg-[#a8172d] transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isVerifying ? <Loader2 className="w-4 h-4 animate-spin" /> : (step === 0 ? "Verify Email" : (step === 1 ? "Submit Code" : "Continue"))} 
                 {!isVerifying && <ChevronRight className="w-4 h-4" />}
               </button>
             ) : (
-              <button onClick={handleSubmit} disabled={submitting} className="flex items-center gap-2 px-8 py-3 text-sm font-bold text-white bg-green-600 rounded-xl shadow-lg shadow-green-700/30 hover:bg-green-700 transition-all disabled:opacity-60">
-                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing...</> : <><Zap className="w-4 h-4" /> {form.accountType === "passenger" ? "Join Waitlist" : "Submit Application"}</>}
+              <button onClick={handleSubmit} disabled={submitting} className="flex items-center gap-2 px-8 py-3 text-sm font-bold text-white bg-green-600 rounded-xl shadow-lg shadow-green-700/30 hover:bg-green-700 transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer">
+                {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Processing...</> : <><Zap className="w-4 h-4" /> {form.accountType === "passenger" ? "Join Waitlist" : "Continue"}</>}
               </button>
             )}
           </div>
