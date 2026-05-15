@@ -12,7 +12,7 @@ const benefits = [
   {
     img: "https://img.icons8.com/3d-fluency/94/alarm-clock--v1.png", // Alarm Clock
     title: "Flexible Schedule",
-    desc: "Drive when you want, rest when you need. Full control of your hours â€” morning, evening, or weekends.",
+    desc: "Drive when you want, rest when you need. Full control of your hours - morning, evening, or weekends.",
     color: "#FDC300",
   },
   {

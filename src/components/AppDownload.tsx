@@ -30,7 +30,7 @@ export default function AppDownload() {
               <span className="gradient-text block">Driver App</span>
             </h2>
             <p className="text-[#555555] text-lg leading-relaxed mb-8">
-              Accept ride requests, track your earnings, manage your schedule, and get 24/7 support â€” all from your phone. Available for iOS and Android.
+              Accept ride requests, track your earnings, manage your schedule, and get 24/7 support - all from your phone. Available for iOS and Android.
             </p>
 
             <ul className="space-y-3 mb-10">

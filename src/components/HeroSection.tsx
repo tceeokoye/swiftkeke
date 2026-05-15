@@ -19,12 +19,16 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* â”€â”€ LEFT: Booking Form â”€â”€ */}
+          {/* --- LEFT: Booking Form --- */}
           <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-xs font-bold mb-6 uppercase tracking-wider">
-              <span className="w-2 h-2 bg-[#D21F3C] rounded-full animate-pulse" />
-              Available in Major Nigerian Cities
+            {/* Availability Badge */}
+            <div className="inline-flex items-center gap-3 px-1 py-1 pr-4 rounded-full bg-white border border-gray-200/50 shadow-sm mb-8 hover:border-[#D21F3C]/30 transition-colors group cursor-default">
+              <span className="flex items-center justify-center bg-[#D21F3C] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
+                Live
+              </span>
+              <span className="text-xs font-bold text-[#555555] group-hover:text-[#1A1A1A] transition-colors">
+                Available in Major Nigerian Cities
+              </span>
             </div>
 
             {/* Location Badge */}
@@ -102,38 +106,70 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* â”€â”€ RIGHT: Illustration Card â”€â”€ */}
-          <div className="relative flex items-center justify-center lg:justify-end h-full min-h-[400px]">
-            {/* Background glow */}
-            <div className="absolute w-80 h-80 bg-[#D21F3C]/12 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute top-8 right-8 w-40 h-40 bg-[#FDC300]/15 rounded-full blur-2xl" />
-
-            {/* Main Lifestyle Image */}
-            <div className="relative z-10 w-full max-w-md aspect-[4/5] rounded-[2.5rem] shadow-2xl border border-gray-100 p-2 bg-white overflow-hidden animate-float">
-              <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#F7F7F7]">
+          {/* --- RIGHT: Illustration Section --- */}
+          <div className="relative flex items-center justify-center lg:justify-end h-full min-h-[450px]">
+            {/* Ambient Background Elements */}
+            <div className="absolute w-[120%] h-[120%] bg-gradient-to-tr from-[#D21F3C]/5 via-transparent to-[#FDC300]/5 rounded-full blur-[100px] pointer-events-none" />
+            
+            {/* Main Image Container (Restored to Original Size) */}
+            <div className="relative z-10 w-full max-w-md aspect-[4/5] rounded-[3rem] p-3 bg-white/50 backdrop-blur-sm border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] animate-float">
+              <div className="relative w-full h-full rounded-[2.5rem] overflow-hidden bg-gray-100 shadow-inner">
                 <Image 
                   src="/uba-hero.png" 
-                  alt="Modern professional smiling and looking at phone with a Onaaga car in background" 
+                  alt="Onaaga professional lifestyle" 
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-1000 hover:scale-110"
                   priority
                 />
                 
-                {/* Gradient overlay for contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+                {/* Advanced Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-white/10 pointer-events-none" />
+
+                {/* Internal Float Card: Live Ride Status */}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md border border-white/20 p-4 rounded-2xl shadow-xl animate-fadeInUp" style={{ animationDelay: '0.8s' }}>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                      <span className="text-[10px] font-black text-[#1A1A1A] uppercase tracking-widest">Active Search</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-gray-400">02:14</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#F7F7F7] flex items-center justify-center">
+                      <Navigation className="w-4 h-4 text-[#D21F3C]" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                        <div className="h-full bg-[#D21F3C] w-3/4 rounded-full" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Float badge â€” safety */}
-            <div className="absolute top-12 -left-6 bg-white border border-gray-100 rounded-2xl px-5 py-3 shadow-xl z-20 flex items-center gap-2 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-              <Shield className="w-5 h-5 text-[#D21F3C]" />
-              <span className="text-sm font-bold text-[#1A1A1A]">100% Verified</span>
-            </div>
+              {/* Floating Badge: 100% Verified (Absolutely positioned to image) */}
+              <div className="absolute top-6 -left-4 sm:top-12 sm:-left-12 bg-white/95 backdrop-blur-xl border border-white p-1.5 pr-5 sm:pr-6 rounded-[2rem] shadow-2xl z-20 flex items-center gap-2 sm:gap-3 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
+                <div className="w-9 h-9 sm:w-11 sm:h-11 bg-[#D21F3C] rounded-full flex items-center justify-center shadow-lg shadow-[#D21F3C]/20">
+                  <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-[9px] sm:text-[10px] font-black text-[#D21F3C] uppercase tracking-wider leading-none mb-0.5">Trusted</p>
+                  <p className="text-xs sm:text-sm font-black text-[#1A1A1A]">100% Verified</p>
+                </div>
+              </div>
 
-            {/* Float badge â€” rating */}
-            <div className="absolute bottom-16 -right-6 bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-xl z-20 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-              <div className="text-[#FDC300] text-lg font-black tracking-widest mb-0.5">â˜…â˜…â˜…â˜…â˜…</div>
-              <div className="text-[#1A1A1A] text-sm font-bold">4.9 / 5.0 Rating</div>
+              {/* Floating Badge: Ratings (Absolutely positioned to image) */}
+              <div className="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-8 bg-white p-4 sm:p-5 rounded-[2rem] shadow-2xl z-20 animate-fadeInUp border border-gray-50" style={{ animationDelay: '0.6s' }}>
+                <div className="flex items-center gap-1 text-[#FDC300] mb-1 sm:mb-1.5">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-lg sm:text-xl font-black text-[#1A1A1A] leading-none mb-0.5 sm:mb-1">4.9/5.0</p>
+                <p className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-widest">Rider Satisfaction</p>
+              </div>
             </div>
           </div>
         </div>

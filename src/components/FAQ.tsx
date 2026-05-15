@@ -9,7 +9,7 @@ const faqs = [
   { q: "Is there a registration fee?", a: "No, registration is completely free. There are no hidden fees or upfront costs to join Onaaga as a driver." },
   { q: "What types of vehicles are accepted?", a: "We accept keke (tricycles), standard sedans, and premium vehicles. All vehicles must pass our safety inspection." },
   { q: "How do I get paid?", a: "Earnings are paid weekly to your registered bank account. You can also track your daily and weekly earnings in the driver app." },
-  { q: "Can I drive part-time?", a: "Absolutely! You set your own schedule. Drive full-time, part-time, or just weekends â€” it's completely up to you." },
+  { q: "Can I drive part-time?", a: "Absolutely! You set your own schedule. Drive full-time, part-time, or just weekends - it's completely up to you." },
 ];
 
 export default function FAQ() {

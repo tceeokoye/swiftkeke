@@ -23,7 +23,7 @@ export default function About() {
             <div className="space-y-4">
               {[
                 "Rigorous driver verification process",
-                "Transparent fare structure â€” no hidden charges",
+                "Transparent fare structure - no hidden charges",
                 "Real-time GPS tracking on every trip",
                 "Dedicated 24/7 driver support line",
               ].map((item) => (
