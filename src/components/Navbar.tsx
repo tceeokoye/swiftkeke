@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { MapPin, Menu, X } from "lucide-react";
-import BookRideLogo from "./BookRideLogo";
+import OnaagaLogo from "./OnaagaLogo";
+import Logo from "@/assets/Logo/DRIVER 2.svg"
+import Image from "next/image";
 
 const navLinks = [
   { label: "Requirements", href: "/#about" },
@@ -31,14 +33,10 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+         
           {/* Logo */}
           <a href="/#home" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
-              <BookRideLogo size={36} />
-            </div>
-            <span className="text-xl font-black tracking-tight text-[#1A1A1A]">
-              Book<span className="text-[#D21F3C]">Ride</span>
-            </span>
+           <Image src={Logo} alt="Onaaga Logo" width={100} height={100} />
           </a>
 
           {/* Desktop Nav */}
@@ -78,7 +76,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div
         className={`lg:hidden transition-all duration-300 overflow-hidden bg-white ${
-          menuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="border-t border-gray-100 px-4 py-3 flex flex-col gap-1">

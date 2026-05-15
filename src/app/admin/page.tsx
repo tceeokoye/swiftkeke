@@ -15,7 +15,7 @@ import {
 const stats = [
   { label: "Total Riders", value: "1,284", change: "+12.5%", positive: true, icon: Car },
   { label: "Waitlist Users", value: "8,492", change: "+24.2%", positive: true, icon: Users },
-  { label: "Total Revenue", value: "₦2.4M", change: "+8.1%", positive: true, icon: DollarSign },
+  { label: "Total Revenue", value: "â‚¦2.4M", change: "+8.1%", positive: true, icon: DollarSign },
   { label: "Avg. Ride Rating", value: "4.8", change: "-0.2%", positive: false, icon: TrendingUp },
 ];
 
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
                     <div>
                       <p className="text-sm font-bold text-[#1A1A1A] group-hover:text-[#D21F3C] transition-colors">{app.name}</p>
                       <p className="text-[10px] text-gray-400 flex items-center gap-1 font-medium">
-                        <MapPin className="w-3 h-3" /> {app.city} • {app.time}
+                        <MapPin className="w-3 h-3" /> {app.city} â€¢ {app.time}
                       </p>
                     </div>
                   </div>

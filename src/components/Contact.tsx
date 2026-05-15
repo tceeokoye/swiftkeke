@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { Phone, Mail, Headphones, Send, Share2, Globe, MessageCircle } from "lucide-react";
 
 const contactItems = [
-  { icon: Phone, label: "Call Us", value: "+234 800 BOOK RIDE" },
+  { icon: Phone, label: "Call Us", value: "+234 800 Onaaga" },
   { icon: Mail, label: "Email Us", value: "support@bookride.ng" },
   { icon: Headphones, label: "Live Chat", value: "Available 24/7 on the app" },
 ];
@@ -142,7 +142,7 @@ export default function Contact() {
               className="w-full flex items-center justify-center gap-2 py-4 bg-[#D21F3C] text-white font-bold rounded-xl shadow-lg shadow-[#D21F3C]/20 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all duration-200"
             >
               <Send className="w-4 h-4" />
-              {sent ? "Message Sent! ✓" : "Send Message"}
+              {sent ? "Message Sent! ?" : "Send Message"}
             </button>
           </form>
         </div>

@@ -11,7 +11,7 @@ export default function BlogPage() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
             Our Blog
           </div>
-          <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">Latest from Book Ride</h1>
+          <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">Latest from Onaaga</h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Insights, updates, and stories from the road.
           </p>

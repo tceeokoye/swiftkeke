@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { MessageCircle, Phone, Mail, X } from "lucide-react";

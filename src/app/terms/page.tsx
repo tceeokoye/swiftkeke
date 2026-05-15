@@ -13,14 +13,14 @@ export default function TermsPage() {
           <section>
             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">1. Acceptance of Terms</h2>
             <p>
-              By accessing or using the Book Ride platform, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
+              By accessing or using the Onaaga platform, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.
             </p>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">2. Use License</h2>
             <p>
-              Permission is granted to temporarily download one copy of the materials (information or software) on Book Ride's website for personal, non-commercial transitory viewing only.
+              Permission is granted to temporarily download one copy of the materials (information or software) on Onaaga's website for personal, non-commercial transitory viewing only.
             </p>
           </section>
 

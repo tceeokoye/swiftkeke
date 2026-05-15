@@ -8,7 +8,7 @@ const rides = [
     label: "Book Keke",
     icon: Zap,
     desc: "Perfect for short inner-city trips. Affordable, quick, and beats traffic easily.",
-    passengers: "1–2 passengers",
+    passengers: "1-2 passengers",
     price: "From ₦200",
     featured: false,
     cta: "Book Keke",
@@ -19,7 +19,7 @@ const rides = [
     label: "Book Cab",
     icon: Car,
     desc: "Comfortable saloon car for everyday commutes and longer journeys across town.",
-    passengers: "1–4 passengers",
+    passengers: "1-4 passengers",
     price: "From ₦500",
     featured: true,
     cta: "Book Cab",
@@ -30,7 +30,7 @@ const rides = [
     label: "Book Premium",
     icon: Gem,
     desc: "Luxury executive vehicle for business trips, airport runs, and special occasions.",
-    passengers: "1–4 passengers",
+    passengers: "1-4 passengers",
     price: "From ₦2,000",
     featured: false,
     cta: "Book Premium",
@@ -52,7 +52,7 @@ export default function RideTypes() {
             <span className="gradient-text">Perfect Ride</span>
           </h2>
           <p className="text-[#555555] text-lg leading-relaxed">
-            From budget-friendly kekes to premium executive cars — we have the right vehicle for every journey.
+            From budget-friendly kekes to premium executive cars - we have the right vehicle for every journey.
           </p>
         </div>
 

@@ -250,7 +250,7 @@ export default function RegistrationForm() {
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-3">
             {form.accountType === "passenger" ? "Join the " : "Join "} 
-            <span className="gradient-text">{form.accountType === "passenger" ? "Waitlist" : "Book Ride"}</span>
+            <span className="gradient-text">{form.accountType === "passenger" ? "Waitlist" : "Onaaga"}</span>
           </h2>
         </div>
 

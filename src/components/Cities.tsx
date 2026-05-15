@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { MapPin, Clock } from "lucide-react";
 
@@ -26,7 +26,7 @@ export default function Cities() {
             <span className="gradient-text">Your City</span>
           </h2>
           <p className="text-[#555555]">
-            Book Ride is expanding fast. We&apos;re already live in major cities and coming to more soon.
+            Onaaga is expanding fast. We&apos;re already live in major cities and coming to more soon.
           </p>
         </div>
 

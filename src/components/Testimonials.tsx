@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { Star, StarHalf } from "lucide-react";
 
@@ -8,7 +8,7 @@ const reviews = [
     location: "Lagos, Nigeria",
     initials: "AO",
     rating: 5,
-    text: "Book Ride changed my daily commute completely. I get to work faster, cheaper, and without the stress of finding transport.",
+    text: "Onaaga changed my daily commute completely. I get to work faster, cheaper, and without the stress of finding transport.",
     gradientFrom: "#D21F3C",
     gradientTo: "#FDC300",
   },
@@ -27,7 +27,7 @@ const reviews = [
     location: "Kano, Nigeria",
     initials: "FK",
     rating: 4.5,
-    text: "I love how I can see the price before booking. No more arguing about fare! Book Ride is just different from the rest.",
+    text: "I love how I can see the price before booking. No more arguing about fare! Onaaga is just different from the rest.",
     gradientFrom: "#D21F3C",
     gradientTo: "#FDC300",
   },

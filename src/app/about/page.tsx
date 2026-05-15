@@ -16,7 +16,7 @@ export default function AboutPage() {
           </h1>
           <div className="space-y-6 text-lg text-[#555555] leading-relaxed">
             <p>
-              Founded in 2024, Book Ride was born out of a simple necessity: to provide safe, reliable, and affordable transportation for millions of Nigerians.
+              Founded in 2024, Onaaga was born out of a simple necessity: to provide safe, reliable, and affordable transportation for millions of Nigerians.
             </p>
             <p>
               We believe that mobility is a fundamental right. Whether you're commuting to work in a busy city center, heading home after a late night, or moving goods across town, you deserve a service that is both transparent and trustworthy.

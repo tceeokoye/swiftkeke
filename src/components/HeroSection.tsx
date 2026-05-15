@@ -19,7 +19,7 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-          {/* ── LEFT: Booking Form ── */}
+          {/* â”€â”€ LEFT: Booking Form â”€â”€ */}
           <div>
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-xs font-bold mb-6 uppercase tracking-wider">
@@ -102,7 +102,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* ── RIGHT: Illustration Card ── */}
+          {/* â”€â”€ RIGHT: Illustration Card â”€â”€ */}
           <div className="relative flex items-center justify-center lg:justify-end h-full min-h-[400px]">
             {/* Background glow */}
             <div className="absolute w-80 h-80 bg-[#D21F3C]/12 rounded-full blur-3xl animate-pulse" />
@@ -113,7 +113,7 @@ export default function HeroSection() {
               <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#F7F7F7]">
                 <Image 
                   src="/uba-hero.png" 
-                  alt="Modern professional smiling and looking at phone with a Book Ride car in background" 
+                  alt="Modern professional smiling and looking at phone with a Onaaga car in background" 
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
                   priority
@@ -124,15 +124,15 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Float badge — safety */}
+            {/* Float badge â€” safety */}
             <div className="absolute top-12 -left-6 bg-white border border-gray-100 rounded-2xl px-5 py-3 shadow-xl z-20 flex items-center gap-2 animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
               <Shield className="w-5 h-5 text-[#D21F3C]" />
               <span className="text-sm font-bold text-[#1A1A1A]">100% Verified</span>
             </div>
 
-            {/* Float badge — rating */}
+            {/* Float badge â€” rating */}
             <div className="absolute bottom-16 -right-6 bg-white border border-gray-100 rounded-2xl px-5 py-4 shadow-xl z-20 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-              <div className="text-[#FDC300] text-lg font-black tracking-widest mb-0.5">★★★★★</div>
+              <div className="text-[#FDC300] text-lg font-black tracking-widest mb-0.5">â˜…â˜…â˜…â˜…â˜…</div>
               <div className="text-[#1A1A1A] text-sm font-bold">4.9 / 5.0 Rating</div>
             </div>
           </div>

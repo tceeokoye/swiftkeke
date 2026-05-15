@@ -30,7 +30,7 @@ export default function AppDownload() {
               <span className="gradient-text block">Driver App</span>
             </h2>
             <p className="text-[#555555] text-lg leading-relaxed mb-8">
-              Accept ride requests, track your earnings, manage your schedule, and get 24/7 support — all from your phone. Available for iOS and Android.
+              Accept ride requests, track your earnings, manage your schedule, and get 24/7 support â€” all from your phone. Available for iOS and Android.
             </p>
 
             <ul className="space-y-3 mb-10">
@@ -78,7 +78,7 @@ export default function AppDownload() {
             <div className="relative z-10 w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white animate-float">
               <Image 
                 src="/uba-passenger.png" 
-                alt="Happy Book Ride passenger relaxing in the back seat" 
+                alt="Happy Onaaga passenger relaxing in the back seat" 
                 fill
                 className="object-cover"
               />

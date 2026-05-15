@@ -1,14 +1,14 @@
-﻿"use client";
+"use client";
 
 const items = [
-  "🚗 Quick Booking",
-  "🛡️ Verified Drivers",
-  "💳 Transparent Fares",
-  "📍 Live GPS Tracking",
-  "🎧 Support 24/7",
-  "⭐ 4.9 Star Rating",
-  "📱 Easy App",
-  "🚀 Book in 30 Seconds",
+  "?? Quick Booking",
+  "??? Verified Drivers",
+  "?? Transparent Fares",
+  "?? Live GPS Tracking",
+  "?? Support 24/7",
+  "? 4.9 Star Rating",
+  "?? Easy App",
+  "?? Book in 30 Seconds",
 ];
 
 export default function Marquee() {

@@ -78,9 +78,9 @@ const getRiderDetails = (id: string): Rider => {
         totalRides: 0
       },
       wallet: {
-        balance: "₦0.00",
-        pending: "₦0.00",
-        totalEarned: "₦0.00"
+        balance: "â‚¦0.00",
+        pending: "â‚¦0.00",
+        totalEarned: "â‚¦0.00"
       },
       documents: [
         { name: "Driver's License", status: "Verified", date: "2026-05-10", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
@@ -116,9 +116,9 @@ const getRiderDetails = (id: string): Rider => {
         totalRides: 142
       },
       wallet: {
-        balance: "₦42,500.00",
-        pending: "₦8,200.00",
-        totalEarned: "₦840,000.00"
+        balance: "â‚¦42,500.00",
+        pending: "â‚¦8,200.00",
+        totalEarned: "â‚¦840,000.00"
       },
       documents: [
         { name: "Driver's License", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
@@ -127,10 +127,10 @@ const getRiderDetails = (id: string): Rider => {
         { name: "Vehicle Front", status: "Verified", date: "2026-04-14", url: "https://images.unsplash.com/photo-1598402447935-081015694a55?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: [
-        { id: "TX-1", type: "Ride Earnings", amount: "+₦1,200.00", date: "Today, 10:45 AM", status: "Completed" },
-        { id: "TX-2", type: "Ride Earnings", amount: "+₦850.00", date: "Today, 09:12 AM", status: "Completed" },
-        { id: "TX-3", type: "Withdrawal", amount: "-₦20,000.00", date: "Yesterday", status: "Completed" },
-        { id: "TX-4", type: "Ride Earnings", amount: "+₦2,100.00", date: "Yesterday", status: "Completed" },
+        { id: "TX-1", type: "Ride Earnings", amount: "+â‚¦1,200.00", date: "Today, 10:45 AM", status: "Completed" },
+        { id: "TX-2", type: "Ride Earnings", amount: "+â‚¦850.00", date: "Today, 09:12 AM", status: "Completed" },
+        { id: "TX-3", type: "Withdrawal", amount: "-â‚¦20,000.00", date: "Yesterday", status: "Completed" },
+        { id: "TX-4", type: "Ride Earnings", amount: "+â‚¦2,100.00", date: "Yesterday", status: "Completed" },
       ]
     },
     "103": {
@@ -156,9 +156,9 @@ const getRiderDetails = (id: string): Rider => {
         totalRides: 0
       },
       wallet: {
-        balance: "₦0.00",
-        pending: "₦0.00",
-        totalEarned: "₦0.00"
+        balance: "â‚¦0.00",
+        pending: "â‚¦0.00",
+        totalEarned: "â‚¦0.00"
       },
       documents: [
         { name: "Driver's License", status: "Verified", date: "2026-05-09", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
@@ -190,9 +190,9 @@ const getRiderDetails = (id: string): Rider => {
         totalRides: 89
       },
       wallet: {
-        balance: "₦28,300.00",
-        pending: "₦5,400.00",
-        totalEarned: "₦520,000.00"
+        balance: "â‚¦28,300.00",
+        pending: "â‚¦5,400.00",
+        totalEarned: "â‚¦520,000.00"
       },
       documents: [
         { name: "Driver's License", status: "Verified", date: "2026-04-19", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
@@ -200,8 +200,8 @@ const getRiderDetails = (id: string): Rider => {
         { name: "Proof of Address", status: "Verified", date: "2026-04-19", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },
       ],
       transactions: [
-        { id: "TX-5", type: "Ride Earnings", amount: "+₦950.00", date: "Today, 11:30 AM", status: "Completed" },
-        { id: "TX-6", type: "Ride Earnings", amount: "+₦1,100.00", date: "Today, 08:45 AM", status: "Completed" },
+        { id: "TX-5", type: "Ride Earnings", amount: "+â‚¦950.00", date: "Today, 11:30 AM", status: "Completed" },
+        { id: "TX-6", type: "Ride Earnings", amount: "+â‚¦1,100.00", date: "Today, 08:45 AM", status: "Completed" },
       ]
     },
     "105": {
@@ -227,9 +227,9 @@ const getRiderDetails = (id: string): Rider => {
         totalRides: 0
       },
       wallet: {
-        balance: "₦0.00",
-        pending: "₦0.00",
-        totalEarned: "₦0.00"
+        balance: "â‚¦0.00",
+        pending: "â‚¦0.00",
+        totalEarned: "â‚¦0.00"
       },
       documents: [
         { name: "Driver's License", status: "Expired", date: "2026-04-30", url: "https://images.unsplash.com/photo-1621574539437-4b7b9128ee53?q=80&w=800&auto=format&fit=crop" },

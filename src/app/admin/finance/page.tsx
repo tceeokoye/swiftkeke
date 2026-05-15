@@ -17,16 +17,16 @@ import ConfirmModal from "@/components/admin/ConfirmModal";
 import { ToastContainer } from "@/components/admin/Toast";
 
 const financeStats = [
-  { label: "Total Revenue", value: "₦12.8M", change: "+15.2%", positive: true, icon: DollarSign },
-  { label: "Net Profit", value: "₦4.2M", change: "+10.5%", positive: true, icon: Activity },
-  { label: "Pending Payouts", value: "₦1.8M", change: "+5.1%", positive: false, icon: Clock },
+  { label: "Total Revenue", value: "â‚¦12.8M", change: "+15.2%", positive: true, icon: DollarSign },
+  { label: "Net Profit", value: "â‚¦4.2M", change: "+10.5%", positive: true, icon: Activity },
+  { label: "Pending Payouts", value: "â‚¦1.8M", change: "+5.1%", positive: false, icon: Clock },
   { label: "Active Wallets", value: "842", change: "+8.4%", positive: true, icon: Wallet },
 ];
 
 const recentPayouts = [
-  { id: "P-1", rider: "Chinedu Okafor", amount: "₦25,000", status: "Processed", date: "May 10, 2026" },
-  { id: "P-2", rider: "Amaka Eze", amount: "₦18,200", status: "Pending", date: "May 11, 2026" },
-  { id: "P-3", rider: "Tunde Balogun", amount: "₦32,500", status: "Processing", date: "May 11, 2026" },
+  { id: "P-1", rider: "Chinedu Okafor", amount: "â‚¦25,000", status: "Processed", date: "May 10, 2026" },
+  { id: "P-2", rider: "Amaka Eze", amount: "â‚¦18,200", status: "Pending", date: "May 11, 2026" },
+  { id: "P-3", rider: "Tunde Balogun", amount: "â‚¦32,500", status: "Processing", date: "May 11, 2026" },
 ];
 
 export default function FinancePage() {
@@ -74,9 +74,9 @@ export default function FinancePage() {
                // Generate mock CSV
                const csvContent = "data:text/csv;charset=utf-8," + 
                  "Date,Revenue,Profit,Payouts\n" +
-                 "2026-05-01,₦150,000,₦45,000,₦25,000\n" +
-                 "2026-05-02,₦180,000,₦52,000,₦30,000\n" +
-                 "2026-05-03,₦120,000,₦38,000,₦20,000\n";
+                 "2026-05-01,â‚¦150,000,â‚¦45,000,â‚¦25,000\n" +
+                 "2026-05-02,â‚¦180,000,â‚¦52,000,â‚¦30,000\n" +
+                 "2026-05-03,â‚¦120,000,â‚¦38,000,â‚¦20,000\n";
                
                const encodedUri = encodeURI(csvContent);
                const link = document.createElement("a");

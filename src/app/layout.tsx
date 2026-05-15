@@ -15,10 +15,10 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Book Ride – Go Anywhere | Safe Rides Across Nigeria",
+  title: "Onaaga – Go Anywhere | Safe Rides Across Nigeria",
   description:
-    "Book Ride is Nigeria's most trusted ride-hailing platform. Book safe, affordable rides instantly or register as a driver and start earning today.",
-  keywords: "book ride, ride booking, cab driver, keke, ride-hailing, Nigeria, Lagos, Abuja, Port Harcourt",
+    "Onaaga is Nigeria's most trusted ride-hailing platform. Book safe, affordable rides instantly or register as a driver and start earning today.",
+  keywords: "onaaga, ride booking, cab driver, keke, ride-hailing, Nigeria, Lagos, Abuja, Port Harcourt",
 };
 
 export default function RootLayout({

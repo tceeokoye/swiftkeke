@@ -13,7 +13,7 @@ export default function SupportPage() {
           </div>
           <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">We're here to help</h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Have questions or need assistance? Our support team is available 24/7 to ensure your experience with Book Ride is seamless.
+            Have questions or need assistance? Our support team is available 24/7 to ensure your experience with Onaaga is seamless.
           </p>
         </div>
 

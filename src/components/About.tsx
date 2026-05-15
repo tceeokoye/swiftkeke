@@ -11,19 +11,19 @@ export default function About() {
           {/* Text */}
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
-              About Book Ride
+              About Onaaga
             </div>
             <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-5">
               We Believe Transport{" "}
               <span className="gradient-text block">Should Be Simple</span>
             </h2>
             <p className="text-[#555555] text-lg leading-relaxed mb-8">
-              Book Ride is building Nigeria&apos;s most trusted ride-hailing platform, connecting verified drivers with riders who need safe, affordable transportation every day.
+              Onaaga is building Nigeria&apos;s most trusted ride-hailing platform, connecting verified drivers with riders who need safe, affordable transportation every day.
             </p>
             <div className="space-y-4">
               {[
                 "Rigorous driver verification process",
-                "Transparent fare structure — no hidden charges",
+                "Transparent fare structure â€” no hidden charges",
                 "Real-time GPS tracking on every trip",
                 "Dedicated 24/7 driver support line",
               ].map((item) => (
@@ -42,7 +42,7 @@ export default function About() {
             <div className="relative z-10 w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white">
               <Image 
                 src="/uba-driver.png" 
-                alt="Smiling Book Ride driver in a modern car" 
+                alt="Smiling Onaaga driver in a modern car" 
                 fill
                 className="object-cover"
               />
