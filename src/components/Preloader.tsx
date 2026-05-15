@@ -24,9 +24,9 @@ export default function Preloader() {
             opacity: 0,
             transition: { duration: 0.8, ease: "easeInOut" }
           }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
+          className="fixed inset-0  z-9999 flex flex-col items-center justify-center bg-white"
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             {/* Logo Icon Animation */}
             <motion.div
               initial={{ scale: 0.5, opacity: 0, rotate: -20 }}
