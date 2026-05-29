@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, ArrowRight, ShieldCheck, Zap } from "lucide-react";
-import OnaagaLogo from "@/components/OnaagaLogo";
+import OnaAgaLogo from "@/components/OnaagaLogo";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -36,8 +36,8 @@ export default function AdminLogin() {
       <div className="w-full max-w-md relative z-10">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl mb-4">
-            <OnaagaLogo size={48} />
+          <div className="w-16 h-16  flex items-center justify-center shadow-xl mb-4">
+            <OnaAgaLogo size={48} />
           </div>
           <h1 className="text-2xl font-black text-[#1A1A1A]">
             Admin<span className="text-[#D21F3C]">Portal</span>
@@ -57,7 +57,7 @@ export default function AdminLogin() {
                 <input
                   type="email"
                   required
-                  placeholder="admin@onaaga.ng"
+                  placeholder="admin@OnaAga.ng"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-[#F7F7F7] border-2 border-transparent focus:border-[#D21F3C]/20 focus:bg-white rounded-2xl px-12 py-4 text-sm font-medium transition-all outline-none"
@@ -118,7 +118,7 @@ export default function AdminLogin() {
         </div>
 
         <p className="text-center mt-8 text-gray-400 text-xs font-medium">
-          &copy; 2026 Onaaga Technologies. All rights reserved.
+          &copy; 2026 OnaAga Technologies. All rights reserved.
         </p>
       </div>
     </main>

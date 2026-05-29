@@ -1,14 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { Check, FileText } from "lucide-react";
 import { RegistrationFormData } from "@/types/global";
 
 interface Props {
   form: RegistrationFormData;
+  set?: (key: keyof RegistrationFormData, val: RegistrationFormData[keyof RegistrationFormData]) => void;
   isPassenger?: boolean;
 }
 
-export default function StepReview({ form, isPassenger }: Props) {
+export default function StepReview({ form, set, isPassenger }: Props) {
   if (isPassenger) {
     return (
       <div className="space-y-5 animate-fadeInUp">
@@ -85,7 +87,7 @@ export default function StepReview({ form, isPassenger }: Props) {
               <div key={label} className="flex flex-col gap-1 items-center bg-[#F7F7F7] p-2 rounded-xl">
                 {file?.type.startsWith("image/") ? (
                    <div className="w-full aspect-square rounded-lg overflow-hidden bg-white border border-gray-200 relative">
-                     <img src={URL.createObjectURL(file)} alt={label} className="w-full h-full object-cover" />
+                     <Image src={URL.createObjectURL(file)} alt={label} width={300} height={300} unoptimized className="w-full h-full object-cover" />
                    </div>
                 ) : file ? (
                    <div className="w-full aspect-square rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
@@ -95,6 +97,23 @@ export default function StepReview({ form, isPassenger }: Props) {
                 <span className="text-[10px] font-bold text-gray-600 text-center mt-1">{label}</span>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-[#D21F3C]/20 bg-[#FFF7F4] p-4">
+          <div className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              checked={Boolean(form.termsAccepted)}
+              onChange={(e) => set?.("termsAccepted", e.target.checked)}
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-[#D21F3C] focus:ring-[#D21F3C]"
+            />
+            <div>
+              <p className="text-sm font-bold text-[#1A1A1A]">I agree to the OnaAga Terms of Service and driver compliance policy</p>
+              <p className="mt-1 text-xs text-[#555555] leading-relaxed">
+                Your application will only be reviewed after you accept the platform terms, safety expectations, and operating policies. You can review them at <a href="/terms" className="font-bold text-[#D21F3C] underline">Terms & Conditions</a>.
+              </p>
+            </div>
           </div>
         </div>
       </div>

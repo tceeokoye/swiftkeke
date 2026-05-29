@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 const faqs = [
   { q: "What documents do I need to register?", a: "You'll need a valid driver's license, a government-issued ID (NIN, Voter's Card, or Passport), proof of address (utility bill or bank statement), and a clear selfie photo." },
   { q: "How long does verification take?", a: "Most applications are reviewed within 24-48 hours. You'll receive a confirmation email and SMS once your account is activated." },
-  { q: "Is there a registration fee?", a: "No, registration is completely free. There are no hidden fees or upfront costs to join Onaaga as a driver." },
+  { q: "Is there a registration fee?", a: "No, registration is completely free. There are no hidden fees or upfront costs to join OnaAga as a driver." },
   { q: "What types of vehicles are accepted?", a: "We accept keke (tricycles), standard sedans, and premium vehicles. All vehicles must pass our safety inspection." },
   { q: "How do I get paid?", a: "Earnings are paid weekly to your registered bank account. You can also track your daily and weekly earnings in the driver app." },
   { q: "Can I drive part-time?", a: "Absolutely! You set your own schedule. Drive full-time, part-time, or just weekends - it's completely up to you." },

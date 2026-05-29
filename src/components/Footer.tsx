@@ -1,12 +1,12 @@
 "use client";
 
 import { Heart } from "lucide-react";
-import Logo from "@/assets/Logo/DRIVER 3.svg"
+import Logo from "@/assets/Logo/Artboard 15@4x.png"
 import Image from "next/image";
 
 const footerLinks = {
   Riders: [
-    { label: "Ride with Onaaga", href: "/#register" },
+    { label: "Ride with OnaAga", href: "/#register" },
     { label: "Ride Types", href: "/#benefits" },
     { label: "Pricing", href: "/#faq" },
     { label: "Rider Support", href: "/support" }
@@ -37,7 +37,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           <div className="lg:col-span-2">
             <a href="#home" className="flex items-center gap-2 mb-4">
-             <Image src={Logo} alt="Onaaga Logo" width={100} height={100} />
+             <Image src={Logo} alt="OnaAga Logo" width={100} height={100} />
             </a>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mb-6">
               Building Nigeria&apos;s most trusted ride-hailing platform. Book safe, affordable rides anytime, anywhere.
@@ -64,8 +64,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">Â© 2025 Onaaga Technologies Ltd. All rights reserved.</p>
+        <div className="border-t border-white/6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-gray-600">Â© 2025 OnaAga Technologies Ltd. All rights reserved.</p>
           <p className="text-xs text-gray-600 flex items-center gap-1">
             Made with <Heart className="w-3 h-3 text-[#D21F3C]" fill="currentColor" /> in Nigeria
           </p>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Phone, Mail, Headphones, Send, Share2, Globe, MessageCircle } from "lucide-react";
 
 const contactItems = [
-  { icon: Phone, label: "Call Us", value: "+234 800 Onaaga" },
+  { icon: Phone, label: "Call Us", value: "+234 800 OnaAga" },
   { icon: Mail, label: "Email Us", value: "support@bookride.ng" },
   { icon: Headphones, label: "Live Chat", value: "Available 24/7 on the app" },
 ];

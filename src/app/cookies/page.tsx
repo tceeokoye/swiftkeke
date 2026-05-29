@@ -18,7 +18,7 @@ export default function CookiesPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">How Onaaga Uses Cookies</h2>
+            <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">How OnaAga Uses Cookies</h2>
             <p>
               When you use and access the Service, we may place a number of cookies files in your web browser. We use cookies for the following purposes: to enable certain functions of the Service, to provide analytics, to store your preferences, and to enable advertisement delivery.
             </p>

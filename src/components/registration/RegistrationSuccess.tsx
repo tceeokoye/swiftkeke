@@ -23,7 +23,7 @@ export default function RegistrationSuccess({ firstName, email, accountType, onR
           <p className="text-[#555555] leading-relaxed mb-6">
             {accountType === "driver" 
               ? `Thank you, ${firstName}! Your driver application is under review. We'll contact you at ${email}.`
-              : `Awesome, ${firstName}! We've added you to our exclusive waitlist. We'll notify you as soon as Onaaga launches in your area.`}
+              : `Awesome, ${firstName}! We've added you to our exclusive waitlist. We'll notify you as soon as OnaAga launches in your area.`}
           </p>
           <button 
             onClick={onReset}

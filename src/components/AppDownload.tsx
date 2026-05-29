@@ -78,7 +78,7 @@ export default function AppDownload() {
             <div className="relative z-10 w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white animate-float">
               <Image 
                 src="/uba-passenger.png" 
-                alt="Happy Onaaga passenger relaxing in the back seat" 
+                alt="Happy OnaAga passenger relaxing in the back seat" 
                 fill
                 className="object-cover"
               />

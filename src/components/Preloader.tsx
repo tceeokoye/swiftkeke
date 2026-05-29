@@ -2,18 +2,25 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Simulate loading time or wait for window load
+    if (typeof window === "undefined") return;
+    if (pathname !== "/") {
+      setLoading(false);
+      return;
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 4000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   return (
     <AnimatePresence>
@@ -54,7 +61,7 @@ export default function Preloader() {
 
             {/* Text Animation */}
             <div className="flex overflow-hidden">
-              {["n", "a", "a", "g", "a"].map((letter, index) => (
+              {["n", "a", "A", "g", "a"].map((letter, index) => (
                 <motion.span
                   key={index}
                   initial={{ y: 100, opacity: 0 }}

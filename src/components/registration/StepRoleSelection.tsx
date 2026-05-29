@@ -6,7 +6,7 @@ import { RegistrationFormData } from "@/types/global";
 
 interface Props {
   accountType: string | null;
-  set: (key: keyof RegistrationFormData, val: any) => void;
+  set: (key: keyof RegistrationFormData, val: RegistrationFormData[keyof RegistrationFormData]) => void;
 }
 
 export default function StepRoleSelection({ accountType, set }: Props) {

@@ -11,7 +11,7 @@ export default function BlogPage() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
             Our Blog
           </div>
-          <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">Latest from Onaaga</h1>
+          <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">Latest from OnaAga</h1>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             Insights, updates, and stories from the road.
           </p>
@@ -20,7 +20,7 @@ export default function BlogPage() {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
            {[1, 2].map((i) => (
              <div key={i} className="group cursor-pointer">
-               <div className="aspect-video bg-gray-100 rounded-[2rem] mb-6 overflow-hidden relative">
+               <div className="aspect-video bg-gray-100  rounded-4xl mb-6 overflow-hidden relative">
                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
                     <Newspaper className="w-12 h-12" />
                  </div>

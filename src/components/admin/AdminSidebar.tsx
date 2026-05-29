@@ -13,7 +13,7 @@ import {
   ChevronRight,
   X
 } from "lucide-react";
-import OnaagaLogo from "@/components/OnaagaLogo";
+import OnaAgaLogo from "@/components/OnaagaLogo";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Overview", href: "/admin" },
@@ -47,8 +47,8 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         {/* Sidebar Header */}
         <div className="p-8 flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-3 group" onClick={onClose}>
-            <div className="w-10 h-10 bg-[#F7F7F7] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
-              <OnaagaLogo size={28} />
+            <div className="w-10 h-10  flex items-center justify-center  group-hover:shadow-md transition-all">
+              <OnaAgaLogo size={28} />
             </div>
             <div>
               <h2 className="text-lg font-black text-[#1A1A1A] leading-none">Admin</h2>

@@ -6,7 +6,7 @@ const features = [
   {
     icon: Shield,
     title: "Verified Drivers",
-    desc: "Every driver passes a background check, vehicle inspection, and safety training before joining Onaaga.",
+    desc: "Every driver passes a background check, vehicle inspection, and safety training before joining OnaAga.",
     color: "#D21F3C",
   },
   {
@@ -48,14 +48,14 @@ export default function Features() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
-            Why Onaaga?
+            Why OnaAga?
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
             Everything You Need{" "}
             <span className="gradient-text block">In One Ride</span>
           </h2>
           <p className="text-[#555555] text-lg leading-relaxed">
-            We built Onaaga around what matters most — your comfort, safety, and time.
+            We built OnaAga around what matters most — your comfort, safety, and time.
           </p>
         </div>
 

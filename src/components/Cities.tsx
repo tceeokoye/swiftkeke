@@ -26,7 +26,7 @@ export default function Cities() {
             <span className="gradient-text">Your City</span>
           </h2>
           <p className="text-[#555555]">
-            Onaaga is expanding fast. We&apos;re already live in major cities and coming to more soon.
+            OnaAga is expanding fast. We&apos;re already live in major cities and coming to more soon.
           </p>
         </div>
 

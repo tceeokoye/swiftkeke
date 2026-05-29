@@ -51,4 +51,5 @@ export interface RegistrationFormData {
   backPhoto: File | null;
   sidePhoto: File | null;
   selfie: File | null;
+  termsAccepted: boolean;
 }

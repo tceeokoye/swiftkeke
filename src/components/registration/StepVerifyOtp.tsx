@@ -48,8 +48,8 @@ export default function StepVerifyOtp({ form, set, loading, resendCode }: Props)
           <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
           <input 
             className={`${inputClass} pl-10 tracking-[1em] font-mono text-lg`} 
-            maxLength={6} 
-            placeholder="000000" 
+            maxLength={4} 
+            placeholder="0000" 
             value={form.otp || ""} 
             onChange={(e) => set("otp", e.target.value.replace(/\D/g, ""))} 
           />

@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MapPin, Menu, X } from "lucide-react";
-import OnaagaLogo from "./OnaagaLogo";
-import Logo from "@/assets/Logo/DRIVER 2.svg"
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+
+import Logo from "@/assets/Logo/Artboard 19@4x.png"
 import Image from "next/image";
 
 const navLinks = [
@@ -35,9 +36,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
          
           {/* Logo */}
-          <a href="/#home" className="flex items-center gap-2.5 group">
-           <Image src={Logo} alt="Onaaga Logo" width={100} height={100} />
-          </a>
+          <Link href="/#home" className="flex items-center gap-2.5 group overflow-hidden">
+            <Image src={Logo} alt="OnaAga Logo" width={100} height={100} />
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
@@ -55,10 +56,16 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="/#register"
+              href="/driver-onboarding"
               className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
             >
-              Join Now
+              Apply to Drive
+            </a>
+            <a
+              href="/passenger-waitlist"
+              className="px-5 py-2 text-sm font-bold text-[#1A1A1A] bg-white border border-[#D21F3C]/20 rounded-xl hover:border-[#D21F3C] transition-all duration-200"
+            >
+              Join Waitlist
             </a>
           </div>
 
@@ -92,11 +99,18 @@ export default function Navbar() {
           ))}
           <div className="mt-2 flex flex-col gap-2">
             <a
-              href="/#register"
+              href="/driver-onboarding"
               onClick={() => setMenuOpen(false)}
               className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl cursor-pointer"
             >
-              Join Now
+              Apply to Drive
+            </a>
+            <a
+              href="/passenger-waitlist"
+              onClick={() => setMenuOpen(false)}
+              className="py-2.5 text-center text-sm font-bold text-[#1A1A1A] bg-white border border-[#D21F3C]/20 rounded-xl cursor-pointer"
+            >
+              Join Waitlist
             </a>
           </div>
         </div>

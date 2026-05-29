@@ -34,7 +34,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-bold text-[#1A1A1A] mb-4">4. Location Data</h2>
             <p>
-              To provide ride-hailing services, we collect precise location data about the trip when the Onaaga app is running in the foreground or background.
+              To provide ride-hailing services, we collect precise location data about the trip when the OnaAga app is running in the foreground or background.
             </p>
           </section>
         </div>

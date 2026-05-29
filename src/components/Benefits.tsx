@@ -54,7 +54,7 @@ export default function Benefits() {
             <span className="gradient-text block">Set Us Apart</span>
           </h2>
           <p className="text-[#555555] text-lg leading-relaxed">
-            We treat our drivers like partners. Here&apos;s what you get when you join Onaaga.
+            We treat our drivers like partners. Here&apos;s what you get when you join OnaAga.
           </p>
         </div>
 

@@ -12,6 +12,7 @@ export const initialForm: RegistrationFormData = {
   idType: "nin", idFile: null, driversLicense: null,
   frontPhoto: null, backPhoto: null, sidePhoto: null,
   selfie: null,
+  termsAccepted: false,
 };
 
 export const checkPasswordStrength = (pass: string) => {
@@ -50,7 +51,7 @@ export const validateRegistrationStep = (step: number, form: RegistrationFormDat
     if (form.password !== form.confirmPassword) e.push("Passwords do not match");
   }
   else if (step === 2) {
-    if (form.otp.length < 6) e.push("Enter the 6-digit code sent to your email");
+    if (form.otp.length < 4) e.push("Enter the 4-digit code sent to your email");
   }
   else if (form.accountType === "driver") {
     if (step === 3) {
@@ -86,5 +87,10 @@ export const validateRegistrationStep = (step: number, form: RegistrationFormDat
       if (!form.phone.trim() || form.phone.length < 10) e.push("Valid phone number is required");
     }
   }
+
+  if (form.accountType === "driver" && step === 9 && !form.termsAccepted) {
+    e.push("You must accept the terms and conditions before submitting your application");
+  }
+
   return e;
 };

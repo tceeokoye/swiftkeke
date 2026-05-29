@@ -1,7 +1,7 @@
-// Onaaga Brand Logo Component
+// OnaAga Brand Logo Component
 import Image from "next/image";
 
-export default function OnaagaLogo({ size = 36, className = "" }: { size?: number; className?: string }) {
+export default function OnaAgaLogo({ size = 36, className = "" }: { size?: number; className?: string }) {
   return (
     <svg
       width={size}
@@ -10,7 +10,7 @@ export default function OnaagaLogo({ size = 36, className = "" }: { size?: numbe
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Onaaga Logo"
+      aria-label="OnaAga Logo"
     >
       <defs>
         <style>{`.cls-1{fill:#e53846;}.cls-2{fill:#d7283a;}.cls-3{fill:#e63947;}.cls-4{fill:#1d1d1b;}`}</style>
