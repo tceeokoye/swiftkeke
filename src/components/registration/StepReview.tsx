@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Check, FileText } from "lucide-react";
 import { RegistrationFormData } from "@/types/global";
 
@@ -111,7 +112,7 @@ export default function StepReview({ form, set, isPassenger }: Props) {
             <div>
               <p className="text-sm font-bold text-[#1A1A1A]">I agree to the OnaAga Terms of Service and driver compliance policy</p>
               <p className="mt-1 text-xs text-[#555555] leading-relaxed">
-                Your application will only be reviewed after you accept the platform terms, safety expectations, and operating policies. You can review them at <a href="/terms" className="font-bold text-[#D21F3C] underline">Terms & Conditions</a>.
+                Your application will only be reviewed after you accept the platform terms, safety expectations, and operating policies. You can review them at <Link href="/terms" className="font-bold text-[#D21F3C] underline">Terms & Conditions</Link>.
               </p>
             </div>
           </div>

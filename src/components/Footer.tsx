@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Heart } from "lucide-react";
 import Logo from "@/assets/Logo/Artboard 15@4x.png"
 import Image from "next/image";
@@ -36,9 +37,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           <div className="lg:col-span-2">
-            <a href="#home" className="flex items-center gap-2 mb-4">
+            <Link href="#home" className="flex items-center gap-2 mb-4">
              <Image src={Logo} alt="OnaAga Logo" width={100} height={100} />
-            </a>
+            </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mb-6">
               Building Nigeria&apos;s most trusted ride-hailing platform. Book safe, affordable rides anytime, anywhere.
             </p>
@@ -56,7 +57,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-gray-500 hover:text-[#D21F3C] transition-colors">{link.label}</a>
+                    <Link href={link.href} className="text-sm text-gray-500 hover:text-[#D21F3C] transition-colors">{link.label}</Link>
                   </li>
                 ))}
               </ul>

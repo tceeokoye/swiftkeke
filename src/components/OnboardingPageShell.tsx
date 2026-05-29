@@ -28,8 +28,8 @@ export default function OnboardingPageShell({
       <Navbar />
 
       <section className="pt-24 pb-12   px-6 lg:px-12">
-        <div className="w-full mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start ">
-          <div className="bg-white rounded-4xl  shadow-xl p-6 lg:p-10">
+        <div className="w-full mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:items-start  justify-center">
+          <div className="bg-white rounded-4xl m-auto shadow-xl p-6 lg:p-10">
             <div className="inline-flex items-center   text-[20px] font-black  text-[#D21F3C]">
               {badge}
             </div>

@@ -2,6 +2,7 @@
 
 import { Shield, Sparkles, Navigation, Clock3, Users, Star, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const metrics = [
   { value: "24/7", label: "Live support" },
@@ -50,20 +51,20 @@ export default function HeroSection() {
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
+              <Link
                 href="/driver-onboarding"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#D21F3C] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#D21F3C]/25 hover:bg-[#a8172d] transition-all"
               >
                 Apply to drive
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/passenger-waitlist"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-[#1A1A1A] hover:border-[#D21F3C]/40 hover:text-[#D21F3C] transition-all"
               >
                 Join passenger waitlist
-              </a>
+              </Link>
             </div>
 
             <div className="mt-8 grid sm:grid-cols-3 gap-3 max-w-2xl">

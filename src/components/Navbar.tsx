@@ -43,30 +43,30 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 text-sm text-[#555555] hover:text-[#D21F3C] hover:bg-[#D21F3C]/8 rounded-lg transition-all duration-200 font-semibold"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <a
+            <Link
               href="/driver-onboarding"
               className="px-5 py-2 text-sm font-bold text-white bg-[#D21F3C] rounded-xl hover:bg-[#a8172d] transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
             >
               Apply to Drive
-            </a>
-            <a
+            </Link>
+            <Link
               href="/passenger-waitlist"
               className="px-5 py-2 text-sm font-bold text-[#1A1A1A] bg-white border border-[#D21F3C]/20 rounded-xl hover:border-[#D21F3C] transition-all duration-200"
             >
               Join Waitlist
-            </a>
+            </Link>
           </div>
 
           {/* Hamburger */}
@@ -88,30 +88,30 @@ export default function Navbar() {
       >
         <div className="border-t border-gray-100 px-4 py-3 flex flex-col gap-1">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className="px-4 py-3 text-sm text-[#555555] hover:text-[#D21F3C] hover:bg-[#D21F3C]/8 rounded-lg transition font-semibold"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="mt-2 flex flex-col gap-2">
-            <a
+            <Link
               href="/driver-onboarding"
               onClick={() => setMenuOpen(false)}
               className="py-2.5 text-center text-sm font-bold text-white bg-[#D21F3C] rounded-xl cursor-pointer"
             >
               Apply to Drive
-            </a>
-            <a
+            </Link>
+            <Link
               href="/passenger-waitlist"
               onClick={() => setMenuOpen(false)}
               className="py-2.5 text-center text-sm font-bold text-[#1A1A1A] bg-white border border-[#D21F3C]/20 rounded-xl cursor-pointer"
             >
               Join Waitlist
-            </a>
+            </Link>
           </div>
         </div>
       </div>
