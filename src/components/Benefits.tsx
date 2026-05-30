@@ -42,24 +42,6 @@ const benefits = [
   },
 ];
  
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
- 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-} as const;
- 
 export default function Benefits() {
   return (
     <section id="benefits" className="py-24 lg:py-32 relative overflow-hidden bg-white">
@@ -83,17 +65,14 @@ export default function Benefits() {
           </p>
         </motion.div>
  
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map(({ img, title, desc, color }, i) => (
             <motion.div
               key={i}
-              variants={cardVariants}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.1, ease: "easeOut" }}
               className="group relative p-6 rounded-2xl bg-white border border-gray-100 hover:border-[#D21F3C]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div
@@ -110,7 +89,7 @@ export default function Benefits() {
               <p className="text-sm text-[#888888] leading-relaxed relative">{desc}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

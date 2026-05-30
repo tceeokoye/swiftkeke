@@ -23,24 +23,6 @@ const steps = [
   },
 ];
  
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
- 
-const stepVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-} as const;
- 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 lg:py-32 relative overflow-hidden bg-white">
@@ -69,18 +51,19 @@ export default function HowItWorks() {
               </p>
             </motion.div>
  
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.15 }}
-              className="space-y-8 relative"
-            >
+            <div className="space-y-8 relative">
               {/* Connecting Line */}
               <div className="absolute left-[38px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#D21F3C]/40 to-transparent hidden sm:block" />
  
               {steps.map((step, i) => (
-                <motion.div key={i} variants={stepVariants} className="relative flex gap-6 sm:gap-8 group">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                  className="relative flex gap-6 sm:gap-8 group"
+                >
                   {/* Image/Icon block */}
                   <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:border-[#D21F3C]/30">
                     <img 
@@ -104,7 +87,7 @@ export default function HowItWorks() {
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
