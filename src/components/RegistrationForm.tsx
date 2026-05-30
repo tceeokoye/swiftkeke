@@ -353,53 +353,55 @@ export default function RegistrationForm({
       : "Create your driver profile and start earning.");
 
   return (
-    <section id="register" className=" relative ">
+    <section id="register" className="relative overflow-hidden w-full max-w-full">
       <div className="absolute left-0 top-1/4 w-80 h-80 bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 relative">
-        <div className="text-center mb-10">
+      <div className="max-w-2xl mx-auto px-0 sm:px-6 relative w-full overflow-hidden">
+        <div className="text-center mb-6 sm:mb-10 px-4 sm:px-0">
           {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
             {form.accountType === "passenger" ? "Passenger Waitlist" : "Driver Onboarding"}
           </div> */}
-          <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-3">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-2 sm:mb-3">
             <span className="gradient-text">{resolvedPageTitle}</span>
           </h2>
-          <p className="text-[#555555] text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#555555] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
             {resolvedPageSubtitle}
           </p>
         </div>
-
-        <div className="flex items-center justify-between mb-10 px-2">
-          {currentSteps.map(({ label, icon: Icon }, i) => (
-            <div
-              key={label}
-              className="flex items-center gap-0 flex-1 last:flex-initial"
-            >
-              <div className="flex flex-col items-center gap-1.5">
-                <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${i < step ? "bg-green-500/20 border border-green-500/40 text-green-600" : i === step ? "bg-[#D21F3C] text-white shadow-lg shadow-[#D21F3C]/30" : "bg-gray-100 border border-gray-200 text-[#888888]"}`}
-                >
-                  {i < step ? (
-                    <Check className="w-4 h-4" />
-                  ) : (
-                    <Icon className="w-4 h-4" />
-                  )}
+ 
+        <div className="w-full overflow-x-auto pb-5 sm:pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+          <div className="flex items-center justify-between min-w-125 sm:min-w-0 px-2">
+            {currentSteps.map(({ label, icon: Icon }, i) => (
+              <div
+                key={label}
+                className="flex items-center gap-0 flex-1 last:flex-initial"
+              >
+                <div className="flex flex-col items-center gap-1.5">
+                  <div
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${i < step ? "bg-green-500/20 border border-green-500/40 text-green-600" : i === step ? "bg-[#D21F3C] text-white shadow-lg shadow-[#D21F3C]/30" : "bg-gray-100 border border-gray-200 text-[#888888]"}`}
+                  >
+                    {i < step ? (
+                      <Check className="w-4 h-4" />
+                    ) : (
+                      <Icon className="w-4 h-4" />
+                    )}
+                  </div>
+                  <span
+                    className={`text-[10px] font-medium hidden sm:block ${i <= step ? "text-[#D21F3C]" : "text-[#888888]"}`}
+                  >
+                    {label}
+                  </span>
                 </div>
-                <span
-                  className={`text-[10px] font-medium hidden sm:block ${i <= step ? "text-[#D21F3C]" : "text-[#888888]"}`}
-                >
-                  {label}
-                </span>
+                {i < currentSteps.length - 1 && (
+                  <div
+                    className={`flex-1 h-px mx-2 transition-colors duration-300 ${i < step ? "bg-green-400" : "bg-gray-200"}`}
+                  />
+                )}
               </div>
-              {i < currentSteps.length - 1 && (
-                <div
-                  className={`flex-1 h-px mx-2 transition-colors duration-300 ${i < step ? "bg-green-400" : "bg-gray-200"}`}
-                />
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
-        <div className="bg-white border border-gray-100 rounded-3xl p-6 sm:p-8 shadow-xl">
+ 
+        <div className="bg-white border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl">
           {errors.length > 0 && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
               {errors.map((e, i) => (

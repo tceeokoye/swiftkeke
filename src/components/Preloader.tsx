@@ -60,7 +60,7 @@ export default function Preloader() {
             </motion.div>
 
             {/* Text Animation */}
-            <div className="flex overflow-hidden">
+            <div className="flex ">
               {["n", "a", "A", "g", "a"].map((letter, index) => (
                 <motion.span
                   key={index}

@@ -1,5 +1,7 @@
 "use client";
-
+ 
+import { motion } from "framer-motion";
+ 
 const steps = [
   {
     num: "01",
@@ -20,34 +22,65 @@ const steps = [
     img: "https://img.icons8.com/3d-fluency/94/car.png", // Car
   },
 ];
-
+ 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+ 
+const stepVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+} as const;
+ 
 export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 lg:py-32 relative overflow-hidden bg-white">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
-
+ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text & Steps Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
-              Simple Process
-            </div>
-            <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
-              Start Earning in{" "}
-              <span className="gradient-text">3 Easy Steps</span>
-            </h2>
-            <p className="text-[#555555] text-lg mb-10 leading-relaxed max-w-lg">
-              We made the onboarding process as seamless as possible so you can hit the road and start earning faster.
-            </p>
-
-            <div className="space-y-8 relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+                Simple Process
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
+                Start Earning in{" "}
+                <span className="gradient-text">3 Easy Steps</span>
+              </h2>
+              <p className="text-[#555555] text-lg mb-10 leading-relaxed max-w-lg">
+                We made the onboarding process as seamless as possible so you can hit the road and start earning faster.
+              </p>
+            </motion.div>
+ 
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              className="space-y-8 relative"
+            >
               {/* Connecting Line */}
               <div className="absolute left-[38px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#D21F3C]/40 to-transparent hidden sm:block" />
-
+ 
               {steps.map((step, i) => (
-                <div key={i} className="relative flex gap-6 sm:gap-8 group">
+                <motion.div key={i} variants={stepVariants} className="relative flex gap-6 sm:gap-8 group">
                   {/* Image/Icon block */}
                   <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:border-[#D21F3C]/30">
                     <img 
@@ -59,7 +92,7 @@ export default function HowItWorks() {
                       {step.num}
                     </div>
                   </div>
-
+ 
                   {/* Text block */}
                   <div className="pt-2 sm:pt-4">
                     <h3 className="text-xl font-bold text-[#1A1A1A] mb-2 group-hover:text-[#D21F3C] transition-colors">
@@ -69,19 +102,31 @@ export default function HowItWorks() {
                       {step.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
             
-            <div className="mt-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="mt-12"
+            >
               <a href="#register" className="inline-flex items-center justify-center px-8 py-4 bg-[#D21F3C] text-white font-bold rounded-xl shadow-lg shadow-[#D21F3C]/30 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all">
                 Join Now
               </a>
-            </div>
+            </motion.div>
           </div>
-
+ 
           {/* Right Side Image Illustration */}
-          <div className="relative mt-12 lg:mt-0 flex justify-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 40 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative mt-12 lg:mt-0 flex justify-center"
+          >
             {/* Soft decorative background circles */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#FDC300]/10 rounded-full blur-2xl pointer-events-none" />
@@ -94,7 +139,7 @@ export default function HowItWorks() {
                  className="w-full h-auto drop-shadow-2xl"
                />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

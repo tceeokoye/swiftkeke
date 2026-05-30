@@ -1,6 +1,7 @@
 "use client";
 
-import { Shield, Sparkles, Navigation, Clock3, Users, Star, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Shield, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,177 +11,154 @@ const metrics = [
   { value: "12+", label: "Cities covered" },
 ];
 
-const featurePills = [
-  "Instant matching",
-  "Verified drivers",
-  "Safety-first rides",
-];
-
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#F7F7F7] pt-20">
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(210,31,60,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(253,195,0,0.14),transparent_28%)]" />
-        <div className="absolute top-24 right-8 h-72 w-72 rounded-full bg-[#D21F3C]/10 blur-3xl" />
-        <div className="absolute bottom-16 left-10 h-64 w-64 rounded-full bg-[#FDC300]/15 blur-3xl" />
+    <section id="home" className="relative min-h-screen flex items-center bg-[#F7F7F7] pt-28 pb-20 overflow-hidden">
+      {/* Very subtle background pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.02] mix-blend-overlay" />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20 w-full">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.24em] text-[#D21F3C] border border-[#D21F3C]/10 shadow-sm">
-              <Sparkles className="w-3.5 h-3.5" />
-              Smart mobility for Nigerian cities
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-10 items-center">
+          
+          {/* Left Content */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-xl"
+          >
+            <motion.div 
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: "auto" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="w-10 h-[2px] bg-[#D21F3C]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#D21F3C]">Nigeria's Premier Ride</span>
+            </motion.div>
 
-            <h1 className="mt-6 text-5xl sm:text-6xl lg:text-7xl font-black text-[#1A1A1A] leading-[0.95] tracking-[-0.04em]">
-              Ride now.
-              <span className="block text-[#D21F3C]">Earn sooner.</span>
-            </h1>
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-[3.5rem] sm:text-6xl lg:text-[4.5rem] font-black text-[#1A1A1A] leading-[1.05] tracking-tight"
+            >
+              Ride now. <br />
+              <span className="text-[#D21F3C]">Earn sooner.</span>
+            </motion.h1>
 
-            <p className="mt-5 max-w-xl text-lg text-[#555555] leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-6 text-lg sm:text-xl text-[#555555] leading-relaxed font-medium"
+            >
               OnaAga blends safe, verified rides with an effortless driver onboarding flow so every trip feels premium from the first tap.
-            </p>
+            </motion.p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
-              {featurePills.map((pill) => (
-                <span key={pill} className="rounded-full border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-[#1A1A1A] shadow-sm">
-                  {pill}
-                </span>
-              ))}
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mt-10 flex flex-col sm:flex-row gap-4"
+            >
               <Link
                 href="/driver-onboarding"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#D21F3C] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#D21F3C]/25 hover:bg-[#a8172d] transition-all"
+                className="group inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] px-8 text-sm font-bold text-white transition-all hover:bg-[#D21F3C] active:scale-95"
               >
-                Apply to drive
-                <ArrowRight className="w-4 h-4" />
+                Apply to Drive
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
                 href="/passenger-waitlist"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-5 py-3 text-sm font-bold text-[#1A1A1A] hover:border-[#D21F3C]/40 hover:text-[#D21F3C] transition-all"
+                className="inline-flex h-14 items-center justify-center rounded-xl bg-white border-2 border-gray-200 px-8 text-sm font-bold text-[#1A1A1A] transition-all hover:border-[#1A1A1A] hover:bg-gray-50 active:scale-95"
               >
-                Join passenger waitlist
+                Join Waitlist
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="mt-8 grid sm:grid-cols-3 gap-3 max-w-2xl">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mt-16 grid grid-cols-3 gap-8 border-t border-gray-200 pt-10"
+            >
               {metrics.map((metric) => (
-                <div key={metric.label} className="rounded-2xl border border-gray-200/80 bg-white/85 p-4 backdrop-blur-sm shadow-[0_12px_30px_-18px_rgba(0,0,0,0.4)]">
-                  <div className="text-2xl font-black text-[#1A1A1A]">{metric.value}</div>
-                  <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#888888]">{metric.label}</div>
+                <div key={metric.label}>
+                  <div className="text-3xl font-black text-[#1A1A1A]">{metric.value}</div>
+                  <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#888888]">{metric.label}</div>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative">
-            <div className="absolute inset-6 rounded-[2.5rem] bg-linear-to-br from-[#D21F3C]/20 via-transparent to-[#FDC300]/20 blur-2xl" />
+          {/* Right Content - The Image */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            className="relative lg:ml-auto w-full max-w-md mx-auto lg:max-w-[440px] xl:max-w-[480px]"
+          >
+            {/* Soft backdrop glow to separate from background without looking tacky */}
+            <div className="absolute inset-4 rounded-[2.5rem] bg-[#D21F3C]/10 blur-3xl" />
 
-            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/40 bg-white/70 p-3 shadow-[0_34px_90px_-26px_rgba(0,0,0,0.35)] backdrop-blur-md">
-              <div className="relative aspect-4/5 overflow-hidden rounded-4xl bg-[#111111]">
-                <Image
-                  src="/uba-hero.png"
-                  alt="Professional driver lifestyle with OnaAga"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] bg-[#111111] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)]">
+              <Image
+                src="/uba-hero.png"
+                alt="Professional driver lifestyle with OnaAga"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Gradient overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30" />
 
-                <div className="absolute left-4 right-4 top-4 flex items-center justify-between">
-                  <div className="rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#1A1A1A]">
-                    Live fleet
-                  </div>
-                  <div className="rounded-full bg-emerald-500/90 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    Active
-                  </div>
+              {/* Top Badges */}
+              <div className="absolute top-6 left-6 right-6 flex justify-between items-start">
+                <div className="rounded-full bg-white/10 backdrop-blur-md px-4 py-2 border border-white/20">
+                  <span className="text-[10px] font-bold text-white tracking-widest uppercase">Live Fleet</span>
                 </div>
+                <div className="flex items-center gap-2 rounded-full bg-emerald-500/90 px-4 py-2 shadow-lg shadow-emerald-500/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  <span className="text-[10px] font-bold text-white tracking-widest uppercase">Active</span>
+                </div>
+              </div>
 
-                <div className="absolute inset-x-4 bottom-4 space-y-3">
-                  <div className="rounded-2xl bg-white/90 p-4 backdrop-blur-md">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#D21F3C]">Driver spotlight</p>
-                        <p className="mt-1 text-lg font-black text-[#1A1A1A]">Chukwuma A.</p>
-                      </div>
-                      <div className="rounded-full bg-[#D21F3C] px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                        Verified
-                      </div>
-                    </div>
-
-                    <div className="mt-3 grid grid-cols-3 gap-2">
-                      <div className="rounded-xl bg-[#F7F7F7] px-2 py-2 text-center">
-                        <div className="text-sm font-black text-[#1A1A1A]">98%</div>
-                        <div className="mt-0.5 text-[8px] font-bold uppercase tracking-[0.2em] text-gray-500">Acceptance</div>
-                      </div>
-                      <div className="rounded-xl bg-[#F7F7F7] px-2 py-2 text-center">
-                        <div className="text-sm font-black text-[#1A1A1A]">3.2k</div>
-                        <div className="mt-0.5 text-[8px] font-bold uppercase tracking-[0.2em] text-gray-500">Trips</div>
-                      </div>
-                      <div className="rounded-xl bg-[#F7F7F7] px-2 py-2 text-center">
-                        <div className="text-sm font-black text-[#1A1A1A]">4.9</div>
-                        <div className="mt-0.5 text-[8px] font-bold uppercase tracking-[0.2em] text-gray-500">Rating</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="rounded-2xl bg-[#1A1A1A]/90 p-4 text-white backdrop-blur-md">
-                    <div className="flex items-center justify-between">
+              {/* Driver Highlight Card - Clean & Glassmorphic */}
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+                <div className="rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 p-4 sm:p-6 shadow-2xl">
+                  <div className="flex items-start justify-between border-b border-white/10 pb-3 mb-3 sm:pb-5 sm:mb-5">
+                    <div>
                       <div className="flex items-center gap-2">
-                        <div className="rounded-full bg-emerald-500/20 p-1.5">
-                          <Shield className="w-3.5 h-3.5 text-emerald-300" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/70">Safety</p>
-                          <p className="mt-0.5 text-sm font-bold">Background checks & live tracking</p>
-                        </div>
+                        <Shield className="w-3.5 h-3.5 text-[#FDC300]" />
+                        <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDC300]">Verified Driver</p>
                       </div>
-                      <div className="flex items-center gap-1 text-[#FDC300]">
-                        {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                        ))}
-                      </div>
+                      <p className="mt-1 sm:mt-1.5 text-lg sm:text-2xl font-black text-white">Chukwuma A.</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 bg-black/40 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 border border-white/10">
+                      <Star className="w-3.5 h-3.5 fill-[#FDC300] text-[#FDC300]" />
+                      <span className="text-xs sm:text-sm font-bold text-white">4.9</span>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    <div>
+                      <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] text-white/50">Acceptance Rate</div>
+                      <div className="mt-0.5 sm:mt-1 text-base sm:text-xl font-bold text-white">98%</div>
+                    </div>
+                    <div>
+                      <div className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.1em] text-white/50">Total Trips</div>
+                      <div className="mt-0.5 sm:mt-1 text-base sm:text-xl font-bold text-white">3.2k+</div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div className="absolute -left-4 top-24 rounded-2xl bg-white px-4 py-3 shadow-2xl border border-gray-100">
-                <div className="flex items-center gap-2">
-                  <div className="rounded-full bg-[#D21F3C] p-2 text-white">
-                    <Navigation className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#D21F3C]">Pickup ETA</p>
-                    <p className="text-sm font-black text-[#1A1A1A]">7 mins</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -right-4 bottom-24 rounded-2xl bg-white px-4 py-3 shadow-2xl border border-gray-100">
-                <div className="flex items-center gap-2">
-                  <div className="rounded-full bg-[#FDC300] p-2 text-[#1A1A1A]">
-                    <Clock3 className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <p className="text-[9px] font-black uppercase tracking-[0.2em] text-[#D21F3C]">Avg response</p>
-                    <p className="text-sm font-black text-[#1A1A1A]">2.4 mins</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-5 left-6 rounded-2xl bg-[#1A1A1A] px-4 py-2 text-white shadow-xl">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#FDC300]" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/80">500+ drivers active</span>
-                </div>
-              </div>
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

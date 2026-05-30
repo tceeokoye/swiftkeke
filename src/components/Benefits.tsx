@@ -1,7 +1,8 @@
 "use client";
-
+ 
 import { TrendingUp, Shield, Clock, Users, Wallet, HeartHandshake } from "lucide-react";
-
+import { motion } from "framer-motion";
+ 
 const benefits = [
   {
     img: "https://img.icons8.com/3d-fluency/94/money-bag.png", // Money Bag
@@ -40,12 +41,36 @@ const benefits = [
     color: "#FDC300",
   },
 ];
-
+ 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+ 
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+} as const;
+ 
 export default function Benefits() {
   return (
     <section id="benefits" className="py-24 lg:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
             Why Drive With Us?
           </div>
@@ -56,12 +81,19 @@ export default function Benefits() {
           <p className="text-[#555555] text-lg leading-relaxed">
             We treat our drivers like partners. Here&apos;s what you get when you join OnaAga.
           </p>
-        </div>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        </motion.div>
+ 
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {benefits.map(({ img, title, desc, color }, i) => (
-            <div
+            <motion.div
               key={i}
+              variants={cardVariants}
               className="group relative p-6 rounded-2xl bg-white border border-gray-100 hover:border-[#D21F3C]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div
@@ -76,9 +108,9 @@ export default function Benefits() {
               </div>
               <h3 className="text-lg font-bold text-[#1A1A1A] mb-2 relative">{title}</h3>
               <p className="text-sm text-[#888888] leading-relaxed relative">{desc}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
