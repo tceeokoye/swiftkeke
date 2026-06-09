@@ -16,7 +16,7 @@ export default function StepReview({ form, set, isPassenger }: Props) {
     return (
       <div className="space-y-5 animate-fadeInUp">
         <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Check className="w-5 h-5 text-[#D21F3C]" /> Final Review
+          <Check className="w-5 h-5 text-[#DE2910]" /> Final Review
         </h3>
         <p className="text-sm text-gray-500 mb-4">Please confirm your details before joining the waitlist.</p>
         <div className="bg-[#F7F7F7] p-5 rounded-2xl space-y-3">
@@ -40,7 +40,7 @@ export default function StepReview({ form, set, isPassenger }: Props) {
   return (
     <div className="space-y-5 animate-fadeInUp">
       <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-        <Check className="w-5 h-5 text-[#D21F3C]" /> Review Application
+        <Check className="w-5 h-5 text-[#DE2910]" /> Review Application
       </h3>
       <div className="space-y-6">
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm space-y-2">
@@ -101,18 +101,18 @@ export default function StepReview({ form, set, isPassenger }: Props) {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-[#D21F3C]/20 bg-[#FFF7F4] p-4">
+        <div className="rounded-2xl border border-[#DE2910]/20 bg-[#FFF7F4] p-4">
           <div className="flex items-start gap-3">
             <input
               type="checkbox"
               checked={Boolean(form.termsAccepted)}
               onChange={(e) => set?.("termsAccepted", e.target.checked)}
-              className="mt-1 h-4 w-4 rounded border-gray-300 text-[#D21F3C] focus:ring-[#D21F3C]"
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-[#DE2910] focus:ring-[#DE2910]"
             />
             <div>
               <p className="text-sm font-bold text-[#1A1A1A]">I agree to the OnaAga Terms of Service and driver compliance policy</p>
               <p className="mt-1 text-xs text-[#555555] leading-relaxed">
-                Your application will only be reviewed after you accept the platform terms, safety expectations, and operating policies. You can review them at <Link href="/terms" className="font-bold text-[#D21F3C] underline">Terms & Conditions</Link>.
+                Your application will only be reviewed after you accept the platform terms, safety expectations, and operating policies. You can review them at <Link href="/terms" className="font-bold text-[#DE2910] underline">Terms & Conditions</Link>.
               </p>
             </div>
           </div>

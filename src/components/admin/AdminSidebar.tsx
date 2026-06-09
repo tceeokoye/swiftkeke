@@ -52,7 +52,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             </div>
             <div>
               <h2 className="text-lg font-black text-[#1A1A1A] leading-none">Admin</h2>
-              <span className="text-[10px] font-bold text-[#D21F3C] uppercase tracking-widest">Portal</span>
+              <span className="text-[10px] font-bold text-[#DE2910] uppercase tracking-widest">Portal</span>
             </div>
           </Link>
           <button 
@@ -74,12 +74,12 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 onClick={onClose}
                 className={`flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-200 group ${
                   isActive 
-                    ? "bg-[#D21F3C] text-white shadow-lg shadow-[#D21F3C]/20" 
+                    ? "bg-[#DE2910] text-white shadow-lg shadow-[#DE2910]/20" 
                     : "text-gray-500 hover:bg-[#F7F7F7] hover:text-[#1A1A1A]"
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-400 group-hover:text-[#D21F3C]"}`} />
+                  <item.icon className={`w-5 h-5 ${isActive ? "text-white" : "text-gray-400 group-hover:text-[#DE2910]"}`} />
                   <span className="font-bold text-sm">{item.label}</span>
                 </div>
                 {isActive && <ChevronRight className="w-4 h-4" />}

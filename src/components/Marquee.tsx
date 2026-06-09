@@ -15,7 +15,7 @@ export default function Marquee() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="relative overflow-hidden bg-[#D21F3C] py-3.5">
+    <div className="relative overflow-hidden bg-[#DE2910] py-3.5">
       <div
         className="flex gap-8 whitespace-nowrap"
         style={{ animation: "marquee 30s linear infinite" }}

@@ -350,7 +350,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
     <div className="space-y-8 pb-20">
       {/* Breadcrumb & Navigation */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-        <Link href="/admin/riders" className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#D21F3C] transition-colors group">
+        <Link href="/admin/riders" className="flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-[#DE2910] transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Riders
         </Link>
         <div className="flex flex-wrap gap-3">
@@ -371,7 +371,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
           {rider.status.toLowerCase() !== "approved" && (
             <button 
               onClick={handleApprove}
-              className="flex-1 sm:flex-none px-6 py-2.5 bg-[#D21F3C] text-white font-bold text-xs rounded-xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20"
+              className="flex-1 sm:flex-none px-6 py-2.5 bg-[#DE2910] text-white font-bold text-xs rounded-xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#DE2910]/20"
             >
               Approve
             </button>
@@ -381,11 +381,11 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
 
       {/* Header Profile Card */}
       <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-50 overflow-hidden">
-        <div className="h-32 bg-gradient-to-r from-[#1A1A1A] to-[#D21F3C]" />
+        <div className="h-32 bg-gradient-to-r from-[#1A1A1A] to-[#DE2910]" />
         <div className="px-10 pb-10 -mt-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="flex flex-col md:flex-row items-end gap-6">
             <div className="w-32 h-32 rounded-[2rem] bg-white p-2 shadow-xl relative">
-              <div className="w-full h-full rounded-[1.5rem] bg-[#F7F7F7] flex items-center justify-center font-black text-4xl text-[#D21F3C]">
+              <div className="w-full h-full rounded-[1.5rem] bg-[#F7F7F7] flex items-center justify-center font-black text-4xl text-[#DE2910]">
                 {rider.name.charAt(0)}
               </div>
               <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-green-500 rounded-2xl border-4 border-white flex items-center justify-center">
@@ -401,9 +401,9 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
                 </span>
               </div>
               <div className="flex flex-wrap gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.email}</span>
-                <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.phone}</span>
-                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#D21F3C]" /> Lagos, NG</span>
+                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-[#DE2910]" /> {rider.email}</span>
+                <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-[#DE2910]" /> {rider.phone}</span>
+                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-[#DE2910]" /> Lagos, NG</span>
               </div>
             </div>
           </div>
@@ -459,7 +459,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
           {/* Vehicle Info */}
           <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-50">
             <h3 className="text-lg font-black text-[#1A1A1A] mb-6 flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#D21F3C]" /> Vehicle Details
+              <ShieldCheck className="w-5 h-5 text-[#DE2910]" /> Vehicle Details
             </h3>
             <div className="space-y-4">
               {[
@@ -506,7 +506,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
                         <div key={doc.name} onClick={() => doc.url && setPreviewDocument({name: doc.name, url: doc.url})} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                              <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
+                              <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#DE2910]" />
                             </div>
                             <div>
                               <p className="text-sm font-bold text-[#1A1A1A]">{doc.name}</p>
@@ -576,7 +576,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
                       <div key={doc.name} className="p-4 bg-[#F7F7F7] rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-gray-100 transition-all" onClick={() => doc.url && setPreviewDocument({name: doc.name, url: doc.url})}>
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center">
-                            <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#D21F3C]" />
+                            <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#DE2910]" />
                           </div>
                           <div>
                             <p className="text-sm font-bold text-[#1A1A1A]">{doc.name}</p>
@@ -625,7 +625,7 @@ export default function RiderDetailPage({ params }: { params: Promise<{ id: stri
           <div className="bg-white rounded-3xl overflow-hidden shadow-2xl relative w-full max-w-4xl max-h-[90vh] flex flex-col animate-scaleIn">
             <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-white z-10">
               <h3 className="text-lg font-bold text-[#1A1A1A] flex items-center gap-2">
-                <FileText className="w-5 h-5 text-[#D21F3C]" />
+                <FileText className="w-5 h-5 text-[#DE2910]" />
                 {previewDocument.name}
               </h3>
               <button 

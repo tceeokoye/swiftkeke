@@ -7,12 +7,12 @@ export default function AboutPage() {
       <Navbar />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-6">
             Our Story
           </div>
           <h1 className="text-5xl font-black text-[#1A1A1A] mb-8 leading-tight">
             Redefining Mobility for <br />
-            <span className="text-[#D21F3C]">Every Nigerian</span>
+            <span className="text-[#DE2910]">Every Nigerian</span>
           </h1>
           <div className="space-y-6 text-lg text-[#555555] leading-relaxed">
             <p>
@@ -27,11 +27,11 @@ export default function AboutPage() {
             </p>
             <div className="grid grid-cols-2 gap-8 py-10">
               <div>
-                <p className="text-4xl font-black text-[#D21F3C]">50k+</p>
+                <p className="text-4xl font-black text-[#DE2910]">50k+</p>
                 <p className="text-sm font-bold text-gray-500 uppercase tracking-wider">Active Riders</p>
               </div>
               <div>
-                <p className="text-4xl font-black text-[#D21F3C]">10k+</p>
+                <p className="text-4xl font-black text-[#DE2910]">10k+</p>
                 <p className="text-sm font-bold text-gray-500 uppercase tracking-wider">Verified Drivers</p>
               </div>
             </div>

@@ -35,8 +35,8 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="w-10 h-[2px] bg-[#D21F3C]" />
-              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#D21F3C]">Nigeria's Premier Ride</span>
+              <div className="w-10 h-[2px] bg-[#DE2910]" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#DE2910]">Nigeria's Premier Ride</span>
             </motion.div>
 
             <motion.h1 
@@ -46,7 +46,7 @@ export default function HeroSection() {
               className="text-[3.5rem] sm:text-6xl lg:text-[4.5rem] font-black text-[#1A1A1A] leading-[1.05] tracking-tight"
             >
               Ride now. <br />
-              <span className="text-[#D21F3C]">Earn sooner.</span>
+              <span className="text-[#DE2910]">Earn sooner.</span>
             </motion.h1>
 
             <motion.p 
@@ -66,7 +66,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/driver-onboarding"
-                className="group inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] px-8 text-sm font-bold text-white transition-all hover:bg-[#D21F3C] active:scale-95"
+                className="group inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] px-8 text-sm font-bold text-white transition-all hover:bg-[#DE2910] active:scale-95"
               >
                 Apply to Drive
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -103,7 +103,7 @@ export default function HeroSection() {
             className="relative lg:ml-auto w-full max-w-md mx-auto lg:max-w-[440px] xl:max-w-[480px]"
           >
             {/* Soft backdrop glow to separate from background without looking tacky */}
-            <div className="absolute inset-4 rounded-[2.5rem] bg-[#D21F3C]/10 blur-3xl" />
+            <div className="absolute inset-4 rounded-[2.5rem] bg-[#DE2910]/10 blur-3xl" />
 
             <div className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] bg-[#111111] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)]">
               <Image

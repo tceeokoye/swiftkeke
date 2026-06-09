@@ -30,15 +30,15 @@ export default function FloatingContact() {
         </a>
 
         <a 
-          href="mailto:support@bookride.ng" 
-          className="flex items-center gap-3 p-3 pr-4 bg-white border border-gray-100 rounded-2xl shadow-lg hover:border-[#D21F3C]/30 hover:shadow-xl transition group"
+          href="mailto:support@onaaga.ng" 
+          className="flex items-center gap-3 p-3 pr-4 bg-white border border-gray-100 rounded-2xl shadow-lg hover:border-[#DE2910]/30 hover:shadow-xl transition group"
         >
-          <div className="w-10 h-10 bg-[#D21F3C]/10 rounded-xl flex items-center justify-center text-[#D21F3C] group-hover:scale-110 transition">
+          <div className="w-10 h-10 bg-[#DE2910]/10 rounded-xl flex items-center justify-center text-[#DE2910] group-hover:scale-110 transition">
             <Mail className="w-5 h-5" />
           </div>
           <div className="flex flex-col text-left">
             <span className="text-sm font-bold text-[#1A1A1A]">Email Us</span>
-            <span className="text-[10px] text-[#888888]">support@bookride.ng</span>
+            <span className="text-[10px] text-[#888888]">support@onaaga.ng</span>
           </div>
         </a>
 
@@ -59,7 +59,7 @@ export default function FloatingContact() {
       {/* Main Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-14 h-14 bg-[#D21F3C] rounded-full flex items-center justify-center shadow-2xl shadow-[#D21F3C]/30 hover:bg-[#a8172d] hover:scale-105 transition-all duration-300 z-10"
+        className="relative w-14 h-14 bg-[#DE2910] rounded-full flex items-center justify-center shadow-2xl shadow-[#DE2910]/30 hover:bg-[#a8172d] hover:scale-105 transition-all duration-300 z-10"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-white" />

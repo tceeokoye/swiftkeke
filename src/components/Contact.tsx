@@ -5,7 +5,7 @@ import { Phone, Mail, Headphones, Send, Share2, Globe, MessageCircle } from "luc
 
 const contactItems = [
   { icon: Phone, label: "Call Us", value: "+234 800 OnaAga" },
-  { icon: Mail, label: "Email Us", value: "support@bookride.ng" },
+  { icon: Mail, label: "Email Us", value: "support@onaaga.ng" },
   { icon: Headphones, label: "Live Chat", value: "Available 24/7 on the app" },
 ];
 
@@ -28,14 +28,14 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 lg:py-32 relative bg-white">
-      <div className="absolute right-0 bottom-0 w-80 h-80 bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute right-0 bottom-0 w-80 h-80 bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Info */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-6">
               Get in Touch
             </div>
             <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-5">
@@ -50,10 +50,10 @@ export default function Contact() {
               {contactItems.map(({ icon: Icon, label, value }) => (
                 <div
                   key={label}
-                  className="flex items-center gap-4 p-4 bg-[#F7F7F7] border border-gray-100 rounded-2xl hover:border-[#D21F3C]/30 hover:bg-[#D21F3C]/5 transition"
+                  className="flex items-center gap-4 p-4 bg-[#F7F7F7] border border-gray-100 rounded-2xl hover:border-[#DE2910]/30 hover:bg-[#DE2910]/5 transition"
                 >
-                  <div className="w-10 h-10 bg-[#D21F3C]/15 border border-[#D21F3C]/25 rounded-xl flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-[#D21F3C]" />
+                  <div className="w-10 h-10 bg-[#DE2910]/15 border border-[#DE2910]/25 rounded-xl flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-[#DE2910]" />
                   </div>
                   <div>
                     <div className="text-xs text-[#888888] font-medium">{label}</div>
@@ -69,7 +69,7 @@ export default function Contact() {
                   key={id}
                   id={id}
                   href={href}
-                  className="w-10 h-10 bg-[#F7F7F7] border border-gray-200 rounded-xl flex items-center justify-center text-[#888888] hover:text-[#D21F3C] hover:border-[#D21F3C]/30 hover:bg-[#D21F3C]/5 transition-all duration-200"
+                  className="w-10 h-10 bg-[#F7F7F7] border border-gray-200 rounded-xl flex items-center justify-center text-[#888888] hover:text-[#DE2910] hover:border-[#DE2910]/30 hover:bg-[#DE2910]/5 transition-all duration-200"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -93,7 +93,7 @@ export default function Contact() {
                 placeholder="Your full name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition"
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition"
               />
             </div>
             <div>
@@ -107,7 +107,7 @@ export default function Contact() {
                 placeholder="your@email.com"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition"
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition"
               />
             </div>
             <div>
@@ -120,7 +120,7 @@ export default function Contact() {
                 placeholder="+234 000 000 0000"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition"
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition"
               />
             </div>
             <div>
@@ -134,12 +134,12 @@ export default function Contact() {
                 placeholder="How can we help you?"
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition resize-none"
+                className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition resize-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 py-4 bg-[#D21F3C] text-white font-bold rounded-xl shadow-lg shadow-[#D21F3C]/20 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all duration-200"
+              className="w-full flex items-center justify-center gap-2 py-4 bg-[#DE2910] text-white font-bold rounded-xl shadow-lg shadow-[#DE2910]/20 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all duration-200"
             >
               <Send className="w-4 h-4" />
               {sent ? "Message Sent! ?" : "Send Message"}

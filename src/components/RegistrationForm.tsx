@@ -354,10 +354,10 @@ export default function RegistrationForm({
 
   return (
     <section id="register" className="relative overflow-hidden w-full max-w-full">
-      <div className="absolute left-0 top-1/4 w-80 h-80 bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute left-0 top-1/4 w-80 h-80 bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-2xl mx-auto px-0 sm:px-6 relative w-full overflow-hidden">
         <div className="text-center mb-6 sm:mb-10 px-4 sm:px-0">
-          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             {form.accountType === "passenger" ? "Passenger Waitlist" : "Driver Onboarding"}
           </div> */}
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-2 sm:mb-3">
@@ -377,7 +377,7 @@ export default function RegistrationForm({
               >
                 <div className="flex flex-col items-center gap-1.5">
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${i < step ? "bg-green-500/20 border border-green-500/40 text-green-600" : i === step ? "bg-[#D21F3C] text-white shadow-lg shadow-[#D21F3C]/30" : "bg-gray-100 border border-gray-200 text-[#888888]"}`}
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300 ${i < step ? "bg-green-500/20 border border-green-500/40 text-green-600" : i === step ? "bg-[#DE2910] text-white shadow-lg shadow-[#DE2910]/30" : "bg-gray-100 border border-gray-200 text-[#888888]"}`}
                   >
                     {i < step ? (
                       <Check className="w-4 h-4" />
@@ -386,7 +386,7 @@ export default function RegistrationForm({
                     )}
                   </div>
                   <span
-                    className={`text-[10px] font-medium hidden sm:block ${i <= step ? "text-[#D21F3C]" : "text-[#888888]"}`}
+                    className={`text-[10px] font-medium hidden sm:block ${i <= step ? "text-[#DE2910]" : "text-[#888888]"}`}
                   >
                     {label}
                   </span>
@@ -475,7 +475,7 @@ export default function RegistrationForm({
               <button
                 onClick={next}
                 disabled={loading || (step === 0 && !form.accountType)}
-                className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-[#D21F3C] rounded-xl shadow-lg shadow-[#D21F3C]/25 hover:bg-[#a8172d] transition-all disabled:opacity-60 cursor-pointer"
+                className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-[#DE2910] rounded-xl shadow-lg shadow-[#DE2910]/25 hover:bg-[#a8172d] transition-all disabled:opacity-60 cursor-pointer"
               >
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />

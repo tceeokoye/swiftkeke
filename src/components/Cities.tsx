@@ -18,7 +18,7 @@ export default function Cities() {
     <section className="py-20 relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             Coverage
           </div>
           <h2 className="text-4xl font-black text-[#1A1A1A] mb-3">
@@ -36,12 +36,12 @@ export default function Cities() {
               key={name}
               className={`flex items-center gap-3 p-4 rounded-xl border transition-all duration-200 ${
                 active
-                  ? "bg-[#D21F3C]/5 border-[#D21F3C]/25 hover:bg-[#D21F3C]/10"
+                  ? "bg-[#DE2910]/5 border-[#DE2910]/25 hover:bg-[#DE2910]/10"
                   : "bg-[#F7F7F7] border-gray-100 opacity-60"
               }`}
             >
               {active ? (
-                <MapPin className="w-4 h-4 text-[#D21F3C] shrink-0" />
+                <MapPin className="w-4 h-4 text-[#DE2910] shrink-0" />
               ) : (
                 <Clock className="w-4 h-4 text-[#888888] shrink-0" />
               )}

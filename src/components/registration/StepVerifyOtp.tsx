@@ -14,7 +14,7 @@ interface Props {
 export default function StepVerifyOtp({ form, set, loading, resendCode }: Props) {
   const [timeLeft, setTimeLeft] = useState(0);
   const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
-  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition-all";
+  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition-all";
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -39,13 +39,13 @@ export default function StepVerifyOtp({ form, set, loading, resendCode }: Props)
   return (
     <div className="space-y-5 animate-fadeInUp">
       <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-        <ShieldCheck className="w-5 h-5 text-[#D21F3C]" /> Verify Email
+        <ShieldCheck className="w-5 h-5 text-[#DE2910]" /> Verify Email
       </h3>
       <p className="text-sm text-gray-500">We&apos;ve sent a verification code to <span className="font-bold text-[#1A1A1A]">{form.email}</span>. Enter it below to continue.</p>
       <div>
         <label className={labelClass}>Verification Code *</label>
         <div className="relative">
-          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+          <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#DE2910]" />
           <input 
             className={`${inputClass} pl-10 tracking-[1em] font-mono text-lg`} 
             maxLength={4} 
@@ -58,7 +58,7 @@ export default function StepVerifyOtp({ form, set, loading, resendCode }: Props)
           <button 
             onClick={handleResend}
             disabled={loading || timeLeft > 0}
-            className="text-xs font-semibold text-[#D21F3C] hover:underline disabled:text-gray-400 disabled:no-underline flex items-center gap-1.5 transition-all cursor-pointer"
+            className="text-xs font-semibold text-[#DE2910] hover:underline disabled:text-gray-400 disabled:no-underline flex items-center gap-1.5 transition-all cursor-pointer"
           >
             {loading ? "Resending..." : timeLeft > 0 ? `Resend in ${formatTime(timeLeft)}` : "Resend code"}
           </button>

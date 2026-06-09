@@ -18,18 +18,18 @@ export default function StepAccountSetup({
   checkPasswordStrength, getStrengthText, getStrengthColor 
 }: Props) {
   const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
-  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition-all";
+  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition-all";
 
   return (
     <div className="space-y-5 animate-fadeInUp">
       <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-        <Lock className="w-5 h-5 text-[#D21F3C]" /> Account Setup
+        <Lock className="w-5 h-5 text-[#DE2910]" /> Account Setup
       </h3>
       <p className="text-sm text-gray-500">Create your account to continue the registration.</p>
       <div>
         <label className={labelClass}>Email Address *</label>
         <div className="relative">
-          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+          <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#DE2910]" />
           <input className={`${inputClass} pl-10`} type="email" placeholder="your@email.com" value={form.email || ""} onChange={(e) => set("email", e.target.value)} />
         </div>
       </div>
@@ -37,9 +37,9 @@ export default function StepAccountSetup({
         <div>
           <label className={labelClass}>Password *</label>
           <div className="relative">
-            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#DE2910]" />
             <input className={`${inputClass} pl-10 pr-10`} type={showPassword ? "text" : "password"} placeholder="Create password" value={form.password || ""} onChange={(e) => set("password", e.target.value)} />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#D21F3C] transition-colors">
+            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#DE2910] transition-colors">
               {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
@@ -60,7 +60,7 @@ export default function StepAccountSetup({
         <div>
           <label className={labelClass}>Confirm Password *</label>
           <div className="relative">
-            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D21F3C]" />
+            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#DE2910]" />
             <input className={`${inputClass} pl-10 pr-10`} type={showPassword ? "text" : "password"} placeholder="Confirm password" value={form.confirmPassword || ""} onChange={(e) => set("confirmPassword", e.target.value)} />
           </div>
         </div>

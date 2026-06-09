@@ -3,7 +3,7 @@
 @layer base {
   :root {
     /* OnaAga Brand — Electric Royal Blue + Amber Gold */
-    --brand-primary: #D21F3C;      /* Electric Royal Blue */
+    --brand-primary: #DE2910;      /* Electric Royal Blue */
     --brand-primary-dark: #a8172d; /* Hover/pressed state */
     --brand-primary-light: #3D72FF;/* Lighter blue tint */
     --brand-gold: #FDC300;         /* Amber Gold — ratings, accents */

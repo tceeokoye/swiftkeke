@@ -87,7 +87,7 @@ export default function FinancePage() {
                document.body.removeChild(link);
                addToast("Report downloaded successfully", "success");
              }}
-             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-[#D21F3C] text-white font-bold rounded-2xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#D21F3C]/20"
+             className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-[#DE2910] text-white font-bold rounded-2xl hover:bg-[#a8172d] transition-all shadow-lg shadow-[#DE2910]/20"
            >
              <Download className="w-4 h-4" /> Download Report
            </button>
@@ -100,7 +100,7 @@ export default function FinancePage() {
           <div key={stat.label} className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50">
             <div className="flex items-center justify-between mb-4">
               <div className="w-12 h-12 bg-[#F7F7F7] rounded-2xl flex items-center justify-center">
-                <stat.icon className="w-6 h-6 text-[#D21F3C]" />
+                <stat.icon className="w-6 h-6 text-[#DE2910]" />
               </div>
               <div className={`flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-lg ${stat.positive ? "bg-green-50 text-green-600" : "bg-red-50 text-red-600"}`}>
                 {stat.positive ? <ArrowUpRight className="w-3 h-3" /> : <ArrowDownRight className="w-3 h-3" />}
@@ -122,7 +122,7 @@ export default function FinancePage() {
                {[30, 45, 25, 60, 40, 75, 55, 90, 65, 80, 50, 95].map((h, i) => (
                  <div key={i} className="flex-1 space-y-2">
                     <div className="flex flex-col-reverse h-full bg-[#F7F7F7] rounded-full overflow-hidden">
-                       <div className="bg-[#D21F3C]" style={{ height: `${h}%` }} />
+                       <div className="bg-[#DE2910]" style={{ height: `${h}%` }} />
                        <div className="bg-[#1A1A1A]/10" style={{ height: `${h/2}%` }} />
                     </div>
                  </div>
@@ -150,7 +150,7 @@ export default function FinancePage() {
                        <p className="text-[10px] text-white/40 font-medium">{p.date}</p>
                     </div>
                     <div className="text-right">
-                       <p className="text-sm font-black text-[#D21F3C]">{p.amount}</p>
+                       <p className="text-sm font-black text-[#DE2910]">{p.amount}</p>
                        <p className={`text-[10px] font-bold uppercase tracking-widest ${p.status === "Processed" ? "text-green-400" : "text-yellow-400"}`}>{p.status}</p>
                     </div>
                  </div>
@@ -170,7 +170,7 @@ export default function FinancePage() {
                   variant: "success"
                 });
               }}
-              className="w-full py-4 bg-[#D21F3C] text-white font-bold rounded-2xl shadow-lg shadow-[#D21F3C]/20 hover:bg-[#a8172d] transition-all flex items-center justify-center gap-2"
+              className="w-full py-4 bg-[#DE2910] text-white font-bold rounded-2xl shadow-lg shadow-[#DE2910]/20 hover:bg-[#a8172d] transition-all flex items-center justify-center gap-2"
             >
                <CreditCard className="w-5 h-5" /> Process All Payouts
             </button>

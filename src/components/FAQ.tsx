@@ -44,7 +44,7 @@ export default function FAQ() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             FAQ
           </div>
           <h2 className="text-4xl font-black text-[#1A1A1A] mb-3">
@@ -65,7 +65,7 @@ export default function FAQ() {
               key={i}
               variants={cardVariants}
               className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
-                open === i ? "bg-white border-[#D21F3C]/30 shadow-sm" : "bg-white border-gray-100 hover:border-[#D21F3C]/20"
+                open === i ? "bg-white border-[#DE2910]/30 shadow-sm" : "bg-white border-gray-100 hover:border-[#DE2910]/20"
               }`}
             >
               <button
@@ -73,7 +73,7 @@ export default function FAQ() {
                 className="w-full flex items-center justify-between p-5 text-left"
               >
                 <span className="text-sm font-semibold text-[#1A1A1A] pr-4">{q}</span>
-                <ChevronDown className={`w-4 h-4 text-[#D21F3C] shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-4 h-4 text-[#DE2910] shrink-0 transition-transform duration-300 ${open === i ? "rotate-180" : ""}`} />
               </button>
               <div className={`overflow-hidden transition-all duration-300 ${open === i ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
                 <p className="px-5 pb-5 text-sm text-[#555555] leading-relaxed">{a}</p>

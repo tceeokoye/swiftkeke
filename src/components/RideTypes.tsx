@@ -44,7 +44,7 @@ export default function RideTypes() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             Our Fleet
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
@@ -63,12 +63,12 @@ export default function RideTypes() {
               key={id}
               className={`relative rounded-3xl border p-7 transition-all duration-300 hover:-translate-y-2 group bg-white ${
                 featured
-                  ? "border-[#D21F3C]/40 shadow-2xl shadow-[#D21F3C]/10 scale-105"
-                  : "border-gray-100 shadow-sm hover:border-[#D21F3C]/30 hover:shadow-md"
+                  ? "border-[#DE2910]/40 shadow-2xl shadow-[#DE2910]/10 scale-105"
+                  : "border-gray-100 shadow-sm hover:border-[#DE2910]/30 hover:shadow-md"
               }`}
             >
               {featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#D21F3C] text-white text-xs font-black rounded-full shadow-lg shadow-[#D21F3C]/30">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-[#DE2910] text-white text-xs font-black rounded-full shadow-lg shadow-[#DE2910]/30">
                   ⭐ Most Popular
                 </div>
               )}
@@ -76,10 +76,10 @@ export default function RideTypes() {
               {/* Icon */}
               <div
                 className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${
-                  featured ? "bg-[#D21F3C]/10 border border-[#D21F3C]/30" : "bg-gray-100 border border-gray-200"
+                  featured ? "bg-[#DE2910]/10 border border-[#DE2910]/30" : "bg-gray-100 border border-gray-200"
                 }`}
               >
-                <Icon className="w-8 h-8" style={{ color: featured ? "#D21F3C" : "#555555" }} />
+                <Icon className="w-8 h-8" style={{ color: featured ? "#DE2910" : "#555555" }} />
               </div>
 
               <h3 className="text-xl font-black text-[#1A1A1A] mb-2">{label}</h3>
@@ -87,18 +87,18 @@ export default function RideTypes() {
 
               <div className="flex items-center gap-4 mb-6">
                 <span className="flex items-center gap-1.5 text-xs text-[#888888]">
-                  <Users className="w-3.5 h-3.5 text-[#D21F3C]" />
+                  <Users className="w-3.5 h-3.5 text-[#DE2910]" />
                   {passengers}
                 </span>
-                <span className="text-xs font-bold text-[#D21F3C]">{price}</span>
+                <span className="text-xs font-bold text-[#DE2910]">{price}</span>
               </div>
 
               <a
-                href="#register"
+                href="/passenger-waitlist"
                 className={`block text-center py-3 rounded-xl text-sm font-bold transition-all duration-200 ${
                   ctaStyle === "filled"
-                    ? "bg-[#D21F3C] text-white hover:bg-[#a8172d] shadow-md hover:shadow-lg"
-                    : "border-2 border-[#D21F3C]/50 text-[#D21F3C] hover:bg-[#D21F3C]/5"
+                    ? "bg-[#DE2910] text-white hover:bg-[#a8172d] shadow-md hover:shadow-lg"
+                    : "border-2 border-[#DE2910]/50 text-[#DE2910] hover:bg-[#DE2910]/5"
                 }`}
               >
                 {cta}

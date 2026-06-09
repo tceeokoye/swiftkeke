@@ -1,5 +1,6 @@
 "use client";
  
+import Link from "next/link";
 import { motion } from "framer-motion";
  
 const steps = [
@@ -27,7 +28,7 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="py-24 lg:py-32 relative overflow-hidden bg-white">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
  
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -39,7 +40,7 @@ export default function HowItWorks() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-6">
                 Simple Process
               </div>
               <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
@@ -53,7 +54,7 @@ export default function HowItWorks() {
  
             <div className="space-y-8 relative">
               {/* Connecting Line */}
-              <div className="absolute left-[38px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#D21F3C]/40 to-transparent hidden sm:block" />
+              <div className="absolute left-[38px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-[#DE2910]/40 to-transparent hidden sm:block" />
  
               {steps.map((step, i) => (
                 <motion.div 
@@ -65,7 +66,7 @@ export default function HowItWorks() {
                   className="relative flex gap-6 sm:gap-8 group"
                 >
                   {/* Image/Icon block */}
-                  <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:border-[#D21F3C]/30">
+                  <div className="relative shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-[2rem] bg-white border border-gray-100 shadow-xl flex items-center justify-center z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1 group-hover:border-[#DE2910]/30">
                     <img 
                       src={step.img} 
                       alt={step.title} 
@@ -78,7 +79,7 @@ export default function HowItWorks() {
  
                   {/* Text block */}
                   <div className="pt-2 sm:pt-4">
-                    <h3 className="text-xl font-bold text-[#1A1A1A] mb-2 group-hover:text-[#D21F3C] transition-colors">
+                    <h3 className="text-xl font-bold text-[#1A1A1A] mb-2 group-hover:text-[#DE2910] transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-[#555555] leading-relaxed text-sm sm:text-base">
@@ -96,9 +97,9 @@ export default function HowItWorks() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="mt-12"
             >
-              <a href="#register" className="inline-flex items-center justify-center px-8 py-4 bg-[#D21F3C] text-white font-bold rounded-xl shadow-lg shadow-[#D21F3C]/30 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all">
+              <Link href="/driver-onboarding" className="inline-flex items-center justify-center px-8 py-4 bg-[#DE2910] text-white font-bold rounded-xl shadow-lg shadow-[#DE2910]/30 hover:bg-[#a8172d] hover:-translate-y-0.5 transition-all">
                 Join Now
-              </a>
+              </Link>
             </motion.div>
           </div>
  
@@ -111,7 +112,7 @@ export default function HowItWorks() {
             className="relative mt-12 lg:mt-0 flex justify-center"
           >
             {/* Soft decorative background circles */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#D21F3C]/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#FDC300]/10 rounded-full blur-2xl pointer-events-none" />
             
             {/* Giant 3D Illustration */}

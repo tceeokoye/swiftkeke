@@ -12,13 +12,13 @@ interface Props {
 
 export default function StepDocuments({ form, set, isSelfieStep }: Props) {
   const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
-  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#D21F3C]/50 transition-all";
+  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition-all";
 
   if (isSelfieStep) {
     return (
       <div className="space-y-5 animate-fadeInUp">
         <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-          <Camera className="w-5 h-5 text-[#D21F3C]" /> Selfie Verification
+          <Camera className="w-5 h-5 text-[#DE2910]" /> Selfie Verification
         </h3>
         <FileUploadBox label="Upload Your Selfie" hint="Clear front-facing photo" file={form.selfie} onFile={(f) => set("selfie", f)} accept=".jpg,.jpeg,.png" icon={Camera} />
       </div>
@@ -28,7 +28,7 @@ export default function StepDocuments({ form, set, isSelfieStep }: Props) {
   return (
     <div className="space-y-5 animate-fadeInUp">
       <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-        <FileText className="w-5 h-5 text-[#D21F3C]" /> Identification
+        <FileText className="w-5 h-5 text-[#DE2910]" /> Identification
       </h3>
       <div>
         <label className={labelClass}>National Identification Number (NIN) *</label>

@@ -8,7 +8,7 @@ const benefits = [
     img: "https://img.icons8.com/3d-fluency/94/money-bag.png", // Money Bag
     title: "Competitive Earnings",
     desc: "Keep up to 85% of every fare. Earn bonuses during peak hours and complete weekly targets for extra rewards.",
-    color: "#D21F3C",
+    color: "#DE2910",
   },
   {
     img: "https://img.icons8.com/3d-fluency/94/alarm-clock--v1.png", // Alarm Clock
@@ -20,7 +20,7 @@ const benefits = [
     img: "https://img.icons8.com/3d-fluency/94/shield.png", // Shield
     title: "Insurance Coverage",
     desc: "Every registered driver gets accident and liability coverage at no extra cost while on active trips.",
-    color: "#D21F3C",
+    color: "#DE2910",
   },
   {
     img: "https://img.icons8.com/3d-fluency/94/bank-cards.png", // Weekly Payouts / Bank
@@ -32,7 +32,7 @@ const benefits = [
     img: "https://img.icons8.com/3d-fluency/94/group--v1.png", // People
     title: "Growing Rider Base",
     desc: "Access thousands of riders requesting trips daily. More riders mean more earning opportunities for you.",
-    color: "#D21F3C",
+    color: "#DE2910",
   },
   {
     img: "https://img.icons8.com/3d-fluency/94/handshake.png", // Handshake
@@ -53,7 +53,7 @@ export default function Benefits() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             Why Drive With Us?
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-4">
@@ -73,7 +73,7 @@ export default function Benefits() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1, ease: "easeOut" }}
-              className="group relative p-6 rounded-2xl bg-white border border-gray-100 hover:border-[#D21F3C]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group relative p-6 rounded-2xl bg-white border border-gray-100 hover:border-[#DE2910]/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div
                 className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"

@@ -36,7 +36,7 @@ export default function FileUploadBox({ label, hint, file, onFile, accept, icon:
       className={`relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed cursor-pointer transition-all duration-200 overflow-hidden ${
         file
           ? "border-green-500/50 bg-green-500/5"
-          : "border-gray-200 bg-[#F7F7F7] hover:border-[#D21F3C]/40 hover:bg-[#D21F3C]/5"
+          : "border-gray-200 bg-[#F7F7F7] hover:border-[#DE2910]/40 hover:bg-[#DE2910]/5"
       }`}
     >
       <input ref={ref} type="file" accept={accept} className="hidden" onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
@@ -59,8 +59,8 @@ export default function FileUploadBox({ label, hint, file, onFile, accept, icon:
         </>
       ) : (
         <>
-          <div className="w-12 h-12 bg-[#D21F3C]/15 border border-[#D21F3C]/30 rounded-full flex items-center justify-center mb-3">
-            <Icon className="w-6 h-6 text-[#D21F3C]" />
+          <div className="w-12 h-12 bg-[#DE2910]/15 border border-[#DE2910]/30 rounded-full flex items-center justify-center mb-3">
+            <Icon className="w-6 h-6 text-[#DE2910]" />
           </div>
           <span className="text-sm font-semibold text-[#1A1A1A] text-center">{label}</span>
           <span className="text-xs text-gray-600 mt-1 text-center">{hint}</span>

@@ -27,7 +27,7 @@ export default function RegistrationSuccess({ firstName, email, accountType, onR
           </p>
           <button 
             onClick={onReset}
-            className="px-6 py-3 bg-[#D21F3C] hover:bg-[#a8172d] text-white font-bold rounded-xl transition cursor-pointer"
+            className="px-6 py-3 bg-[#DE2910] hover:bg-[#a8172d] text-white font-bold rounded-xl transition cursor-pointer"
           >
             Back to Home
           </button>

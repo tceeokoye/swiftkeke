@@ -30,7 +30,7 @@ export default function AdminLogin() {
   return (
     <main className="min-h-screen bg-[#F7F7F7] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-[#D21F3C]/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[50%] h-full bg-[#DE2910]/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#FDC300]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
@@ -40,7 +40,7 @@ export default function AdminLogin() {
             <OnaAgaLogo size={48} />
           </div>
           <h1 className="text-2xl font-black text-[#1A1A1A]">
-            Admin<span className="text-[#D21F3C]">Portal</span>
+            Admin<span className="text-[#DE2910]">Portal</span>
           </h1>
           <p className="text-gray-500 text-sm mt-1">Authorized Access Only</p>
         </div>
@@ -60,7 +60,7 @@ export default function AdminLogin() {
                   placeholder="admin@OnaAga.ng"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-[#F7F7F7] border-2 border-transparent focus:border-[#D21F3C]/20 focus:bg-white rounded-2xl px-12 py-4 text-sm font-medium transition-all outline-none"
+                  className="w-full bg-[#F7F7F7] border-2 border-transparent focus:border-[#DE2910]/20 focus:bg-white rounded-2xl px-12 py-4 text-sm font-medium transition-all outline-none"
                 />
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function AdminLogin() {
                   placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#F7F7F7] border-2 border-transparent focus:border-[#D21F3C]/20 focus:bg-white rounded-2xl px-12 py-4 text-sm font-medium transition-all outline-none"
+                  className="w-full bg-[#F7F7F7] border-2 border-transparent focus:border-[#DE2910]/20 focus:bg-white rounded-2xl px-12 py-4 text-sm font-medium transition-all outline-none"
                 />
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1A1A1A] text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-[#D21F3C] transition-all duration-300 shadow-lg shadow-black/10 disabled:opacity-50"
+              className="w-full bg-[#1A1A1A] text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-[#DE2910] transition-all duration-300 shadow-lg shadow-black/10 disabled:opacity-50"
             >
               {loading ? (
                 <Zap className="w-5 h-5 animate-pulse" />
@@ -110,7 +110,7 @@ export default function AdminLogin() {
           <button
             onClick={handleFreeAccess}
             disabled={loading}
-            className="w-full bg-[#D21F3C]/10 text-[#D21F3C] font-bold py-4 rounded-2xl border-2 border-dashed border-[#D21F3C]/30 flex items-center justify-center gap-2 hover:bg-[#D21F3C]/20 transition-all duration-300 group"
+            className="w-full bg-[#DE2910]/10 text-[#DE2910] font-bold py-4 rounded-2xl border-2 border-dashed border-[#DE2910]/30 flex items-center justify-center gap-2 hover:bg-[#DE2910]/20 transition-all duration-300 group"
           >
             <ShieldCheck className="w-5 h-5 group-hover:scale-110 transition-transform" />
             Bypass Login (Free Access)

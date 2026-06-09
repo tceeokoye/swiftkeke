@@ -28,7 +28,7 @@ export default function AdminLayout({
           <div className="flex items-center gap-4">
             <button 
               onClick={() => setSidebarOpen(true)}
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-[#F7F7F7] text-gray-500 hover:text-[#D21F3C] transition-colors"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-[#F7F7F7] text-gray-500 hover:text-[#DE2910] transition-colors"
             >
               <Menu className="w-5 h-5" />
             </button>
@@ -37,15 +37,15 @@ export default function AdminLayout({
               <input 
                 type="text" 
                 placeholder="Search anything..." 
-                className="w-full bg-[#F7F7F7] border-none rounded-xl py-2.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-[#D21F3C]/10 outline-none transition-all"
+                className="w-full bg-[#F7F7F7] border-none rounded-xl py-2.5 pl-12 pr-4 text-sm focus:ring-2 focus:ring-[#DE2910]/10 outline-none transition-all"
               />
             </div>
           </div>
 
           <div className="flex items-center gap-6">
-            <button className="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#F7F7F7] text-gray-500 hover:text-[#D21F3C] transition-colors">
+            <button className="relative w-10 h-10 flex items-center justify-center rounded-xl bg-[#F7F7F7] text-gray-500 hover:text-[#DE2910] transition-colors">
               <Bell className="w-5 h-5" />
-              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#D21F3C] rounded-full border-2 border-white" />
+              <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#DE2910] rounded-full border-2 border-white" />
             </button>
             <div className="flex items-center gap-3 pl-6 border-l border-gray-100">
               <div className="text-right hidden sm:block">

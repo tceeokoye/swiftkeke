@@ -67,7 +67,7 @@ export default function WaitlistPage() {
             link.click();
             document.body.removeChild(link);
           }}
-          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-bold rounded-2xl hover:bg-[#D21F3C] transition-all shadow-lg shadow-black/10"
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-[#1A1A1A] text-white font-bold rounded-2xl hover:bg-[#DE2910] transition-all shadow-lg shadow-black/10"
         >
           <Download className="w-4 h-4" /> Export CSV
         </button>
@@ -82,7 +82,7 @@ export default function WaitlistPage() {
             placeholder="Search by name, email or city..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#D21F3C]/10 outline-none transition-all"
+            className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#DE2910]/10 outline-none transition-all"
           />
         </div>
         <button className="flex items-center gap-2 px-5 py-3 bg-[#F7F7F7] text-gray-500 font-bold text-sm rounded-xl hover:bg-gray-100 transition-all relative">
@@ -128,7 +128,7 @@ export default function WaitlistPage() {
                 <tr key={user.id} className="hover:bg-[#F7F7F7]/30 transition-colors group">
                   <td className="px-8 py-5">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-[#D21F3C]/5 rounded-xl flex items-center justify-center font-bold text-[#D21F3C]">
+                      <div className="w-10 h-10 bg-[#DE2910]/5 rounded-xl flex items-center justify-center font-bold text-[#DE2910]">
                         {user.name.charAt(0)}
                       </div>
                       <div>
@@ -141,7 +141,7 @@ export default function WaitlistPage() {
                   </td>
                   <td className="px-8 py-5">
                     <p className="text-sm font-semibold text-gray-600 flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-[#D21F3C]" /> {user.phone}
+                      <Phone className="w-3.5 h-3.5 text-[#DE2910]" /> {user.phone}
                     </p>
                   </td>
                   <td className="px-8 py-5">
@@ -184,8 +184,8 @@ export default function WaitlistPage() {
         <div className="px-8 py-6 bg-[#F7F7F7]/50 border-t border-gray-50 flex items-center justify-between">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Showing 6 of 8,492 users</p>
           <div className="flex gap-2">
-            <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-400 hover:border-[#D21F3C] hover:text-[#D21F3C] transition-all disabled:opacity-50" disabled>Previous</button>
-            <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-[#D21F3C] hover:bg-[#D21F3C] hover:text-white transition-all">Next</button>
+            <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-gray-400 hover:border-[#DE2910] hover:text-[#DE2910] transition-all disabled:opacity-50" disabled>Previous</button>
+            <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-bold text-[#DE2910] hover:bg-[#DE2910] hover:text-white transition-all">Next</button>
           </div>
         </div>
       </div>

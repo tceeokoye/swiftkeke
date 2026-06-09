@@ -8,7 +8,7 @@ export default function BlogPage() {
       <Navbar />
       <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             Our Blog
           </div>
           <h1 className="text-5xl font-black text-[#1A1A1A] mb-4">Latest from OnaAga</h1>
@@ -26,12 +26,12 @@ export default function BlogPage() {
                  </div>
                </div>
                <div className="space-y-3">
-                 <div className="flex items-center gap-3 text-xs font-bold text-[#D21F3C] uppercase tracking-widest">
+                 <div className="flex items-center gap-3 text-xs font-bold text-[#DE2910] uppercase tracking-widest">
                    <span>Updates</span>
                    <span className="w-1 h-1 bg-gray-300 rounded-full" />
                    <span className="text-gray-500">May 12, 2026</span>
                  </div>
-                 <h3 className="text-2xl font-black text-[#1A1A1A] group-hover:text-[#D21F3C] transition-colors leading-tight">
+                 <h3 className="text-2xl font-black text-[#1A1A1A] group-hover:text-[#DE2910] transition-colors leading-tight">
                    How we're improving safety for every ride in Nigeria
                  </h3>
                  <p className="text-gray-500 line-clamp-2">

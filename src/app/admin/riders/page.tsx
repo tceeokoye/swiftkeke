@@ -64,7 +64,7 @@ export default function RidersPage() {
         </div>
         <div className="bg-white p-6 rounded-[2rem] border border-gray-50 shadow-sm">
           <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Pending Review</p>
-          <h3 className="text-2xl font-black text-[#D21F3C]">24</h3>
+          <h3 className="text-2xl font-black text-[#DE2910]">24</h3>
         </div>
         <div className="bg-white p-6 rounded-[2rem] border border-gray-50 shadow-sm">
           <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Avg. Acceptance</p>
@@ -79,7 +79,7 @@ export default function RidersPage() {
             <button
               key={tab}
               onClick={() => setFilter(tab)}
-              className={`flex-1 lg:flex-none px-6 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${filter === tab ? "bg-white text-[#D21F3C] shadow-sm" : "text-gray-400 hover:text-[#1A1A1A]"}`}
+              className={`flex-1 lg:flex-none px-6 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${filter === tab ? "bg-white text-[#DE2910] shadow-sm" : "text-gray-400 hover:text-[#1A1A1A]"}`}
             >
               {tab}
             </button>
@@ -92,7 +92,7 @@ export default function RidersPage() {
             placeholder="Search riders..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#D21F3C]/10 outline-none transition-all"
+            className="w-full bg-[#F7F7F7] border-none rounded-xl py-3 pl-12 pr-4 text-sm font-medium focus:ring-2 focus:ring-[#DE2910]/10 outline-none transition-all"
           />
         </div>
       </div>
@@ -122,7 +122,7 @@ export default function RidersPage() {
                 <tr key={rider.id} className="hover:bg-[#F7F7F7]/30 transition-colors group cursor-pointer">
                   <td className="px-8 py-5">
                     <Link href={`/admin/riders/${rider.id}`} className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-[#D21F3C]/5 rounded-xl flex items-center justify-center font-bold text-[#D21F3C]">
+                      <div className="w-10 h-10 bg-[#DE2910]/5 rounded-xl flex items-center justify-center font-bold text-[#DE2910]">
                         {rider.name.charAt(0)}
                       </div>
                       <div>
@@ -149,7 +149,7 @@ export default function RidersPage() {
                   <td className="px-8 py-5">
                     <Link href={`/admin/riders/${rider.id}`} className="block">
                       <div className="flex items-center gap-2 text-xs font-semibold text-gray-600">
-                        <MapPin className="w-3.5 h-3.5 text-[#D21F3C]" /> {rider.city}
+                        <MapPin className="w-3.5 h-3.5 text-[#DE2910]" /> {rider.city}
                       </div>
                     </Link>
                   </td>
@@ -164,7 +164,7 @@ export default function RidersPage() {
                   <td className="px-8 py-5 text-center">
                     <Link 
                       href={`/admin/riders/${rider.id}`}
-                      className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F7F7] text-gray-400 hover:bg-[#D21F3C] hover:text-white transition-all shadow-sm"
+                      className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#F7F7F7] text-gray-400 hover:bg-[#DE2910] hover:text-white transition-all shadow-sm"
                     >
                       <ChevronRight className="w-4 h-4" />
                     </Link>

@@ -16,7 +16,7 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-6">
               About OnaAga
             </div>
             <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-5">
@@ -41,7 +41,7 @@ export default function About() {
                   transition={{ delay: index * 0.1 + 0.2, duration: 0.4 }}
                   className="flex items-start gap-3"
                 >
-                  <CheckCircle className="w-5 h-5 text-[#D21F3C] shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 text-[#DE2910] shrink-0 mt-0.5" />
                   <span className="text-sm text-[#555555]">{item}</span>
                 </motion.div>
               ))}
@@ -55,7 +55,7 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="absolute -inset-4 bg-[#D21F3C]/5 rounded-[3rem] transform -rotate-3" 
+              className="absolute -inset-4 bg-[#DE2910]/5 rounded-[3rem] transform -rotate-3" 
             />
             
             <motion.div 
@@ -82,8 +82,8 @@ export default function About() {
               transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
               className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border border-gray-100 z-20 flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-[#D21F3C]/10 rounded-xl flex items-center justify-center">
-                <Users className="w-6 h-6 text-[#D21F3C]" />
+              <div className="w-12 h-12 bg-[#DE2910]/10 rounded-xl flex items-center justify-center">
+                <Users className="w-6 h-6 text-[#DE2910]" />
               </div>
               <div>
                 <div className="text-2xl font-black text-[#1A1A1A]">1,200+</div>

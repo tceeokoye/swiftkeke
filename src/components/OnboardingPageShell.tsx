@@ -30,7 +30,7 @@ export default function OnboardingPageShell({
       <section className="pt-24 pb-12 px-4 sm:px-6 lg:px-12 overflow-x-hidden">
         <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-[0.95fr_1.05fr] gap-8 lg:items-start justify-center">
           <div className="w-full max-w-xl lg:max-w-none mx-auto bg-white rounded-3xl lg:rounded-[2.5rem] shadow-xl p-5 sm:p-6 lg:p-10">
-            <div className="inline-flex items-center text-[18px] sm:text-[20px] font-black text-[#D21F3C]">
+            <div className="inline-flex items-center text-[18px] sm:text-[20px] font-black text-[#DE2910]">
               {badge}
             </div>
  
@@ -45,13 +45,13 @@ export default function OnboardingPageShell({
             <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-3">
               {highlights.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 sm:gap-3 rounded-xl sm:rounded-2xl bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-[11px] sm:text-[12px] text-[#1A1A1A] font-normal shadow-sm border border-gray-50/50">
-                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#D21F3C] shrink-0" />
+                  <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#DE2910] shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
  
-            <div className="mt-5 sm:mt-6 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-inner shadow-[#D21F3C]/5 overflow-hidden">
+            <div className="mt-5 sm:mt-6 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-inner shadow-[#DE2910]/5 overflow-hidden">
               <div className="relative aspect-[4/3] w-full rounded-2xl sm:rounded-[1.75rem] bg-white">
                 <Image
                   src={previewImage}
@@ -62,7 +62,7 @@ export default function OnboardingPageShell({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
                 <div className="absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4 rounded-xl sm:rounded-2xl bg-white/90 px-3 py-2.5 sm:px-4 sm:py-3 backdrop-blur-sm">
-                  <p className="text-[9px] sm:text-[10px] font-black text-[#D21F3C]">
+                  <p className="text-[9px] sm:text-[10px] font-black text-[#DE2910]">
                     {defaultAccountType === "driver" ? "Driver preview" : "Passenger preview"}
                   </p>
                   <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm font-bold text-[#1A1A1A]">

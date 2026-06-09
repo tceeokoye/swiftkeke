@@ -24,7 +24,7 @@ export default function MapCoverage() {
                 backgroundSize: "24px 24px",
               }}
             />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#D21F3C]/8 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#DE2910]/8 rounded-full blur-3xl pointer-events-none" />
             
             {/* SVG Routes */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
@@ -34,9 +34,9 @@ export default function MapCoverage() {
  
             {/* Map Pins / Cars */}
             <div className="absolute top-[35%] left-[25%] animate-float" style={{ animationDelay: "0s" }}>
-              <div className="w-10 h-10 bg-[#D21F3C]/15 border border-[#D21F3C]/40 rounded-full flex items-center justify-center relative">
-                <div className="absolute inset-0 bg-[#D21F3C]/15 rounded-full animate-ping" />
-                <MapPin className="w-5 h-5 text-[#D21F3C]" />
+              <div className="w-10 h-10 bg-[#DE2910]/15 border border-[#DE2910]/40 rounded-full flex items-center justify-center relative">
+                <div className="absolute inset-0 bg-[#DE2910]/15 rounded-full animate-ping" />
+                <MapPin className="w-5 h-5 text-[#DE2910]" />
               </div>
               <div className="mt-2 text-center text-xs font-bold text-[#1A1A1A] bg-white/90 px-2 py-1 rounded-lg shadow-sm border border-gray-100">Lagos</div>
             </div>
@@ -57,7 +57,7 @@ export default function MapCoverage() {
               <div className="mt-2 text-center text-xs font-bold text-[#1A1A1A] bg-white/90 px-2 py-1 rounded-lg shadow-sm border border-gray-100">PH</div>
             </div>
  
-            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#D21F3C] rounded-xl flex items-center justify-center shadow-xl shadow-[#D21F3C]/30">
+            <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#DE2910] rounded-xl flex items-center justify-center shadow-xl shadow-[#DE2910]/30">
               <Navigation className="w-6 h-6 text-white" />
             </div>
           </motion.div>
@@ -69,7 +69,7 @@ export default function MapCoverage() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-6">
               Coverage & Navigation
             </div>
             <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-5">
@@ -93,7 +93,7 @@ export default function MapCoverage() {
                   transition={{ delay: 0.2 + i * 0.1, duration: 0.5, ease: "easeOut" }}
                   className="flex gap-4"
                 >
-                  <div className="w-1.5 h-auto bg-gradient-to-b from-[#D21F3C] to-[#FDC300] rounded-full" />
+                  <div className="w-1.5 h-auto bg-gradient-to-b from-[#DE2910] to-[#FDC300] rounded-full" />
                   <div>
                     <h4 className="text-lg font-bold text-[#1A1A1A] mb-1">{title}</h4>
                     <p className="text-sm text-[#888888]">{desc}</p>

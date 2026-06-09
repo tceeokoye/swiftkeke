@@ -9,7 +9,7 @@ const reviews = [
     initials: "AO",
     rating: 5,
     text: "OnaAga changed my daily commute completely. I get to work faster, cheaper, and without the stress of finding transport.",
-    gradientFrom: "#D21F3C",
+    gradientFrom: "#DE2910",
     gradientTo: "#FDC300",
   },
   {
@@ -19,7 +19,7 @@ const reviews = [
     rating: 5,
     text: "The drivers are professional and the app is so smooth! I booked a premium ride for my airport drop-off and the driver was early. 10/10!",
     gradientFrom: "#FDC300",
-    gradientTo: "#D21F3C",
+    gradientTo: "#DE2910",
     featured: true,
   },
   {
@@ -28,7 +28,7 @@ const reviews = [
     initials: "FK",
     rating: 4.5,
     text: "I love how I can see the price before booking. No more arguing about fare! OnaAga is just different from the rest.",
-    gradientFrom: "#D21F3C",
+    gradientFrom: "#DE2910",
     gradientTo: "#FDC300",
   },
 ];
@@ -53,7 +53,7 @@ export default function Testimonials() {
     <section className="py-24 lg:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center max-w-xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D21F3C]/10 border border-[#D21F3C]/20 text-[#D21F3C] text-sm font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
             Reviews
           </div>
           <h2 className="text-4xl lg:text-5xl font-black text-[#1A1A1A]">
@@ -67,8 +67,8 @@ export default function Testimonials() {
               key={name}
               className={`relative p-7 rounded-3xl border transition-all duration-300 hover:-translate-y-1 ${
                 featured
-                  ? "bg-[#D21F3C] border-[#D21F3C] shadow-2xl shadow-[#D21F3C]/20 scale-105"
-                  : "bg-white border-gray-100 shadow-sm hover:border-[#D21F3C]/25 hover:shadow-md"
+                  ? "bg-[#DE2910] border-[#DE2910] shadow-2xl shadow-[#DE2910]/20 scale-105"
+                  : "bg-white border-gray-100 shadow-sm hover:border-[#DE2910]/25 hover:shadow-md"
               }`}
             >
               <div className="relative">

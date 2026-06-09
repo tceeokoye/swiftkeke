@@ -13,17 +13,17 @@ export default function StepRoleSelection({ accountType, set }: Props) {
   return (
     <div className="space-y-6 animate-fadeInUp">
       <h3 className="text-xl font-bold text-[#1A1A1A] flex items-center gap-2">
-        <UserPlus className="w-5 h-5 text-[#D21F3C]" /> Choose Your Path
+        <UserPlus className="w-5 h-5 text-[#DE2910]" /> Choose Your Path
       </h3>
       <div className="grid sm:grid-cols-2 gap-6">
         <button 
           onClick={() => set("accountType", "driver")}
-          className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer text-left ${accountType === "driver" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
+          className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer text-left ${accountType === "driver" ? "border-[#DE2910] ring-4 ring-[#DE2910]/10" : "border-gray-100 hover:border-[#DE2910]/30 bg-[#F7F7F7]"}`}
         >
-          <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white mb-4">
+          <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-white mb-4">
             <Image src="/images/rider_sketch.png" alt="Driver Sketch" fill className={`object-cover transition-transform duration-500 group-hover:scale-105 ${accountType === "driver" ? "scale-105" : ""}`} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            <div className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all ${accountType === "driver" ? "bg-[#D21F3C] text-white scale-110" : "bg-white/80 text-gray-400"}`}>
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+            <div className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all ${accountType === "driver" ? "bg-[#DE2910] text-white scale-110" : "bg-white/80 text-gray-400"}`}>
               <Car className="w-4 h-4" />
             </div>
           </div>
@@ -34,12 +34,12 @@ export default function StepRoleSelection({ accountType, set }: Props) {
         </button>
         <button 
           onClick={() => set("accountType", "passenger")}
-          className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer text-left ${accountType === "passenger" ? "border-[#D21F3C] ring-4 ring-[#D21F3C]/10" : "border-gray-100 hover:border-[#D21F3C]/30 bg-[#F7F7F7]"}`}
+          className={`relative overflow-hidden group p-1 rounded-3xl border-2 transition-all duration-300 cursor-pointer text-left ${accountType === "passenger" ? "border-[#DE2910] ring-4 ring-[#DE2910]/10" : "border-gray-100 hover:border-[#DE2910]/30 bg-[#F7F7F7]"}`}
         >
-          <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white mb-4">
+          <div className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-white mb-4">
             <Image src="/images/passenger_sketch.png" alt="Passenger Sketch" fill className={`object-cover transition-transform duration-500 group-hover:scale-105 ${accountType === "passenger" ? "scale-105" : ""}`} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-            <div className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all ${accountType === "passenger" ? "bg-[#D21F3C] text-white scale-110" : "bg-white/80 text-gray-400"}`}>
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+            <div className={`absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all ${accountType === "passenger" ? "bg-[#DE2910] text-white scale-110" : "bg-white/80 text-gray-400"}`}>
               <User className="w-4 h-4" />
             </div>
           </div>

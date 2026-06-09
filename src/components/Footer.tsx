@@ -7,13 +7,13 @@ import Image from "next/image";
 
 const footerLinks = {
   Riders: [
-    { label: "Ride with OnaAga", href: "/#register" },
+    { label: "Ride with onaaga", href: "/passenger-waitlist" },
     { label: "Ride Types", href: "/#benefits" },
     { label: "Pricing", href: "/#faq" },
     { label: "Rider Support", href: "/support" }
   ],
   Drivers: [
-    { label: "Register", href: "/#register" },
+    { label: "Register", href: "/driver-onboarding" },
     { label: "Requirements", href: "/#how-it-works" },
     { label: "Earnings", href: "/#benefits" },
     { label: "Driver Support", href: "/support" }
@@ -37,7 +37,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid sm:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
           <div className="lg:col-span-2">
-            <Link href="#home" className="flex items-center gap-2 mb-4">
+            <Link href="/#home" className="flex items-center gap-2 mb-4">
              <Image src={Logo} alt="OnaAga Logo" width={100} height={100} />
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mb-6">
@@ -45,7 +45,7 @@ export default function Footer() {
             </p>
             {/* UBA Gold accent bar */}
             <div className="flex gap-2 items-center">
-              <div className="w-8 h-1 bg-[#D21F3C] rounded-full" />
+              <div className="w-8 h-1 bg-[#DE2910] rounded-full" />
               <div className="w-4 h-1 bg-[#FDC300] rounded-full" />
               <div className="w-2 h-1 bg-white/20 rounded-full" />
             </div>
@@ -57,7 +57,7 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-gray-500 hover:text-[#D21F3C] transition-colors">{link.label}</Link>
+                    <Link href={link.href} className="text-sm text-gray-500 hover:text-[#DE2910] transition-colors">{link.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -66,9 +66,9 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">Â© 2025 OnaAga Technologies Ltd. All rights reserved.</p>
+          <p className="text-xs text-gray-600">© 2026 onaaga Technologies Ltd. All rights reserved.</p>
           <p className="text-xs text-gray-600 flex items-center gap-1">
-            Made with <Heart className="w-3 h-3 text-[#D21F3C]" fill="currentColor" /> in Nigeria
+            Made with <Heart className="w-3 h-3 text-[#DE2910]" fill="currentColor" /> in Nigeria
           </p>
         </div>
       </div>
