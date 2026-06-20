@@ -114,7 +114,7 @@ export default function HeroSection() {
                 priority
               />
               {/* Gradient overlay for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-black/30" />
 
               {/* Top Badges */}
               <div className="absolute top-6 left-6 right-6 flex justify-between items-start">

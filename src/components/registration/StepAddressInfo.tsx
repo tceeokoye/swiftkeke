@@ -3,11 +3,19 @@
 import { MapPin, Upload } from "lucide-react";
 import { RegistrationFormData } from "@/types/global";
 import FileUploadBox from "./FileUploadBox";
+import ModalSelect from "../ModalSelect";
 
 interface Props {
   form: RegistrationFormData;
   set: (key: keyof RegistrationFormData, val: any) => void;
 }
+
+const NIGERIAN_STATES = [
+  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
+  "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT - Abuja", "Gombe", "Imo",
+  "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa",
+  "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
+];
 
 export default function StepAddressInfo({ form, set }: Props) {
   const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
@@ -25,11 +33,16 @@ export default function StepAddressInfo({ form, set }: Props) {
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label className={labelClass}>City *</label>
-          <input className={inputClass} placeholder="e.g. Lagos" value={form.city || ""} onChange={(e) => set("city", e.target.value)} />
+          <input className={inputClass} placeholder="e.g. Ikeja" value={form.city || ""} onChange={(e) => set("city", e.target.value)} />
         </div>
-        <div>
-          <label className={labelClass}>State *</label>
-          <input className={inputClass} placeholder="e.g. Lagos" value={form.state || ""} onChange={(e) => set("state", e.target.value)} />
+        <div className="z-20">
+          <ModalSelect
+            label="State *"
+            placeholder="Select State"
+            value={form.state || ""}
+            onChange={(val) => set("state", val)}
+            options={NIGERIAN_STATES}
+          />
         </div>
       </div>
       <FileUploadBox label="Upload Proof of Address" hint="Utility bill or bank statement" file={form.proofOfAddress} onFile={(f) => set("proofOfAddress", f)} accept=".pdf,.jpg,.jpeg,.png" icon={Upload} />

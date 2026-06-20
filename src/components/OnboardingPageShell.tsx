@@ -52,7 +52,7 @@ export default function OnboardingPageShell({
             </ul>
  
             <div className="mt-5 sm:mt-6 rounded-2xl sm:rounded-3xl border border-gray-100 shadow-inner shadow-[#DE2910]/5 overflow-hidden">
-              <div className="relative aspect-[4/3] w-full rounded-2xl sm:rounded-[1.75rem] bg-white">
+              <div className="relative aspect-4/3 w-full rounded-2xl sm:rounded-[1.75rem] bg-white">
                 <Image
                   src={previewImage}
                   alt={previewAlt}
@@ -60,7 +60,7 @@ export default function OnboardingPageShell({
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/10 to-transparent" />
                 <div className="absolute left-3 right-3 bottom-3 sm:left-4 sm:right-4 sm:bottom-4 rounded-xl sm:rounded-2xl bg-white/90 px-3 py-2.5 sm:px-4 sm:py-3 backdrop-blur-sm">
                   <p className="text-[9px] sm:text-[10px] font-black text-[#DE2910]">
                     {defaultAccountType === "driver" ? "Driver preview" : "Passenger preview"}

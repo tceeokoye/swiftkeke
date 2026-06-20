@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   ChevronRight,
   ChevronLeft,
@@ -91,6 +91,20 @@ export default function RegistrationForm({
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
   const [showPassword, setShowPassword] = useState(false);
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const el = document.getElementById("register");
+    if (el) {
+      const yOffset = -80; // Offset for fixed headers if any
+      const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }, [step]);
 
   const set = (
     key: keyof RegistrationFormData,

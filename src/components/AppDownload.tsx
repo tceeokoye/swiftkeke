@@ -82,7 +82,7 @@ export default function AppDownload() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
               
               {/* App Download Prompt Overlay */}
               <div className="absolute bottom-6 left-6 right-6 text-white text-center">

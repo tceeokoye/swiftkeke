@@ -63,7 +63,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-lg aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white"
+              className="relative z-10 w-full max-w-lg aspect-square lg:aspect-4/3 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white"
             >
               <Image 
                 src="/uba-driver.png" 
@@ -71,7 +71,7 @@ export default function About() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
             </motion.div>
  
             {/* Overlay Stat Card */}

@@ -3,11 +3,18 @@
 import { Car } from "lucide-react";
 import { RegistrationFormData } from "@/types/global";
 import FileUploadBox from "./FileUploadBox";
+import ModalSelect from "../ModalSelect";
 
 interface Props {
   form: RegistrationFormData;
   set: (key: keyof RegistrationFormData, val: any) => void;
 }
+
+const VEHICLE_CATEGORIES = [
+  { label: "Tricycle (Keke)", value: "Tricycle" },
+  { label: "Motorcycle (Okada)", value: "Motorcycle" },
+  { label: "Car", value: "Car" },
+];
 
 export default function StepVehicleInfo({ form, set }: Props) {
   const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
@@ -19,13 +26,14 @@ export default function StepVehicleInfo({ form, set }: Props) {
         <Car className="w-5 h-5 text-[#DE2910]" /> Vehicle Information
       </h3>
       <div className="grid sm:grid-cols-2 gap-4">
-        <div>
-          <label className={labelClass}>Vehicle Category *</label>
-          <select className={inputClass} value={form.vehicleCategory || "Tricycle"} onChange={(e) => set("vehicleCategory", e.target.value)}>
-            <option value="Tricycle">Tricycle (Keke)</option>
-            <option value="Motorcycle">Motorcycle (Okada)</option>
-            <option value="Car">Car</option>
-          </select>
+        <div className="z-20">
+          <ModalSelect
+            label="Vehicle Category *"
+            placeholder="Select Category"
+            value={form.vehicleCategory || "Tricycle"}
+            onChange={(val) => set("vehicleCategory", val)}
+            options={VEHICLE_CATEGORIES}
+          />
         </div>
         <div>
           <label className={labelClass}>Vehicle Make *</label>
