@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import {
   ChevronRight,
   ChevronLeft,
@@ -81,8 +82,19 @@ export default function RegistrationForm({
   const { loading, sendHttpRequest } = useHttp();
   const dispatch = useDispatch();
   const authToken = useSelector((state: RootState) => state.token.token);
+  const router = useRouter();
 
-  const [step, setStep] = useState(() => (defaultAccountType ? 1 : 0));
+  const [step, setStep] = useState(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const stepParam = urlParams.get("step");
+      if (stepParam) {
+        const parsed = parseInt(stepParam, 10);
+        if (!isNaN(parsed)) return parsed;
+      }
+    }
+    return defaultAccountType ? 1 : 0;
+  });
   const [form, setForm] = useState<RegistrationFormData>(() => ({
     ...initialForm,
     accountType: defaultAccountType ?? null,
@@ -114,10 +126,9 @@ export default function RegistrationForm({
   const resendCode = (e?: React.MouseEvent) => {
     e?.preventDefault();
     sendHttpRequest({
-      successRes: (res:any) => {
+      successRes: (res: any) => {
         toast.success("Verification code resent");
         console.log("Resend OTP Response:", res);
-        
       },
       requestConfig: {
         url: "/auth/resend-otp",
@@ -151,6 +162,7 @@ export default function RegistrationForm({
             data?.message === "complete_registration" ||
             data?.data?.user?.status === "verified"
           ) {
+            
             const token = data?.data?.token || data?.token;
             if (token) {
               dispatch(tokenActions.setToken(token));
@@ -168,7 +180,8 @@ export default function RegistrationForm({
             data?.description === "Email already exists!" &&
             data?.data === null
           ) {
-            setErrors(["Email already exists. Use a different email or sign in."]);
+            toast.error("Email already exists. Redirecting to login...");
+            router.push(`/login?accountType=${form.accountType}`);
             return;
           }
         },
@@ -189,15 +202,6 @@ export default function RegistrationForm({
 
     if (step === 2) {
       sendHttpRequest({
-        successRes: (res) => {
-          console.log("Verify Response:", res);
-          // Save token if returned (assuming res.data.data.token or similar based on backend pattern)
-          const token = res.data?.data?.token || res.data?.token;
-          if (token) {
-            dispatch(tokenActions.setToken(token));
-          }
-          setStep(3);
-        },
         requestConfig: {
           url: "/auth/verify/email",
           method: "POST",
@@ -207,6 +211,15 @@ export default function RegistrationForm({
             userType: form.accountType,
           },
           userType: form.accountType as "driver" | "passenger",
+        },
+        successRes: (res) => {
+          console.log("Verify Response:", res);
+          // Save token if returned (assuming res.data.data.token or similar based on backend pattern)
+          const token = res.data?.data?.token || res.data?.token;
+          if (token) {
+            dispatch(tokenActions.setToken(token));
+          }
+          setStep(3);
         },
       });
       return;
@@ -367,7 +380,10 @@ export default function RegistrationForm({
       : "Create your driver profile and start earning.");
 
   return (
-    <section id="register" className="relative overflow-hidden w-full max-w-full">
+    <section
+      id="register"
+      className="relative overflow-hidden w-full max-w-full"
+    >
       <div className="absolute left-0 top-1/4 w-80 h-80 bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="max-w-2xl mx-auto px-0 sm:px-6 relative w-full overflow-hidden">
         <div className="text-center mb-6 sm:mb-10 px-4 sm:px-0">
@@ -381,7 +397,7 @@ export default function RegistrationForm({
             {resolvedPageSubtitle}
           </p>
         </div>
- 
+
         <div className="w-full overflow-x-auto pb-5 sm:pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
           <div className="flex items-center justify-between min-w-125 sm:min-w-0 px-2">
             {currentSteps.map(({ label, icon: Icon }, i) => (
@@ -414,7 +430,7 @@ export default function RegistrationForm({
             ))}
           </div>
         </div>
- 
+
         <div className="bg-white border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl">
           {errors.length > 0 && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
@@ -494,7 +510,7 @@ export default function RegistrationForm({
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : step === 1 ? (
-                  "Create Account"
+                  "verify"
                 ) : step === 2 ? (
                   "Verify OTP"
                 ) : (

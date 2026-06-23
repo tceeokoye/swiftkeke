@@ -132,22 +132,22 @@ export const useHttp = () => {
             }
           }
 
-          if (userType === "driver") {
-            router.replace("/auth/driver/login");
-          } else {
-            if (isMobile) {
-              const params = new URLSearchParams(window.location.search);
-              params.set("showLogin", "true");
+          // if (userType === "driver") {
+          //   router.replace("/auth/driver/login");
+          // } else {
+          //   if (isMobile) {
+          //     const params = new URLSearchParams(window.location.search);
+          //     params.set("showLogin", "true");
 
-              window.history.replaceState(
-                {},
-                "",
-                `${window.location.pathname}?${params.toString()}`,
-              );
-            } else {
-              router.replace("/auth/login");
-            }
-          }
+          //     window.history.replaceState(
+          //       {},
+          //       "",
+          //       `${window.location.pathname}?${params.toString()}`,
+          //     );
+          //   } else {
+          //     router.replace("/auth/login");
+          //   }
+          // }
         }
 
         setError(errorMessage);
