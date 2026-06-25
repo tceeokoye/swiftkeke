@@ -13,8 +13,8 @@ interface Props {
 
 export default function StepVerifyOtp({ form, set, loading, resendCode }: Props) {
   const [timeLeft, setTimeLeft] = useState(0);
-  const labelClass = "block text-xs font-semibold text-[#888888] uppercase tracking-wide mb-1.5";
-  const inputClass = "w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5 text-sm text-[#1A1A1A] placeholder-[#A0ADCC] focus:outline-none focus:border-[#DE2910]/50 transition-all";
+  const labelClass = "block text-[13px] font-bold text-[#1A1A1A] mb-2";
+  const inputClass = "w-full bg-gray-50/50 border border-gray-200 rounded-xl px-4 py-3.5 text-[15px] text-[#1A1A1A] placeholder-gray-400 focus:outline-none focus:border-[#DE2910] focus:ring-1 focus:ring-[#DE2910] focus:bg-white transition-all";
 
   useEffect(() => {
     if (timeLeft <= 0) return;

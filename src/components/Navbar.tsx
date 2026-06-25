@@ -36,8 +36,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
          
           {/* Logo */}
-          <Link href="/#home" className="flex items-center gap-2.5 group overflow-hidden">
-            <Image src={Logo} alt="OnaAga Logo" width={100} height={100} />
+          <Link href="/#home" className="flex items-center shrink-0">
+            <Image 
+              src={Logo} 
+              alt="OnaAga Logo" 
+              className="h-7 sm:h-8 w-auto object-contain" 
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}

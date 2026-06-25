@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, FileText } from "lucide-react";
+import { Check, FileText, X } from "lucide-react";
 import { RegistrationFormData } from "@/types/global";
 
 interface Props {
@@ -12,6 +14,13 @@ interface Props {
 }
 
 export default function StepReview({ form, set, isPassenger }: Props) {
+  const [viewedFile, setViewedFile] = useState<{ file: File; label: string } | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   if (isPassenger) {
     return (
       <div className="space-y-5 animate-fadeInUp">
@@ -75,7 +84,7 @@ export default function StepReview({ form, set, isPassenger }: Props) {
 
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
           <h4 className="text-sm font-bold text-[#1A1A1A] border-b border-gray-100 pb-2 mb-4">Documents & Photos</h4>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { label: "ID Document", file: form.idFile },
               { label: "License", file: form.driversLicense },
@@ -85,17 +94,22 @@ export default function StepReview({ form, set, isPassenger }: Props) {
               { label: "Vehicle Side", file: form.sidePhoto },
               { label: "Selfie", file: form.selfie },
             ].map(({ label, file }) => (
-              <div key={label} className="flex flex-col gap-1 items-center bg-[#F7F7F7] p-2 rounded-xl">
-                {file?.type.startsWith("image/") ? (
-                   <div className="w-full aspect-square rounded-lg overflow-hidden bg-white border border-gray-200 relative">
-                     <Image src={URL.createObjectURL(file)} alt={label} width={300} height={300} unoptimized className="w-full h-full object-cover" />
-                   </div>
-                ) : file ? (
-                   <div className="w-full aspect-square rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center">
-                     <FileText className="w-8 h-8 text-gray-400" />
-                   </div>
-                ) : null}
-                <span className="text-[10px] font-bold text-gray-600 text-center mt-1">{label}</span>
+              <div key={label} className="w-full">
+                <label className="block text-[13px] text-[#555555] mb-2">{label}</label>
+                <div className="flex items-center justify-between w-full bg-[#F7F7F7] border border-gray-200 rounded-xl px-4 py-3.5">
+                  <span className="text-[14px] truncate mr-4 text-[#1A1A1A] font-medium">
+                    {file ? file.name : <span className="text-gray-400 font-normal">Not provided</span>}
+                  </span>
+                  {file && (
+                    <button
+                      type="button"
+                      onClick={() => setViewedFile({ file, label })}
+                      className="text-[13px] font-bold text-[#DE2910] hover:underline whitespace-nowrap"
+                    >
+                      View
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -118,6 +132,36 @@ export default function StepReview({ form, set, isPassenger }: Props) {
           </div>
         </div>
       </div>
+
+      {mounted && viewedFile && createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setViewedFile(null)} />
+          <div className="bg-white rounded-2xl w-full max-w-sm overflow-hidden shadow-2xl z-10 relative flex flex-col animate-in fade-in zoom-in-95 duration-200">
+            <div className="p-4 border-b border-gray-100 flex justify-between items-center">
+              <h3 className="font-bold text-[#1A1A1A] text-sm">{viewedFile.label}</h3>
+              <button onClick={() => setViewedFile(null)} className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-4 flex items-center justify-center bg-gray-50 min-h-[250px] relative">
+              {viewedFile.file.type.startsWith("image/") ? (
+                <Image src={URL.createObjectURL(viewedFile.file)} alt={viewedFile.label} width={400} height={400} className="max-h-[60vh] object-contain rounded-lg" unoptimized />
+              ) : (
+                <div className="flex flex-col items-center gap-2 text-gray-400">
+                  <FileText className="w-10 h-10" />
+                  <span className="text-sm font-medium">Cannot preview this file type</span>
+                </div>
+              )}
+            </div>
+            <div className="p-4 border-t border-gray-100 flex justify-end">
+              <button onClick={() => setViewedFile(null)} className="px-5 py-2 bg-gray-100 hover:bg-gray-200 text-[#1A1A1A] text-sm font-bold rounded-xl transition-colors cursor-pointer">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

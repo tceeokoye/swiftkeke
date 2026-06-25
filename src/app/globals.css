@@ -42,16 +42,26 @@
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 2px;
+    height: 1px; /* The 'border bottom indicator' on the stage */
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--bg-light);
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background: var(--brand-primary);
     border-radius: 3px;
+  }
+
+  /* Hide scrollbar for specific elements */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 

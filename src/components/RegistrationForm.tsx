@@ -18,6 +18,7 @@ import {
   MapPin,
   FileText,
   Camera,
+  Images,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useHttp } from "@/hooks/use-http";
@@ -46,6 +47,7 @@ import StepAddressInfo from "./registration/StepAddressInfo";
 import StepDocuments from "./registration/StepDocuments";
 import StepReview from "./registration/StepReview";
 import RegistrationSuccess from "./registration/RegistrationSuccess";
+import StepVehiclePhotos from "./registration/stepVehiclePhotos";
 
 const DRIVER_STEPS = [
   { label: "Role", icon: UserPlus },
@@ -54,6 +56,7 @@ const DRIVER_STEPS = [
   { label: "Personal", icon: User },
   { label: "Contact", icon: Phone },
   { label: "Vehicle", icon: Car },
+  { label: "Photos", icon: Images },
   { label: "Address", icon: MapPin },
   { label: "Documents", icon: FileText },
   { label: "Selfie", icon: Camera },
@@ -162,8 +165,8 @@ export default function RegistrationForm({
             data?.message === "complete_registration" ||
             data?.data?.user?.status === "verified"
           ) {
-            
-            const token = data?.data?.token || data?.token;
+            const token = res.data?.data?.accessToken || res.data?.accessToken;
+            console.log("check my token", token);
             if (token) {
               dispatch(tokenActions.setToken(token));
             }
@@ -176,12 +179,9 @@ export default function RegistrationForm({
         },
         errorRes: (err) => {
           const data = err.response?.data;
-          if (
-            data?.description === "Email already exists!" &&
-            data?.data === null
-          ) {
+          if (data?.description === "Email already exists!") {
             toast.error("Email already exists. Redirecting to login...");
-            router.push(`/login?accountType=${form.accountType}`);
+            router.push(`/login?accountType=${data.data.userType}`);
             return;
           }
         },
@@ -215,7 +215,8 @@ export default function RegistrationForm({
         successRes: (res) => {
           console.log("Verify Response:", res);
           // Save token if returned (assuming res.data.data.token or similar based on backend pattern)
-          const token = res.data?.data?.token || res.data?.token;
+          const token = res.data?.data?.accessToken || res.data?.accessToken;
+          console.log("check my token", token);
           if (token) {
             dispatch(tokenActions.setToken(token));
           }
@@ -227,7 +228,7 @@ export default function RegistrationForm({
 
     const maxStep =
       form.accountType === "driver"
-        ? 9
+        ? 10
         : form.accountType === "passenger"
           ? 4
           : 1;
@@ -235,6 +236,8 @@ export default function RegistrationForm({
   };
 
   const handleSubmit = () => {
+
+    console.log("do i have token", authToken)
     const e = validateRegistrationStep(step, form);
     if (e.length) {
       setErrors(e);
@@ -381,24 +384,22 @@ export default function RegistrationForm({
 
   return (
     <section
+      className="flex-1 flex  items-center justify-center md:px-4 sm:px-6 z-10  overflow-x-hidden pt-4  mt-10  w-full"
       id="register"
-      className="relative overflow-hidden w-full max-w-full"
     >
-      <div className="absolute left-0 top-1/4 w-80 h-80 bg-[#DE2910]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="max-w-2xl mx-auto px-0 sm:px-6 relative w-full overflow-hidden">
-        <div className="text-center mb-6 sm:mb-10 px-4 sm:px-0">
-          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#DE2910]/10 border border-[#DE2910]/20 text-[#DE2910] text-sm font-bold mb-4">
-            {form.accountType === "passenger" ? "Passenger Waitlist" : "Driver Onboarding"}
-          </div> */}
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1A1A1A] mb-2 sm:mb-3">
-            <span className="gradient-text">{resolvedPageTitle}</span>
-          </h2>
-          <p className="text-[#555555] text-xs sm:text-base max-w-2xl mx-auto leading-relaxed">
+      <div className="w-full max-w-170 p-6 sm:p-6  relative overflow-hidden bg-white">
+        <div className="absolute top-0 left-0 right-0 h-1 " />
+
+        <div className="text-center mb-6">
+          <h1 className="text-2xl sm:text-3xl font-black text-[#1A1A1A] mb-2 tracking-tight">
+            {resolvedPageTitle}
+          </h1>
+          <p className="text-[#555555] text-sm leading-relaxed">
             {resolvedPageSubtitle}
           </p>
         </div>
 
-        <div className="w-full overflow-x-auto pb-5 sm:pb-6 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+        <div className="w-full  overflow-x-auto pb-5 sm:pb-5 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
           <div className="flex items-center justify-between min-w-125 sm:min-w-0 px-2">
             {currentSteps.map(({ label, icon: Icon }, i) => (
               <div
@@ -431,7 +432,7 @@ export default function RegistrationForm({
           </div>
         </div>
 
-        <div className="bg-white border border-gray-100 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xl">
+        <div className="w-full">
           {errors.length > 0 && (
             <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
               {errors.map((e, i) => (
@@ -472,12 +473,13 @@ export default function RegistrationForm({
               {step === 3 && <StepPersonalInfo form={form} set={set} />}
               {step === 4 && <StepContactInfo form={form} set={set} />}
               {step === 5 && <StepVehicleInfo form={form} set={set} />}
-              {step === 6 && <StepAddressInfo form={form} set={set} />}
-              {step === 7 && <StepDocuments form={form} set={set} />}
-              {step === 8 && (
+              {step === 6 && <StepVehiclePhotos form={form} set={set} />}
+              {step === 7 && <StepAddressInfo form={form} set={set} />}
+              {step === 8 && <StepDocuments form={form} set={set} />}
+              {step === 9 && (
                 <StepDocuments form={form} set={set} isSelfieStep />
               )}
-              {step === 9 && <StepReview form={form} set={set} />}
+              {step === 10 && <StepReview form={form} set={set} />}
             </>
           )}
           {form.accountType === "passenger" && (
@@ -489,7 +491,7 @@ export default function RegistrationForm({
             </>
           )}
 
-          <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
+          <div className="flex items-center justify-between  pt-6 border-t border-gray-100">
             {step > 0 && (
               <button
                 onClick={() => setStep((s) => s - 1)}
@@ -499,7 +501,7 @@ export default function RegistrationForm({
               </button>
             )}
             <div className={step === 0 ? "flex-1" : ""} />
-            {(form.accountType === "driver" && step < 9) ||
+            {(form.accountType === "driver" && step < 10) ||
             (form.accountType === "passenger" && step < 4) ||
             step <= 2 ? (
               <button
